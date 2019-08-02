@@ -1,0 +1,11 @@
+<%= case @position do %>
+  <% nil -> %>
+    <div>
+      <h2>Fetching position...</h2>
+    </div>
+  <% _ -> %>
+    <div>
+      <h2>Latitude: <%= @position.latitude %></h2>
+      <h2>Longitude: <%= @position.longitude %></h2>
+    </div>
+<% end %>

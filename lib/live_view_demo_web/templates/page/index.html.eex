@@ -1,6 +1,5 @@
 <section class="phx-hero">
   <h1>My Phrenzy Entry</h1>
-  <p><%= link "This clock", to: Routes.live_path(@conn, LiveViewDemoWeb.ClockLive) %> is a basic live view in action.</p>
 </section>
 
 <section class="row">
