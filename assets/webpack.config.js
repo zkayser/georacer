@@ -29,13 +29,37 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+        // use: MiniCssExtractPlugin.extract({
+        //   use: [{
+        //     loader: "css-loader"
+        //   }, {
+        //     loader: "postcss-loader"
+        //   }, {
+        //     loader: "sass-loader",
+        //     options: {
+        //       precision: 8,
+        //       includePaths: [
+        //         'node_modules/bootstrap/scss',
+        //         'node_modules/@fortawesome/fontawesome-free/scss'
+        //       ]
+        //     }
+        //   }],
+        //   fallback: 'style-loader'
+        // })
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '../css/app.css' }),
+    new MiniCssExtractPlugin({ filename: '../css/app.scss' }),
     new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
   ]
 });
