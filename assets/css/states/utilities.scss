@@ -1,0 +1,141 @@
+//LAYOUT
+.u-contain {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+//PADDING
+.u-padded {
+  padding: $pad-sm;
+
+  @media (min-width: $screen-mobile) {
+    padding: $pad;
+  }
+  &--none {
+    padding: 0;
+  }
+  &--xs {
+    padding: $pad-xs;
+  }
+  &--sm {
+    padding: $pad-sm;
+  }
+  &--lg {
+    padding: $pad-sm;
+    @media (min-width: $screen-mobile) {
+      padding: $pad;
+    }
+  }
+  &--xlg {
+    padding: $pad-sm;
+    @media (min-width: $screen-mobile) {
+      padding: $pad;
+    }
+  }
+}
+
+//MAARGINS
+.u-push-top {
+  margin-top: $pad;
+
+  &--xs {
+    margin-top: $pad-xs;
+  }
+  &--sm {
+    margin-top: $pad-sm;
+  }
+  &--lg {
+    margin-top: $pad-lg;
+  }
+  &--xlg {
+    margin-top: $pad-xlg;
+  }
+}
+
+.u-push-bottom {
+  margin-bottom: $pad;
+
+  &--none {
+    margin-bottom: 0;
+  }
+  &--xs {
+    margin-bottom: $pad-xs;
+  }
+  &--sm {
+    margin-bottom: $pad-sm;
+  }
+  &--lg {
+    margin-bottom: $pad-lg;
+  }
+  &--xlg {
+    margin-bottom: $pad-xlg;
+  }
+}
+
+//ALIGNMENT
+.u-center {
+  text-align: center;
+
+  &--sm {
+    @media (min-width: $screen-mobile) {
+      text-align: center;
+    }
+  }
+  &--md {
+    @media (min-width: $screen-tablet) {
+      text-align: center;
+    }
+  }
+  &--lg {
+    @media (min-width: $screen-desktop) {
+      text-align: center;
+    }
+  }
+}
+
+.u-left {
+  text-align: left;
+
+  &--sm {
+    @media (min-width: $screen-mobile) {
+      text-align: left;
+    }
+  }
+  &--md {
+    @media (min-width: $screen-tablet) {
+      text-align: left;
+    }
+  }
+  &--lg {
+    @media (min-width: $screen-desktop) {
+      text-align: left;
+    }
+  }
+}
+
+.u-left {
+  text-align: right;
+
+  &--sm {
+    @media (min-width: $screen-mobile) {
+      text-align: right;
+    }
+  }
+  &--md {
+    @media (min-width: $screen-tablet) {
+      text-align: right;
+    }
+  }
+  &--lg {
+    @media (min-width: $screen-desktop) {
+      text-align: right;
+    }
+  }
+}
+
+
+
+
+.u-border-radius {
+  border-radius: $border-radius;
+}

@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('leaguespartan-bold.eot');
+    src: url('leaguespartan-bold.eot?#iefix') format('embedded-opentype'),
+         url('leaguespartan-bold.woff2') format('woff2'),
+         url('leaguespartan-bold.woff') format('woff'),
+         url('leaguespartan-bold.ttf') format('truetype'),
+         url('leaguespartan-bold.svg#league_spartanbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'League Mono';
+    src: url('LeagueMono-Regular.eot');
+    src: url('LeagueMono-Regular.eot?#iefix') format('embedded-opentype'),
+         url('LeagueMono-Regular.woff2') format('woff2'),
+         url('LeagueMono-Regular.woff') format('woff'),
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'League Mono';
+    src: url('LeagueMono-SemiBold.eot');
+    src: url('LeagueMono-SemiBold.eot?#iefix') format('embedded-opentype'),
+         url('LeagueMono-SemiBold.woff2') format('woff2'),
+         url('LeagueMono-SemiBold.woff') format('woff'),
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'League Mono';
+    src: url('LeagueMono-Bold.eot');
+    src: url('LeagueMono-Bold.eot?#iefix') format('embedded-opentype'),
+         url('LeagueMono-Bold.woff2') format('woff2'),
+         url('LeagueMono-Bold.woff') format('woff'),
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'League Mono';
+    src: url('LeagueMono-ExtraBold.eot');
+    src: url('LeagueMono-ExtraBold.eot?#iefix') format('embedded-opentype'),
+         url('LeagueMono-ExtraBold.woff2') format('woff2'),
+         url('LeagueMono-ExtraBold.woff') format('woff'),
+    font-weight: 800;
+    font-style: normal;
+}

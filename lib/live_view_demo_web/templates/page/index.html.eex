@@ -1,37 +1,8 @@
-<section class="phx-hero">
-  <h1>My Phrenzy Entry</h1>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix_live_view">Phoenix LiveView README</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Phoenix Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Phoenix Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">Phoenix v1.4 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
+<section class="u-contain u-padded">
+  <h1 class="u-push-bottom--xlg u-push-top--xlg"><img src="<%= Routes.static_path(@conn, "/images/geo-race-home-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
+  <a href="#" class="btn btn--primary">Create Race</a>
+  <a href="#" class="btn u-push-bottom">Join Race</a>
+  <div class="u-center">
+    <a href="#">Race History</a>
+  </div>
 </section>

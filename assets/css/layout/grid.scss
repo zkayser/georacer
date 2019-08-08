@@ -1,0 +1,41 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $pad;
+
+  &--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--4 {
+    @media screen and (min-width: $screen-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: $screen-desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  &--5 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @media screen and (min-width: $screen-desktop) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__child {
+
+    &--span-2 {
+      grid-column: span 2;
+    }
+
+    &--span-3 {
+      grid-column: span 3;
+    }
+  }
+}

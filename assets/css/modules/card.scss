@@ -1,0 +1,13 @@
+//CARD STYLES
+.card {
+  background-color: $color-7;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+
+  &--highlight {
+    background-color: $color-3;
+    h1, h2 {
+      color: $color-7;
+    }
+  }
+}
