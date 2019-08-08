@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 elixir 1.9.0
+=======
+elixir 1.9.1
+>>>>>>> 5d0bea809a1466a2bc8a72662e533ef299be45f6
 erlang 22.0.2
 nodejs 12.6.0
