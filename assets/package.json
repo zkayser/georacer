@@ -20,12 +20,7 @@
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^4.5.0",
-<<<<<<< HEAD
-    "css-loader": "^2.1.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-=======
     "css-loader": "^3.2.0",
->>>>>>> 5d0bea809a1466a2bc8a72662e533ef299be45f6
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",

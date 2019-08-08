@@ -31,37 +31,10 @@ module.exports = (env, options) => ({
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-<<<<<<< HEAD
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
-        // use: MiniCssExtractPlugin.extract({
-        //   use: [{
-        //     loader: "css-loader"
-        //   }, {
-        //     loader: "postcss-loader"
-        //   }, {
-        //     loader: "sass-loader",
-        //     options: {
-        //       precision: 8,
-        //       includePaths: [
-        //         'node_modules/bootstrap/scss',
-        //         'node_modules/@fortawesome/fontawesome-free/scss'
-        //       ]
-        //     }
-        //   }],
-        //   fallback: 'style-loader'
-        // })
-=======
           { loader: 'style-loader' },
           { loader: 'css-loader', options: { sourceMap: true } },
           { loader: 'sass-loader', options: { sourceMap: true } }
         ]
->>>>>>> 5d0bea809a1466a2bc8a72662e533ef299be45f6
       }
     ]
   },
