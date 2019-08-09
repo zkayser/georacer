@@ -1,0 +1,37 @@
+//SCREEN SIZES
+$screen-mobile: 48em;
+$screen-tablet: 62em;
+$screen-desktop: 75em;
+
+//SPACING
+$pad: 2rem;
+$pad-xxs: calc(#{$pad}/10);
+$pad-xs: calc(#{$pad}/2.5);
+$pad-sm: calc(#{$pad}/2);
+$pad-lg: calc(#{$pad} * 2);
+$pad-xlg: calc(#{$pad} * 2.5);
+
+//BORDERS AND SHAPES
+$border-radius: 25px;
+$circle: 50%;
+$border: solid 3px;
+$shadow: 0px 0px 30px rgba(146, 146, 146, 0.18);
+
+//ANIMATIONS
+$transition: all 2s ease;
+
+//FONTS
+$font-primary: 'League Spartan', sans-serif;
+$font-secondary: 'League Mono', serif;
+
+//COLORS
+$color-1: #f6f6f6;
+$color-2: #053049;
+$color-3: #FF2B52;
+$color-4: #FC0385;
+$color-5: lighten($color-2, 20%);
+$color-6: lighten($color-2, 45%);
+$color-7: #f9f9f9;
+
+$gradient-1: linear-gradient(140deg, rgba(5,48,73,1) 0%, rgba(252,3,133,1) 75%, rgba(255,43,82,1) 85%);
+$gradient-2: linear-gradient(113deg, rgba(252,3,133,1) 0%, rgba(255,43,82,1) 75%);

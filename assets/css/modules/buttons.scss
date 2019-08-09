@@ -1,0 +1,42 @@
+a {
+  color: $color-3;
+  font-style: 0.8em;
+  font-family: $font-primary;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+
+  &:hover {
+    color: $color-2;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+}
+.btn {
+  display: block;
+  margin: $pad-xs;
+  padding: $pad $pad-sm;
+  border-radius: 75px;
+  background-color: $color-2;
+  color: $color-1;
+  font-family: $font-primary;
+  font-size: 1.2em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: $color-4;
+    color: $color-1;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  &--primary {
+    background: $color-3;
+    &:hover {
+      background: $color-5;
+    }
+  }
+}

@@ -1,1 +1,97 @@
-<h1>Hello. This is a thing.</h1>
+<section class="u-contain u-padded">
+  <h1 class="u-push-bottom"><img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/>Style Guide</h1>
+  <div class="card card--highlight u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Logo Identity</h2>
+    <img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Typeography</h2>
+    <p>&#60;p&#62;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.</p>
+    <p><b>&#60;b&#62;Sed ut perspiciatis</b></p>
+    <h1>&#60;h1&#62; Heading 1</h1>
+    <h2>&#60;h2&#62; Heading 2</h2>
+    <h3>&#60;h3&#62; Heading 3</h3>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom--none u-push-top--xs">Colors</h2>
+    <div class="grid grid--2">
+      <div class="grid__child--span-2 u-padded--xlg section--color-7 u-border-radius u-center">
+        <p class="u-push-top--sm u-push-bottom--none">#F9F9F9</p>
+        <p>$color-7</p>
+      </div>
+      <div class="u-padded--xlg section--color-1 u-border-radius u-center">
+        <p class="u-push-top--sm u-push-bottom--none">#F6F6F6</p>
+        <p>$color-1</p>
+      </div>
+      <div class="u-padded--xlg section--color-2 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#053049</p>
+        <p class="color--1">$color-2</p>
+      </div>
+      <div class="u-padded--xlg section--color-3 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#FF2B52</p>
+        <p class="color--1">$color-3</p>
+      </div>
+      <div class="u-padded--xlg section--color-4 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#FC0385</p>
+        <p class="color--1">$color-4</p>
+      </div>
+      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#0c6fa8</p>
+        <p class="color--1">$color-5</p>
+      </div>
+      <div class="u-padded--xlg section--color-6 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#41b1f2</p>
+        <p class="color--1">$color-6</p>
+      </div>
+    </div>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Buttons</h2>
+    <a href="#" class="btn btn--primary">.btn--primary</a>
+    <a href="#" class="btn u-push-bottom">.btn</a>
+    <div class="u-center">
+      <a href="#">a link</a>
+    </div>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Grid</h2>
+    <h3 class="color--3">2 Column Grid</h3>
+    <p>&#60;div class="grid grid--2"&#62; &#60;/div&#62;</p>
+    <div class="grid grid--2 u-push-bottom--lg">
+      <div class="u-padded--xlg section--color-2 u-border-radius u-center">
+        <p class="color--1 u-push-top">grid item 1</p>
+      </div>
+      <div class="u-padded--xlg section--color-2 u-border-radius u-center">
+        <p class="color--1 u-push-top">grid item 2</p>
+      </div>
+    </div>
+    <h3 class="color--3">3 Column Grid</h3>
+    <p>&#60;div class="grid grid--3"&#62; &#60;/div&#62;</p>
+    <div class="grid grid--3">
+      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+        <p class="color--1 u-push-top">grid item 1</p>
+      </div>
+      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+        <p class="color--1 u-push-top">grid item 2</p>
+      </div>
+      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+        <p class="color--1 u-push-top">grid item 3</p>
+      </div>
+    </div>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Utility Classes</h2>
+    <h3 class="color--3">.u-contain</h3>
+    <p>adds a max-width of 1000px and centers content on desktop screen sizes</p>
+    <h3 class="color--3">.u-border-radius</h3>
+    <p>adds the app's standard amount of border-radius to element</p>
+    <h3 class="color--3">.u-padded</h3>
+    <p>adds the standard amount of padding to element (adjust amount with --xs, --sm, --lg)</p>
+    <h3 class="color--3">.u-push-top</h3>
+    <p>adds the standard amount of margin to top of a element (adjust amount with --xs, --sm, --lg)</p>
+    <h3 class="color--3">.u-push-left</h3>
+    <p>adds the standard amount of margin to left of a element (adjust amount with --xs, --sm, --lg)</p>
+    <h3 class="color--3">.u-push-right</h3>
+    <p>adds the standard amount of margin to right of a element (adjust amount with --xs, --sm, --lg)</p>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+//FONT COLORS
+.color {
+  &--1 {
+    color: $color-1;
+  }
+  &--2 {
+    color: $color-2;
+  }
+  &--3 {
+    color: $color-3;
+  }
+  &--4 {
+    color: $color-4;
+  }
+  &--5 {
+    color: $color-5;
+  }
+  &--6 {
+    color: $color-6;
+  }
+  &--7 {
+    color: $color-7;
+  }
+}
+
+//BACKGROUND COLORS
+.section {
+  &--color-1 {
+    background-color: $color-1;
+  }
+  &--color-2 {
+    background-color: $color-2;
+  }
+  &--color-3 {
+    background-color: $color-3;
+  }
+  &--color-4 {
+    background-color: $color-4;
+  }
+  &--color-5 {
+    background-color: $color-5;
+  }
+  &--color-6 {
+    background-color: $color-6;
+  }
+  &--7 {
+    background-color: $color-7;
+  }
+}
+
+//BACKGROUND COLORS
+.u-border-color {
+  &--1 {
+    border-color: $color-1;
+  }
+  &--2 {
+    border-color: $color-2;
+  }
+  &--3 {
+    border-color: $color-3;
+  }
+  &--4 {
+    border-color: $color-4;
+  }
+  &--5 {
+    border-color: $color-5;
+  }
+  &--6 {
+    border-color: $color-6;
+  }
+  &--7 {
+    border-color: $color-7;
+  }
+}

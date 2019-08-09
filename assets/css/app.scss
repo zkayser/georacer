@@ -1,4 +1,20 @@
-/* This file is for your main application css. */
+//BASE
+@import
+'base/variables',
+'base/reset',
+'base/mixins',
+'base/typeography';
 
-@import "./test.scss";
-//@import "../../deps/phoenix_live_view/assets/css/live_view.css";
+//LAYOUT
+@import
+'layout/grid';
+
+//MODULES
+@import
+'modules/card',
+'modules/buttons';
+
+//STATES
+@import
+'states/colors',
+'states/utilities';

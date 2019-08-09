@@ -1,0 +1,46 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  padding-bottom: $pad-sm;
+}
+
+h1 {
+  @include fluid-type(1.7em, 2em);
+  color: $color-3;
+
+  .h1__logo {
+    max-width: 120px;
+    vertical-align:  baseline;
+  }
+}
+
+h2 {
+  @include fluid-type(1.3em, 1.3em);
+  color: $color-2;
+}
+
+h3 {
+  @include fluid-type(1.1em, 1.2em);
+  color: $color-2;
+}
+
+h4 {
+  @include fluid-type(1em, 1.1em);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+p {
+  font-family: $font-secondary;
+  font-weight:600;
+  color: lighten($color-2, 15%);
+  line-height: 1.4;
+  margin-bottom: $pad;
+}
+
+b {
+  font-weight: 800;
+  color: $color-2;
+}
