@@ -19,7 +19,7 @@ defmodule LiveViewDemoWeb.Router do
 
     get "/", PageController, :index
     get "/style-guide", StyleGuideController, :show
-    live "/clock", ClockLive
+    live "/position", PositionLive
   end
 
   # Other scopes may use custom stacks.

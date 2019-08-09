@@ -3,6 +3,7 @@ defmodule LiveViewDemoWeb.UserSocket do
 
   ## Channels
   # channel "room:*", LiveViewDemoWeb.RoomChannel
+  channel "position:*", LiveViewDemoWeb.PositionChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
