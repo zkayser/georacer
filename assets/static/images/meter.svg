@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 517 516" style="enable-background:new 0 0 517 516;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#55E8E0;}
+	.st1{fill:#10B2CC;}
+	.st2{fill:#FC0385;stroke:#E4EAEA;stroke-miterlimit:10;}
+	.st3{fill:#FF2B52;}
+	.st4{fill:#053049;}
+	.st5{fill:url(#center_1_);}
+	.st6{fill:#FFFFFF;}
+	.st7{font-family:'LeagueSpartan-Bold';}
+	.st8{font-size:43.9555px;}
+</style>
+<g id="meter_x5F__x5F_light-1">
+	<path id="meter_x5F__x5F_light" class="st0" d="M85.7,100.1C48.3,140.9,27,192.9,24.9,248.3H234L85.7,100.1z"/>
+</g>
+<g id="meter_x5F__x5F_light-2">
+	<path id="meter_x5F__x5F_light_1_" class="st1" d="M248.1,234.2V24.4c-55.5,2.2-107.5,23.8-148.3,61.5L248.1,234.2z"/>
+</g>
+<g id="meter_x5F__x5F_light-3">
+	<path id="meter_x5F__x5F_light_2_" class="st1" d="M268.1,24.4v209.7L416.1,86.3C375.4,48.5,323.5,26.9,268.1,24.4z"/>
+</g>
+<g id="meter_x5F__x5F_light-4">
+	<path id="meter_x5F__x5F_light_3_" class="st2" d="M490.6,248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3,248.3H490.6z"/>
+</g>
+<g id="meter_x5F__x5F_light-5">
+	<path id="meter_x5F__x5F_light_4_" class="st2" d="M429.1,415.1c37.3-40.4,58.9-91.9,61.4-146.8H282.3L429.1,415.1z"/>
+</g>
+<g id="meter_x5F__x5F_light-6">
+	<path id="meter_x5F__x5F_light_5_" class="st3" d="M268.1,490c54.8-2.4,106.3-23.7,146.8-60.7L268.1,282.5V490z"/>
+</g>
+<g id="meter_x5F__x5F_light-7">
+	<path id="meter_x5F__x5F_light_6_" class="st3" d="M248.1,490V282.5L101,429.6C141.6,466.6,193.2,487.8,248.1,490z"/>
+</g>
+<g id="meter_x5F__x5F_light-8">
+	<path id="meter_x5F__x5F_light_7_" class="st0" d="M25,268.3c2.6,55.1,24.2,106.7,61.8,147.2L234,268.3H25z"/>
+</g>
+<g id="meter_x5F__x5F_frame">
+	<path id="frame" class="st4" d="M436.6,78.3C388.9,30.5,325.3,4.2,257.7,4.2S126.6,30.5,78.8,78.3C31.1,126.1,4.7,189.6,4.7,257.2
+		s26.3,131.1,74.1,178.9c47.8,47.8,111.3,74.1,178.9,74.1s131.1-26.3,178.9-74.1c47.8-47.8,74.1-111.3,74.1-178.9
+		S484.4,126.1,436.6,78.3z M490.6,248.3h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6C467.3,141.3,488.5,193.1,490.6,248.3z
+		 M416.1,86.3l-22.6,22.6c-33.4-30.5-77.1-50-125.3-52.4v-32C323.5,26.9,375.4,48.5,416.1,86.3z M248.1,24.4v32
+		C199.8,58.7,156,78,122.5,108.5L99.8,85.9C140.6,48.2,192.6,26.7,248.1,24.4z M85.7,100.1l22.6,22.6
+		C78.1,156.3,59,200.1,56.9,248.3h-32C27,192.9,48.3,140.9,85.7,100.1z M25,268.3h32c2.6,47.9,22,91.3,52.4,124.6l-22.6,22.6
+		C49.2,375,27.6,323.4,25,268.3z M101,429.6l22.6-22.6c33.3,29.9,76.7,48.8,124.5,51v32C193.2,487.8,141.6,466.6,101,429.6z
+		 M268.1,490v-32c47.6-2.4,90.9-21.4,124.1-51.4l22.6,22.6C374.4,466.3,323,487.6,268.1,490z M429.1,415.1l-22.6-22.6
+		c30.2-33.2,49.4-76.4,52-124.2h32C487.9,323.3,466.4,374.7,429.1,415.1z"/>
+</g>
+<g id="mete_x5F__x5F_center">
+	
+		<radialGradient id="center_1_" cx="257.7461" cy="257.2109" r="177.1995" fx="418.2886" fy="332.216" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#FF2B52"/>
+		<stop  offset="1" style="stop-color:#053049"/>
+	</radialGradient>
+	<circle id="center" class="st5" cx="257.7" cy="257.2" r="177.2"/>
+</g>
+<g id="text-alert">
+	<text transform="matrix(1 0 0 1 145.7271 269.551)" class="st6 st7 st8">COLD-ISH</text>
+</g>
+</svg>

@@ -1,0 +1,112 @@
+.meter {
+  background-color: $color-7;
+  border-radius: 50%;
+  padding: $pad-sm;
+  box-shadow: $shadow;
+
+  &__frame {
+    fill: $color-2;
+  }
+
+  &__center {
+    &--1 {
+      fill:url(#grad1);
+    }
+    &--2 {
+      fill:url(#grad2);
+    }
+    &--3 {
+      fill:url(#grad3);
+    }
+    &--4 {
+      fill:url(#grad4);
+    }
+  }
+
+  &__text {
+    fill: $color-7;
+    opacity: 0.8;
+    font-family: $font-primary;
+    font-size: 43px;
+    animation: textFade 3s infinite ease;
+  }
+
+  .light--1 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--2 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--3 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--4 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.3s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--5 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.4s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--6 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--7 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.6s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  .light--8 {
+    fill: $color-6;
+    animation-duration: 0.8s;
+    animation-delay: 0.7s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+
+  .light--cold {
+    animation-name: meterCold;
+  }
+  .light--warm {
+    animation-name: meterWarm;
+  }
+}
+
+@keyframes textFade {
+  0% { opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+@keyframes meterCold {
+  0% { fill: $color-6; }
+  50% { fill: $color-5; }
+  100% { fill: $color-6; }
+}
+@keyframes meterWarm {
+  0% { fill: $color-4; }
+  50% { fill: $color-3; }
+  100% { fill: $color-4; }
+}
