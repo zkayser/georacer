@@ -119,6 +119,35 @@
     </div>
   </div>
   <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Game Icons</h2>
+    <div class="grid grid--2 grid--3-md">
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/meter-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Bomb"/>
+        <p class="u-center">Meter Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/waypoint-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Bomb"/>
+        <p class="u-center">Waypoint Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/map-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Bomb"/>
+        <p class="u-center">Map Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/meter-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Sheild"/>
+        <p class="u-center">Meter Sheild</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/waypoint-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Sheild"/>
+        <p class="u-center">Waypoint Seild</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/map-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Sheild"/>
+        <p class="u-center">Map Sheild</p>
+      </div>
+    </div>
+  </div>
+  <div class="card u-padded u-push-bottom">
     <h2 class="u-push-bottom u-push-top--xs">Hot & Cold Meter States</h2>
     <div class="grid grid--1 grid--3-md">
       <div class="meter__wrap">
