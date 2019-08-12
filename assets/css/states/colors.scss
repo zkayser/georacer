@@ -43,8 +43,17 @@
   &--color-6 {
     background-color: $color-6;
   }
-  &--7 {
+  &--color-7 {
     background-color: $color-7;
+  }
+  &--grad-1 {
+    background: $gradient-1;
+  }
+  &--grad-2 {
+    background: $gradient-2;
+  }
+  &--grad-3 {
+    background: $gradient-3;
   }
 }
 

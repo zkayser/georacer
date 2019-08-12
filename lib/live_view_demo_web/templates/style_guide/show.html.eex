@@ -24,7 +24,7 @@
         <p class="color--1">$color-3</p>
       </div>
       <div class="u-padded--xlg section--color-4 u-border-radius u-center">
-        <p class="color--1 u-push-top--sm u-push-bottom--none">#FC0385</p>
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#f87b7b</p>
         <p class="color--1">$color-4</p>
       </div>
       <div class="u-padded--xlg section--color-5 u-border-radius u-center">
@@ -34,6 +34,18 @@
       <div class="u-padded--xlg section--color-6 u-border-radius u-center">
         <p class="color--1 u-push-top--sm u-push-bottom--none">#41b1f2</p>
         <p class="color--1">$color-6</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-1 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#053049 to #f87b7b to #FF2B52</p>
+        <p class="color--1">$gradient-1</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-2 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#f87b7b to #FF2B52</p>
+        <p class="color--1">$gradient-2</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-3 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#41b1f2 to #0c6fa8</p>
+        <p class="color--1">$gradient-3</p>
       </div>
     </div>
   </div>
@@ -104,6 +116,35 @@
       <p>adds the standard amount of margin to left of a element (adjust amount with --xs, --sm, --lg)</p>
       <h3 class="color--3">.u-push-right</h3>
       <p>adds the standard amount of margin to right of a element (adjust amount with --xs, --sm, --lg)</p>
+    </div>
+  </div>
+  <div class="card u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs">Game Icons</h2>
+    <div class="grid grid--2 grid--3-md">
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/meter-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Bomb"/>
+        <p class="u-center">Meter Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/waypoint-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Bomb"/>
+        <p class="u-center">Waypoint Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/map-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Bomb"/>
+        <p class="u-center">Map Bomb</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/meter-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Sheild"/>
+        <p class="u-center">Meter Sheild</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/waypoint-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Sheild"/>
+        <p class="u-center">Waypoint Seild</p>
+      </div>
+      <div>
+        <img src="<%= Routes.static_path(@conn, "/images/map-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Sheild"/>
+        <p class="u-center">Map Sheild</p>
+      </div>
     </div>
   </div>
   <div class="card u-padded u-push-bottom">

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 295 290" style="enable-background:new 0 0 295 290;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#053049;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{opacity:0.34;fill:url(#SVGID_2_);}
+	.st3{fill:#0C6FA8;}
+</style>
+<g>
+	<circle id="XMLID_9_" class="st0" cx="147.3" cy="144.8" r="134.3"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="96.8396" y1="83.8507" x2="197.6998" y2="184.7109">
+		<stop  offset="0" style="stop-color:#41B1F2"/>
+		<stop  offset="0.2227" style="stop-color:#2F9BD9"/>
+		<stop  offset="0.5262" style="stop-color:#1C83BE"/>
+		<stop  offset="0.7953" style="stop-color:#1074AE"/>
+		<stop  offset="1" style="stop-color:#0C6FA8"/>
+	</linearGradient>
+	<path class="st1" d="M179.4,200.6l-25.1,13.9c-4.4,2.4-9.7,2.4-14,0l-25.1-13.9c-13.8-7.6-22.4-22.2-22.4-38V94
+		c0-8.2,6.6-14.8,14.8-14.8l16.3,3.3c15.1,3.1,30.7,3.1,45.8,0.1l17.3-3.4c8.2,0,14.8,6.6,14.8,14.8v68.6
+		C201.8,178.5,193.2,193,179.4,200.6z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="119.9216" y1="118.2322" x2="172.4778" y2="170.7884">
+		<stop  offset="0" style="stop-color:#B3E8E5"/>
+		<stop  offset="0.4633" style="stop-color:#CAEBEA"/>
+		<stop  offset="1" style="stop-color:#EAF0F0"/>
+	</linearGradient>
+	<path class="st2" d="M176.1,165.7c0,1.6-1.3,2.9-2.9,2.9c-0.9,0-1.8-0.1-2.6-0.4l-14.1-4c-1.4-0.4-2.8-0.4-4.2-0.1l-16.4,3.5
+		c-1.5,0.3-3.2,0.3-4.7-0.1l-13.2-3.4c-1.2-0.3-2-1.4-2-2.6v-38.4c0-1.7,1.6-3,3.3-2.6l11.9,3c1.5,0.4,3.1,0.4,4.7,0.1l16.5-3.5
+		c1.4-0.3,2.8-0.3,4.2,0.1l14.3,4c1,0.3,2.1,0.4,3.2,0.4c1.3,0,2.4,1.1,2.4,2.4L176.1,165.7z"/>
+	<path class="st3" d="M165.6,146c-2.6,0-4.7,2.1-4.7,4.7c0,2.6,3.2,10.3,4.7,10.3s4.7-7.7,4.7-10.3C170.4,148.1,168.2,146,165.6,146
+		z M165.6,153.3c-1.4,0-2.6-1.2-2.6-2.6s1.2-2.6,2.6-2.6s2.6,1.2,2.6,2.6S167.1,153.3,165.6,153.3z"/>
+	<path class="st3" d="M125.6,127c-2.6,0-4.7,2.1-4.7,4.7c0,2.6,3.2,10.3,4.7,10.3s4.7-7.7,4.7-10.3C130.4,129.1,128.2,127,125.6,127
+		z M125.6,134.3c-1.4,0-2.6-1.2-2.6-2.6s1.2-2.6,2.6-2.6s2.6,1.2,2.6,2.6S127.1,134.3,125.6,134.3z"/>
+</g>
+</svg>

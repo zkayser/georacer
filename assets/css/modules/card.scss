@@ -5,7 +5,7 @@
   box-shadow: $shadow;
 
   &--highlight {
-    background-color: $color-3;
+    background: $gradient-2;
     h1, h2 {
       color: $color-7;
     }
