@@ -29,6 +29,10 @@ module.exports = (env, options) => ({
         }
       },
       {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader'
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           { loader: 'style-loader' },

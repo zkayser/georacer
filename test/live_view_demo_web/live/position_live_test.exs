@@ -10,7 +10,7 @@ defmodule LiveViewDemoWeb.PositionLiveTest do
     test "mounts when visiting the /position path", %{conn: conn} do
       {:ok, view, html} = live(conn, "/position")
       assert view.module == PositionLive
-      assert html =~ "<h2>"
+      assert html =~ "<gr-map"
     end
 
     test "subscribes to the position_updates pubsub topic on mount", %{conn: conn} do
