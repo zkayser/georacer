@@ -24,7 +24,7 @@
         <p class="color--1">$color-3</p>
       </div>
       <div class="u-padded--xlg section--color-4 u-border-radius u-center">
-        <p class="color--1 u-push-top--sm u-push-bottom--none">#FC0385</p>
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#f87b7b</p>
         <p class="color--1">$color-4</p>
       </div>
       <div class="u-padded--xlg section--color-5 u-border-radius u-center">
@@ -34,6 +34,18 @@
       <div class="u-padded--xlg section--color-6 u-border-radius u-center">
         <p class="color--1 u-push-top--sm u-push-bottom--none">#41b1f2</p>
         <p class="color--1">$color-6</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-1 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#053049 to #f87b7b to #FF2B52</p>
+        <p class="color--1">$gradient-1</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-2 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#f87b7b to #FF2B52</p>
+        <p class="color--1">$gradient-2</p>
+      </div>
+      <div class="grid__child--span-2 u-padded--xlg section--grad-3 u-border-radius u-center">
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#41b1f2 to #0c6fa8</p>
+        <p class="color--1">$gradient-3</p>
       </div>
     </div>
   </div>
