@@ -16,12 +16,12 @@ a {
 .btn {
   display: block;
   margin: $pad-xs;
-  padding: $pad $pad-sm;
+  padding: 1.5em $pad-sm;
   border-radius: 75px;
   background-color: $color-2;
   color: $color-1;
   font-family: $font-primary;
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: center;
   text-decoration: none;
   transition: all 0.4s ease;

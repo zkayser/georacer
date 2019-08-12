@@ -5,14 +5,6 @@
     <img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
   </div>
   <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Typeography</h2>
-    <p>&#60;p&#62;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.</p>
-    <p><b>&#60;b&#62;Sed ut perspiciatis</b></p>
-    <h1>&#60;h1&#62; Heading 1</h1>
-    <h2>&#60;h2&#62; Heading 2</h2>
-    <h3>&#60;h3&#62; Heading 3</h3>
-  </div>
-  <div class="card u-padded u-push-bottom">
     <h2 class="u-push-bottom--none u-push-top--xs">Colors</h2>
     <div class="grid grid--2">
       <div class="grid__child--span-2 u-padded--xlg section--color-7 u-border-radius u-center">
@@ -45,53 +37,465 @@
       </div>
     </div>
   </div>
-  <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Buttons</h2>
-    <a href="#" class="btn btn--primary">.btn--primary</a>
-    <a href="#" class="btn u-push-bottom">.btn</a>
-    <div class="u-center">
-      <a href="#">a link</a>
+  <div class="grid grid--1 grid--2-lg">
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Typeography</h2>
+      <p>&#60;p&#62;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.</p>
+      <p><b>&#60;b&#62;Sed ut perspiciatis</b></p>
+      <h1>&#60;h1&#62; Heading 1</h1>
+      <h2>&#60;h2&#62; Heading 2</h2>
+      <h3>&#60;h3&#62; Heading 3</h3>
+    </div>
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Buttons</h2>
+      <a href="#" class="btn btn--primary">.btn--primary</a>
+      <a href="#" class="btn u-push-bottom">.btn</a>
+      <div class="u-center">
+        <a href="#">a link</a>
+      </div>
+    </div>
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Grid</h2>
+      <h3 class="color--3">2 Column Grid</h3>
+      <p>&#60;div class="grid grid--2"&#62; &#60;/div&#62;</p>
+      <div class="grid grid--2 u-push-bottom--lg">
+        <div class="u-padded--xlg section--color-2 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 1</p>
+        </div>
+        <div class="u-padded--xlg section--color-2 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 2</p>
+        </div>
+      </div>
+      <h3 class="color--3">3 Column Grid</h3>
+      <p>&#60;div class="grid grid--3"&#62; &#60;/div&#62;</p>
+      <div class="grid grid--3 u-push-bottom--lg">
+        <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 1</p>
+        </div>
+        <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 2</p>
+        </div>
+        <div class="u-padded--xlg section--color-5 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 3</p>
+        </div>
+      </div>
+      <h3 class="color--3">Scale Grid for desktop</h3>
+      <p>&#60;div class="grid grid--1 grid--2-md"&#62; &#60;/div&#62;</p>
+      <div class="grid grid--1 grid--2-lg">
+        <div class="u-padded--xlg section--color-3 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 1</p>
+        </div>
+        <div class="u-padded--xlg section--color-3 u-border-radius u-center">
+          <p class="color--1 u-push-top">grid item 2</p>
+        </div>
+      </div>
+    </div>
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Utility Classes</h2>
+      <h3 class="color--3">.u-contain</h3>
+      <p>adds a max-width of 1000px and centers content on desktop screen sizes</p>
+      <h3 class="color--3">.u-border-radius</h3>
+      <p>adds the app's standard amount of border-radius to element</p>
+      <h3 class="color--3">.u-padded</h3>
+      <p>adds the standard amount of padding to element (adjust amount with --xs, --sm, --lg)</p>
+      <h3 class="color--3">.u-push-top</h3>
+      <p>adds the standard amount of margin to top of a element (adjust amount with --xs, --sm, --lg)</p>
+      <h3 class="color--3">.u-push-left</h3>
+      <p>adds the standard amount of margin to left of a element (adjust amount with --xs, --sm, --lg)</p>
+      <h3 class="color--3">.u-push-right</h3>
+      <p>adds the standard amount of margin to right of a element (adjust amount with --xs, --sm, --lg)</p>
     </div>
   </div>
   <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Grid</h2>
-    <h3 class="color--3">2 Column Grid</h3>
-    <p>&#60;div class="grid grid--2"&#62; &#60;/div&#62;</p>
-    <div class="grid grid--2 u-push-bottom--lg">
-      <div class="u-padded--xlg section--color-2 u-border-radius u-center">
-        <p class="color--1 u-push-top">grid item 1</p>
+    <h2 class="u-push-bottom u-push-top--xs">Hot & Cold Meter States</h2>
+    <div class="grid grid--1 grid--3-md">
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--meterCold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad1" cx="256" cy="650" r="200" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--1" cx="257.7" cy="257.2" r="177.2" fill:"url(#grad1)" />
+            </g>
+            <text class="meter__text" transform="translate(190.727 269.551)">
+              COLD
+            </text>
+          </svg>
+        </div>
       </div>
-      <div class="u-padded--xlg section--color-2 u-border-radius u-center">
-        <p class="color--1 u-push-top">grid item 2</p>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--meterCold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad2" cx="256" cy="650" r="300" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--2" cx="257.7" cy="257.2" r="177.2" />
+            </g>
+            <text class="meter__text" transform="translate(190.727 269.551)">
+              COLD
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--meterCold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad3" cx="256" cy="650" r="400" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--3" cx="257.7" cy="257.2" r="177.2" />
+            </g>
+            <text class="meter__text" transform="translate(190.727 269.551)">
+              COLD
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad4" cx="256" cy="650" r="500" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--4" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(135.727 269.551)">
+              WARM-ISH
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad5" cx="256" cy="650" r="600" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--5" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(135.727 269.551)">
+              WARM-ISH
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad6" cx="256" cy="650" r="700" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--6" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(188.727 269.551)">
+              WARM
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--cold"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad7" cx="256" cy="650" r="800" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--7" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(188.727 269.551)">
+              WARM
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--cold"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad8" cx="256" cy="650" r="900" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--8" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(207.727 269.551)">
+              HOT
+            </text>
+          </svg>
+        </div>
+      </div>
+      <div class="meter__wrap">
+        <div class="meter">
+          <svg viewBox="0 0 517 516">
+            <g id="meter__light">
+              <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="light--1 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="light--2 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="light--3 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="light--4 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="light--5 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="light--6 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="light--7 light--warm"/>
+            </g>
+            <g id="meter__light">
+              <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="light--8 light--warm"/>
+            </g>
+            <g id="meter__frame">
+              <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+            </g>
+            <g id="meter__center">
+              <radialGradient id="grad9" cx="256" cy="650" r="1500" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ff2b52"/>
+                <stop offset="1" stop-color="#053049"/>
+              </radialGradient>
+              <circle class="meter__center--9" cx="257.7" cy="257.2" r="177.2"/>
+            </g>
+            <text class="meter__text" transform="translate(169.727 269.551)">
+              ON FIRE
+            </text>
+          </svg>
+        </div>
       </div>
     </div>
-    <h3 class="color--3">3 Column Grid</h3>
-    <p>&#60;div class="grid grid--3"&#62; &#60;/div&#62;</p>
-    <div class="grid grid--3">
-      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
-        <p class="color--1 u-push-top">grid item 1</p>
-      </div>
-      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
-        <p class="color--1 u-push-top">grid item 2</p>
-      </div>
-      <div class="u-padded--xlg section--color-5 u-border-radius u-center">
-        <p class="color--1 u-push-top">grid item 3</p>
-      </div>
-    </div>
-  </div>
-  <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Utility Classes</h2>
-    <h3 class="color--3">.u-contain</h3>
-    <p>adds a max-width of 1000px and centers content on desktop screen sizes</p>
-    <h3 class="color--3">.u-border-radius</h3>
-    <p>adds the app's standard amount of border-radius to element</p>
-    <h3 class="color--3">.u-padded</h3>
-    <p>adds the standard amount of padding to element (adjust amount with --xs, --sm, --lg)</p>
-    <h3 class="color--3">.u-push-top</h3>
-    <p>adds the standard amount of margin to top of a element (adjust amount with --xs, --sm, --lg)</p>
-    <h3 class="color--3">.u-push-left</h3>
-    <p>adds the standard amount of margin to left of a element (adjust amount with --xs, --sm, --lg)</p>
-    <h3 class="color--3">.u-push-right</h3>
-    <p>adds the standard amount of margin to right of a element (adjust amount with --xs, --sm, --lg)</p>
   </div>
 </section>
