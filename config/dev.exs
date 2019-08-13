@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :live_view_demo, LiveViewDemo.Repo,
+config :geo_racer, GeoRacer.Repo,
   username: "postgres",
   password: "postgres",
-  database: "live_view_demo_dev",
+  database: "geo_racer_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :live_view_demo, LiveViewDemo.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :live_view_demo, LiveViewDemoWeb.Endpoint,
+config :geo_racer, GeoRacerWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :live_view_demo, LiveViewDemoWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :live_view_demo, LiveViewDemoWeb.Endpoint,
+config :geo_racer, GeoRacerWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/live_view_demo_web/{live,views}/.*(ex)$",
-      ~r"lib/live_view_demo_web/templates/.*(eex)$",
+      ~r"lib/geo_racer_web/{live,views}/.*(ex)$",
+      ~r"lib/geo_racer_web/templates/.*(eex)$",
       ~r{lib/live_view/live/.*(ex)$}
     ]
   ]
