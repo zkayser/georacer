@@ -18,6 +18,10 @@ import "phoenix_html"
 
 import LiveSocket from "phoenix_live_view"
 import socket from "./socket"
+import GRMap from './grMap';
+
+customElements.define('gr-map', GRMap);
+
 
 let liveSocket = new LiveSocket("/live")
 liveSocket.connect()
