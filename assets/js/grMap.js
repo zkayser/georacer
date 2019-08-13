@@ -16,6 +16,7 @@ class GRMap extends HTMLElement {
     }
     this.renderMap();
     this.renderPosition();
+    this.renderBoundary();
   }
 
   get latitude() {
@@ -75,6 +76,21 @@ class GRMap extends HTMLElement {
       radius: 10
     });
     this.positionMarker.addTo(this.map);
+  }
+
+  renderBoundary() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    if (this.boundaryMarker) {
+      this.boundaryMarker.remove();
+    }
+    const bounds = [
+      [this.latitude - 0.001, this.longitude - 0.001],
+      [this.latitude + 0.001, this.longitude + 0.001],
+    ]
+    this.boundaryMarker = Leaflet.rectangle(bounds, { color: 'blue' });
+    this.boundaryMarker.addTo(this.map);
   }
 
   connectedCallback() {
