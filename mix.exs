@@ -1,9 +1,9 @@
-defmodule LiveViewDemo.MixProject do
+defmodule GeoRacer.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :live_view_demo,
+      app: :geo_racer,
       version: "0.1.0",
       elixir: "~> 1.9.0",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule LiveViewDemo.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {LiveViewDemo.Application, []},
+      mod: {GeoRacer.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -37,6 +37,8 @@ defmodule LiveViewDemo.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},

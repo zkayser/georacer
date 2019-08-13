@@ -1,4 +1,4 @@
-defmodule LiveViewDemoWeb.ChannelCase do
+defmodule GeoRacerWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule LiveViewDemoWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint LiveViewDemoWeb.Endpoint
+      @endpoint GeoRacerWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LiveViewDemo.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(GeoRacer.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(LiveViewDemo.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(GeoRacer.Repo, {:shared, self()})
     end
 
     :ok
