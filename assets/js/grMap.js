@@ -35,7 +35,7 @@ class GRMap extends HTMLElement {
     let div = document.createElement('div');
     div.setAttribute('id', 'raceMap');
     div.setAttribute('class', 'map');
-    div.setAttribute('style', 'height: 50vh; width: 100vw; display: flex; align-items: center; justify-content: center;');
+    div.setAttribute('style', 'height: 67vh; width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: $border-radius; z-index: 25;');
     shadow.innerHTML = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/>';
     shadow.appendChild(div);
   }

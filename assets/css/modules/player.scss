@@ -1,0 +1,19 @@
+.player {
+  display: grid;
+  position: relative;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  margin: $pad-xs $pad-sm 0;
+  .logo {
+    width: 5em;
+  }
+  &__name {
+    padding-bottom: 0;
+    font-family: $font-primary;
+    line-height: 1;
+  }
+  &__time {
+    padding-bottom: 0;
+    text-align: right;
+  }
+}
