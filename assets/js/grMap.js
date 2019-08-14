@@ -7,7 +7,7 @@ const DEFAULT_CENTER = [39.10, 84.51];
 class GRMap extends HTMLElement {
   constructor() {
     super();
-    this.isReady = false;
+    this.hasSetBoundary = false;
   }
 
   attributeChangedCallback() {
@@ -16,7 +16,9 @@ class GRMap extends HTMLElement {
     }
     this.renderMap();
     this.renderPosition();
-    this.renderBoundary();
+    if (!this.hasSetBoundary) {
+      this.renderBoundary();
+    }
   }
 
   get latitude() {
@@ -50,7 +52,8 @@ class GRMap extends HTMLElement {
     if (!this.map) {
       this.map = Leaflet.map(this.shadowRoot.querySelector('#raceMap'), {
         scrollWheelZoom: false,
-        zoomControl: false
+        zoomControl: false,
+        dragging: false
       });
     }
 
@@ -82,15 +85,13 @@ class GRMap extends HTMLElement {
     if (!this.shadowRoot) {
       return;
     }
-    if (this.boundaryMarker) {
-      this.boundaryMarker.remove();
-    }
     const bounds = [
       [this.latitude - 0.001, this.longitude - 0.001],
       [this.latitude + 0.001, this.longitude + 0.001],
     ]
     this.boundaryMarker = Leaflet.rectangle(bounds, { color: 'blue' });
     this.boundaryMarker.addTo(this.map);
+    this.hasSetBoundary = true;
   }
 
   connectedCallback() {
