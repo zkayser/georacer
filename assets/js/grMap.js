@@ -53,7 +53,8 @@ class GRMap extends HTMLElement {
       this.map = Leaflet.map(this.shadowRoot.querySelector('#raceMap'), {
         scrollWheelZoom: false,
         zoomControl: false,
-        dragging: false
+        dragging: false,
+        attributionControl: false
       });
     }
 
@@ -89,7 +90,12 @@ class GRMap extends HTMLElement {
       [this.latitude - 0.001, this.longitude - 0.001],
       [this.latitude + 0.001, this.longitude + 0.001],
     ]
-    this.boundaryMarker = Leaflet.rectangle(bounds, { color: 'blue' });
+    this.boundaryMarker = Leaflet.rectangle(bounds, {
+      color: 'blue',
+      fillColor: '#41b1f2',
+      fillOpacity: 0.2,
+      stroke: false
+    });
     this.boundaryMarker.addTo(this.map);
     this.hasSetBoundary = true;
   }

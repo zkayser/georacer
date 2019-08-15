@@ -30,7 +30,8 @@ html {
 body {
 	font-size: 16px;
 	line-height: 1;
-  background: $color-1;
+  background-color: $color-1;
+	background-image: url('/images/map-background.svg');
 }
 ol, ul {
 	list-style: none;
