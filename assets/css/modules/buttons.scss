@@ -18,8 +18,8 @@ a {
   margin: $pad-xs;
   padding: 1.5em $pad-sm;
   border-radius: 75px;
-  background-color: $color-2;
-  color: $color-1;
+  background: $gradient-4;
+  color: $color-7;
   font-family: $font-primary;
   font-size: 1em;
   text-align: center;
@@ -27,16 +27,17 @@ a {
   transition: all 0.4s ease;
 
   &:hover {
-    background-color: $color-4;
-    color: $color-1;
+    background: $gradient-1;
+    color: $color-7;
     cursor: pointer;
     transition: all 0.4s ease;
   }
 
   &--primary {
-    background: $color-3;
+    background: $gradient-2;
+    transition: all 0.4s ease;
     &:hover {
-      background: $color-5;
+      background: $gradient-3;
     }
   }
 }

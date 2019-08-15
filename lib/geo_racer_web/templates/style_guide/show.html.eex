@@ -16,7 +16,7 @@
         <p>$color-1</p>
       </div>
       <div class="u-padded--xlg section--color-2 u-border-radius u-center">
-        <p class="color--1 u-push-top--sm u-push-bottom--none">#053049</p>
+        <p class="color--1 u-push-top--sm u-push-bottom--none">#064763</p>
         <p class="color--1">$color-2</p>
       </div>
       <div class="u-padded--xlg section--color-3 u-border-radius u-center">
@@ -150,7 +150,7 @@
   <div class="card u-padded u-push-bottom">
     <h2 class="u-push-bottom u-push-top--xs">Hot & Cold Meter States</h2>
     <div class="grid grid--1 grid--3-md">
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -193,7 +193,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -236,7 +236,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -279,7 +279,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -322,7 +322,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div >
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -365,7 +365,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -408,7 +408,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -451,7 +451,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">
@@ -494,7 +494,7 @@
           </svg>
         </div>
       </div>
-      <div class="meter__wrap">
+      <div>
         <div class="meter">
           <svg viewBox="0 0 517 516">
             <g id="meter__light">

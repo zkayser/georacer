@@ -1,0 +1,9 @@
+.home {
+  &__container {
+    display: grid;
+    grid-template-rows: 60vh 38vh;
+    align-items: center;
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+}

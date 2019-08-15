@@ -1,8 +1,12 @@
 <section class="u-contain u-padded">
-  <h1 class="u-push-bottom--xlg u-push-top--xlg"><img src="<%= Routes.static_path(@conn, "/images/geo-race-home-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
-  <a href="#" class="btn btn--primary">Create Race</a>
-  <a href="#" class="btn u-push-bottom">Join Race</a>
-  <div class="u-center">
-    <a href="#">Race History</a>
+  <div class="home__container">
+    <h1 class="u-push-bottom--xlg u-push-top--xlg"><img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
+    <div>
+      <a href="#" class="btn btn--primary">Create Race</a>
+      <a href="#" class="btn u-push-bottom">Join Race</a>
+      <div class="u-center">
+        <a href="#">Race History</a>
+      </div>
+    </div>
   </div>
 </section>

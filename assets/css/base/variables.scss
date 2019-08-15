@@ -26,7 +26,7 @@ $font-secondary: 'League Mono', serif;
 
 //COLORS
 $color-1: #f6f6f6;
-$color-2: #053049;
+$color-2: #064763;
 $color-3: #FF2B52;
 $color-4: #f87b7b;
 $color-5: lighten($color-2, 20%);
@@ -36,3 +36,4 @@ $color-7: #f9f9f9;
 $gradient-1: linear-gradient(140deg, rgba($color-2,1) 0%, rgba($color-3,1) 75%, rgba($color-3,1) 85%);
 $gradient-2: linear-gradient(113deg, rgba($color-4,1) 0%, rgba($color-3,1) 75%);
 $gradient-3: linear-gradient(113deg, rgba($color-6,1) 0%, rgba($color-5,1) 75%);
+$gradient-4: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%);
