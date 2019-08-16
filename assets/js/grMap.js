@@ -1,13 +1,14 @@
-import Leaflet from 'leaflet';
+import Mapbox from 'mapbox-gl';
 
-const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_URL = 'https://api.mapbox.com/styles/v1/rheubach/cjzcqemj42em61cp9p9cbqllw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1kaGdkMCJ9.46xDflykdiyFyFHWa7j1IA';
 const INITIAL_ZOOM = 16;
-const DEFAULT_CENTER = [39.10, 84.51];
+const DEFAULT_CENTER = [84.51, 39.10];
+
+Mapbox.accessToken = 'pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1kaGdkMCJ9.46xDflykdiyFyFHWa7j1IA';
 
 class GRMap extends HTMLElement {
   constructor() {
     super();
-    this.hasSetBoundary = false;
   }
 
   attributeChangedCallback() {
@@ -16,9 +17,6 @@ class GRMap extends HTMLElement {
     }
     this.renderMap();
     this.renderPosition();
-    if (!this.hasSetBoundary) {
-      this.renderBoundary();
-    }
   }
 
   get latitude() {
@@ -39,7 +37,7 @@ class GRMap extends HTMLElement {
     div.setAttribute('id', 'raceMap');
     div.setAttribute('class', 'map');
     div.setAttribute('style', 'height: 67vh; width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: $border-radius; z-index: 25;');
-    shadow.innerHTML = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/>';
+    shadow.innerHTML = '<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet" />'
     shadow.appendChild(div);
   }
 
@@ -50,20 +48,25 @@ class GRMap extends HTMLElement {
     }
 
     if (!this.map) {
-      this.map = Leaflet.map(this.shadowRoot.querySelector('#raceMap'), {
-        scrollWheelZoom: false,
-        zoomControl: false,
-        dragging: false,
-        attributionControl: false
+      const container = this.shadowRoot.querySelector('#raceMap');
+      console.log('Here is your container: ', container);
+      this.map = new Mapbox.Map({
+        container: container,
+        style: 'mapbox://styles/rheubach/cjzcqemj42em61cp9p9cbqllw',
+        zoom: INITIAL_ZOOM
       });
+      const canvas = shadowDom.querySelector('.mapboxgl-canvas');
+      canvas.style.left = '10px';
+      canvas.style.top = '10px';
     }
 
     if (!(this.latitude && this.longitude)) {
-      this.map.setView(DEFAULT_CENTER, INITIAL_ZOOM);
+      this.map.setCenter(DEFAULT_CENTER);
+      this.map.setZoom(INITIAL_ZOOM);
     } else {
-      this.map.setView([this.latitude, this.longitude], INITIAL_ZOOM);
+      this.map.setCenter([this.longitude, this.latitude]);
+      this.map.setZoom(INITIAL_ZOOM);
     }
-    this.map.addLayer(Leaflet.tileLayer(TILE_URL, { detectRetina: true }));
   }
 
   renderPosition() {
@@ -71,33 +74,18 @@ class GRMap extends HTMLElement {
       return;
     }
     if (this.positionMarker) {
-      this.positionMarker.remove();
+      this.positionMarker.setLngLat([this.longitude, this.latitude]);
     }
-    this.positionMarker = Leaflet.circle([this.latitude, this.longitude], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 10
-    });
-    this.positionMarker.addTo(this.map);
-  }
-
-  renderBoundary() {
-    if (!this.shadowRoot) {
-      return;
+    if (!this.icon) {
+      let el = document.createElement('div');
+      el.className = 'position-marker';
+      el.style.backgroundImage = 'url(../images/location-marker.svg)';
+      el.style.width = '26px';
+      el.style.height = '40px';
+      this.icon = el;
+      this.positionMarker = new Mapbox.Marker(this.icon).setLngLat([this.longitude, this.latitude])
+      this.positionMarker.addTo(this.map);
     }
-    const bounds = [
-      [this.latitude - 0.001, this.longitude - 0.001],
-      [this.latitude + 0.001, this.longitude + 0.001],
-    ]
-    this.boundaryMarker = Leaflet.rectangle(bounds, {
-      color: 'blue',
-      fillColor: '#41b1f2',
-      fillOpacity: 0.2,
-      stroke: false
-    });
-    this.boundaryMarker.addTo(this.map);
-    this.hasSetBoundary = true;
   }
 
   connectedCallback() {

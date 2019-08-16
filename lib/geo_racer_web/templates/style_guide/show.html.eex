@@ -2,7 +2,7 @@
   <h1 class="u-push-bottom"><img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/>Style Guide</h1>
   <div class="card card--highlight u-padded u-push-bottom">
     <h2 class="u-push-bottom u-push-top--xs">Logo Identity</h2>
-    <img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
+    <img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
   </div>
   <div class="card u-padded u-push-bottom">
     <h2 class="u-push-bottom--none u-push-top--xs">Colors</h2>
