@@ -118,32 +118,50 @@
       <p>adds the standard amount of margin to right of a element (adjust amount with --xs, --sm, --lg)</p>
     </div>
   </div>
-  <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Game Icons</h2>
-    <div class="grid grid--2 grid--3-md">
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/meter-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Bomb"/>
-        <p class="u-center">Meter Bomb</p>
-      </div>
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/waypoint-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Bomb"/>
-        <p class="u-center">Waypoint Bomb</p>
-      </div>
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/map-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Bomb"/>
-        <p class="u-center">Map Bomb</p>
-      </div>
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/meter-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Sheild"/>
-        <p class="u-center">Meter Sheild</p>
-      </div>
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/waypoint-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Sheild"/>
-        <p class="u-center">Waypoint Seild</p>
-      </div>
-      <div>
-        <img src="<%= Routes.static_path(@conn, "/images/map-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Sheild"/>
-        <p class="u-center">Map Sheild</p>
+  <div class="grid grid--1 grid--2-lg">
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Form Elements</h2>
+      <form>
+          <label>Text Input</label>
+          <input name="firstname" type="text" placeholder="Jon Doe">
+          <label>Option Select</label>
+          <select name="teams">
+            <option value="team1" selected>Team 1</option>
+            <option value="team2">Team 2</option>
+            <option value="team3">Team 3</option>
+            <option value="team4">Team 4</option>
+          </select>
+          <label>Textarea</label>
+          <textarea name="message" rows="10" cols="30">Enter your paragraph here.</textarea>
+      </form>
+    </div>
+    <div class="card u-padded u-push-bottom">
+      <h2 class="u-push-bottom u-push-top--xs">Game Icons</h2>
+      <div class="grid grid--2 grid--3-md">
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/meter-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Bomb"/>
+          <p class="u-center">Meter Bomb</p>
+        </div>
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/waypoint-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Bomb"/>
+          <p class="u-center">Waypoint Bomb</p>
+        </div>
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/map-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Bomb"/>
+          <p class="u-center">Map Bomb</p>
+        </div>
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/meter-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Sheild"/>
+          <p class="u-center">Meter Sheild</p>
+        </div>
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/waypoint-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Waypoint Sheild"/>
+          <p class="u-center">Waypoint Seild</p>
+        </div>
+        <div>
+          <img src="<%= Routes.static_path(@conn, "/images/map-sheild.svg") %>" class="u-push-top--sm u-push-bottom" alt="Map Sheild"/>
+          <p class="u-center">Map Sheild</p>
+        </div>
       </div>
     </div>
   </div>
