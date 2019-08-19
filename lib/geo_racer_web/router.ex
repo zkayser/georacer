@@ -19,6 +19,7 @@ defmodule GeoRacerWeb.Router do
 
     get "/", PageController, :index
     get "/style-guide", StyleGuideController, :show
+    live "/create-race", CreateRaceLive
     live "/position", PositionLive
   end
 

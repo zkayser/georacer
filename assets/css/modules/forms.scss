@@ -1,0 +1,37 @@
+label {
+  display: block;
+  color: $color-2;
+  font-family: $font-primary;
+  margin-bottom: $pad-xxs;
+}
+input, select, textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: $pad;
+  padding: $pad-xs;
+  border: solid 3px $color-2;
+  border-radius: 10px;
+  font-family: $font-primary;
+  color: $color-5;
+  &::placeholder {
+    color: $color-6;
+  }
+}
+select {
+  position: relative;
+  &::after {
+    position: absolute;
+    top: 2px;
+    right: 11px;
+    height: 29px;
+    padding: 12px 0 0 8px;
+    border-left: 3px solid #ffc602;
+    color: #0079de;
+    font-size: 17px;
+    font-family: Material Icons;
+    font-weight: 800;
+    font-style: normal;
+    content: "keyboard_arrow_down";
+    pointer-events: none;
+  }
+}
