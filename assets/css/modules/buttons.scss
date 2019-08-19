@@ -18,7 +18,7 @@ a {
   margin: $pad-xs;
   padding: 1.5em $pad-sm;
   border-radius: 75px;
-  background: $gradient-4;
+  background: $color-5;
   color: $color-7;
   font-family: $font-primary;
   font-size: 1em;
@@ -27,7 +27,7 @@ a {
   transition: all 0.4s ease;
 
   &:hover {
-    background: $gradient-1;
+    background: $color-4;
     color: $color-7;
     cursor: pointer;
     transition: all 0.4s ease;
