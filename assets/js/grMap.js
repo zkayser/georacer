@@ -1,6 +1,6 @@
 import Mapbox from 'mapbox-gl';
 
-const INITIAL_ZOOM = 16;
+const INITIAL_ZOOM = 15;
 const DEFAULT_CENTER = [84.51, 39.10];
 
 Mapbox.accessToken = 'pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1kaGdkMCJ9.46xDflykdiyFyFHWa7j1IA';
@@ -26,6 +26,10 @@ class GRMap extends HTMLElement {
     return parseFloat(this.getAttribute('longitude'));
   }
 
+  get height() {
+    return this.getAttribute('height');
+  }
+
   static get observedAttributes() {
     return ['latitude', 'longitude'];
   }
@@ -35,7 +39,7 @@ class GRMap extends HTMLElement {
     let div = document.createElement('div');
     div.setAttribute('id', 'raceMap');
     div.setAttribute('class', 'map');
-    div.setAttribute('style', 'height: 67vh; width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: $border-radius; z-index: 25;');
+    div.setAttribute('style', `height: ${this.height || '67vh'}; width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: $border-radius; z-index: 25;`);
     shadow.innerHTML = '<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet" />'
     shadow.appendChild(div);
   }
@@ -52,7 +56,8 @@ class GRMap extends HTMLElement {
       this.map = new Mapbox.Map({
         container: container,
         style: 'mapbox://styles/rheubach/cjzcqemj42em61cp9p9cbqllw',
-        zoom: INITIAL_ZOOM
+        zoom: INITIAL_ZOOM,
+        antialias: true
       });
       const canvas = shadowDom.querySelector('.mapboxgl-canvas');
       canvas.style.left = '10px';
