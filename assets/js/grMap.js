@@ -1,6 +1,5 @@
 import Mapbox from 'mapbox-gl';
 
-const TILE_URL = 'https://api.mapbox.com/styles/v1/rheubach/cjzcqemj42em61cp9p9cbqllw/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1kaGdkMCJ9.46xDflykdiyFyFHWa7j1IA';
 const INITIAL_ZOOM = 16;
 const DEFAULT_CENTER = [84.51, 39.10];
 
