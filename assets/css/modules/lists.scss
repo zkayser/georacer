@@ -1,0 +1,27 @@
+.list {
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    align-items: center;
+  }
+
+  &__lat-long {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+    font-size: 0.7em;
+
+    img {
+      max-width: 15px;
+      float: left;
+      vertical-align: middle;
+    }
+  }
+
+  &__remove-btn {
+    padding: $pad-sm;
+    background-color: $color-3;
+    border-radius: 50%;
+  }
+}

@@ -1,7 +1,7 @@
 <section class="u-contain u-padded">
   <div class="u-center">
     <h1 class="u-push-top--sm u-push-bottom--xs">Create <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/></h1>
-      <div class="card__map-preview u-push-bottom--none">
+      <div class="card__map--preview u-push-bottom--none">
         <gr-map
             <%= if @position do %>
               latitude="<%= @position.latitude %>"
@@ -18,14 +18,14 @@
   <div class="card u-padded">
     <h2 class="u-push-bottom">Race Details</h2>
     <label>Set Waypoints</label>
-    <ul class="list list__grid u-push-bottom">
+    <ul class="list u-push-bottom">
        <%= for {waypoint, index} <- Enum.zip(@waypoints, 0..length(@waypoints)) do %>
-        <li>
+        <li class="list__grid">
           <div class="list__lat-long">
             <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>" alt="Waypoint" />
-            <%= waypoint.latitude %>/<%= waypoint.longitude %>
+            <div><%= waypoint.latitude %>/<%= waypoint.longitude %></div>
           </div>
-          <div class="value__close" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
+          <div class="list__remove-btn" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
             <i class="material-icons">close</i>
           </div>
         </li>

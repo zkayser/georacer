@@ -4,7 +4,7 @@
     <p class="player__name u-push-bottom--none"><img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-logo.svg") %>" class="logo" alt="Geo Racer Logo"/><br />Player Name</p><p class="player__time u-push-bottom--none">3:25</p>
   </div>
 </div>
-<div class="card__map-container">
+<div class="card__map">
   <gr-map
       <%= if @position do %>
         latitude="<%= @position.latitude %>"

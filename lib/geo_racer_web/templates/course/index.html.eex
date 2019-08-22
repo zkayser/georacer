@@ -1,7 +1,5 @@
 <section class="u-contain u-padded">
 
-  <h1 class="u-push-bottom u-push-top u-center"><img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/>Courses</h1>
-
   <div class="card card--red u-padded u-push-bottom">
     <img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
     <a href="<%= Routes.course_path(@conn, :new) %>" class="btn">Create New Course</a>
