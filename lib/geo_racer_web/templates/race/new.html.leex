@@ -1,0 +1,41 @@
+<section class="u-contain u-padded">
+  <div class="u-center">
+    <h1 class="u-push-top--sm u-push-bottom--xs">Create <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/></h1>
+      <div class="card__map-preview u-push-bottom--none">
+        <gr-map
+            <%= if @position do %>
+              latitude="<%= @position.latitude %>"
+              longitude="<%= @position.longitude %>"
+            <% end %>
+            height="20vh"
+        </gr-map>
+    </div>
+    <div class="u-padded--lg">
+      <a href="#" class="btn" phx-click="set_waypoint">Set Waypoint</a>
+    </div>
+  </div>
+
+  <div class="card u-padded">
+    <h2 class="u-push-bottom">Race Details</h2>
+    <label>Set Waypoints</label>
+    <ul class="list list__grid u-push-bottom">
+       <%= for {waypoint, index} <- Enum.zip(@waypoints, 0..length(@waypoints)) do %>
+        <li>
+          <div class="list__lat-long">
+            <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>" alt="Waypoint" />
+            <%= waypoint.latitude %>/<%= waypoint.longitude %>
+          </div>
+          <div class="value__close" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
+            <i class="material-icons">close</i>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <label>Race Name</label>
+    <input name="teamname" type="text" placeholder="Amazing Awesome Race">
+  </div>
+  <div class="u-padded--lg">
+    <a href="#" class="btn btn--primary">Create Race</a>
+  </div>
+</section>
