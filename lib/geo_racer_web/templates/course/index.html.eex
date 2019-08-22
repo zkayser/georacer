@@ -4,7 +4,7 @@
 
   <div class="card card--red u-padded u-push-bottom">
     <img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
-    <a href="/create-race" class="btn">Create New Course</a>
+    <a href="<%= Routes.course_path(@conn, :new) %>" class="btn">Create New Course</a>
   </div>
 
   <div class="card u-padded u-push-bottom u-center">
@@ -15,11 +15,11 @@
         <p class="number u-push-bottom--none">5</p>
       </div>
       <div class="u-padded u-center">
-        <h3>Boundry</h3>
+        <h3>Boundary</h3>
         <p class="u-push-bottom--none"><span class="number">10</span> mi</p>
       </div>
     </div>
-    <a href="/start-race" class="btn btn--primary">Start A Race</a>
+    <a href="<%= Routes.course_path(@conn, :show, 1) %>" class="btn btn--primary">Start A Race</a>
   </div>
 
   <div class="card u-padded u-push-bottom u-center">
@@ -30,11 +30,11 @@
         <p class="number u-push-bottom--none">5</p>
       </div>
       <div class="u-padded u-center">
-        <h3>Boundry</h3>
+        <h3>Boundary</h3>
         <p class="u-push-bottom--none"><span class="number">10</span> mi</p>
       </div>
     </div>
-    <a href="/start-race" class="btn btn--primary">Start A Race</a>
+    <a href="<%= Routes.course_path(@conn, :show, 2) %>" class="btn btn--primary">Start A Race</a>
   </div>
 
   <div class="card u-padded u-push-bottom u-center">
@@ -45,11 +45,11 @@
         <p class="number u-push-bottom--none">5</p>
       </div>
       <div class="u-padded u-center">
-        <h3>Boundry</h3>
+        <h3>Boundary</h3>
         <p class="u-push-bottom--none"><span class="number">10</span> mi</p>
       </div>
     </div>
-    <a href="/start-race" class="btn btn--primary">Start A Race</a>
+    <a href="<%= Routes.course_path(@conn, :show, 3) %>" class="btn btn--primary">Start A Race</a>
   </div>
 
 </section>

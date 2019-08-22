@@ -1,15 +1,15 @@
-defmodule GeoRacerWeb.CourseLiveTest do
+defmodule GeoRacerWeb.Live.Course.NewTest do
   use GeoRacerWeb.ConnCase
-  alias GeoRacerWeb.{CourseLive, Endpoint}
+  alias GeoRacerWeb.Endpoint
   import Phoenix.LiveViewTest
 
   @position %{latitude: "39.10", longitude: "84.51"}
   @topic "position_updates"
 
-  describe "CourseLive" do
+  describe "Courses.New" do
     test "mounts when visiting the /courses/new path", %{conn: conn} do
       {:ok, view, _html} = live(conn, "/courses/new")
-      assert view.module == CourseLive
+      assert view.module == GeoRacerWeb.Live.Courses.New
     end
 
     test "set_waypoint event adds the user's current location to the set waypoints", %{conn: conn} do
