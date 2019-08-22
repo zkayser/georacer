@@ -1,0 +1,18 @@
+<section class="u-contain u-padded">
+
+  <h1 class="u-push-bottom u-push-top u-center">Join <img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/></h1>
+
+  <div class="card card--red u-padded u-push-bottom u-center">
+    <h2 class="u-push-top">Race Code</h2>
+    <p class="race__code">35AH5667</p>
+  </div>
+
+  <div class="card u-padded u-push-bottom">
+    <label class="u-push-top">Race Code</label>
+    <input name="racecode" type="text" placeholder="Eneter 8 Charter Code">
+    <label class="u-push-top-sm">Team Name</label>
+    <input name="teamname" type="text" placeholder="Enter Name Here">
+    <a href="/start-race" class="btn">Join Race</a>
+  </div>
+
+</section>

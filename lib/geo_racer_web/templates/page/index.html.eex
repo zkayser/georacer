@@ -2,7 +2,7 @@
   <div class="home__container">
     <div>
       <h1><img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
-      <img src="<%= Routes.static_path(@conn, "/images/powered-by-gaslight.svg") %>" class="gaslight__logo" alt="powered by Gaslight"/>
+      <img src="<%= Routes.static_path(@conn, "/images/powered-by-gaslight.svg") %>" class="gaslight-logo" alt="powered by Gaslight"/>
     </div>
     <div>
       <a href="#" class="btn btn--primary">Create Race</a>
