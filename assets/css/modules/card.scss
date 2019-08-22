@@ -4,11 +4,18 @@
   border-radius: $border-radius;
   box-shadow: $shadow;
 
-  &--highlight {
-    background: $gradient-2;
+  &--red, &--blue {
     h1, h2 {
       color: $color-7;
     }
+  }
+
+  &--red {
+    background: $gradient-2;
+  }
+
+  &--blue {
+    background: $gradient-3;
   }
 
   &__map-container {

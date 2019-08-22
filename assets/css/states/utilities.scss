@@ -38,6 +38,9 @@
 .u-push-top {
   margin-top: $pad;
 
+  &--none {
+    margin-top: 0;
+  }
   &--xs {
     margin-top: $pad-xs;
   }
