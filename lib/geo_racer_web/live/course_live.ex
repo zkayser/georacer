@@ -11,7 +11,7 @@ defmodule GeoRacerWeb.CourseLive do
   def mount(session, socket) do
     GeoRacerWeb.Endpoint.subscribe(@topic)
 
-    {:ok, assign(socket, position: nil, waypoints: [], view: session.view)}
+    {:ok, assign(socket, position: nil, waypoints: [], view: session.view, id: session.id)}
   end
 
   def handle_info(%{event: "update", payload: position}, socket) do

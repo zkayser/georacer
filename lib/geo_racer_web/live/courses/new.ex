@@ -1,11 +1,11 @@
-defmodule GeoRacerWeb.StartRaceLive do
+defmodule GeoRacerWeb.Live.Courses.New do
   @moduledoc false
   use Phoenix.LiveView
 
   @topic "position_updates"
 
   def render(assigns) do
-    Phoenix.View.render(GeoRacerWeb.StartRaceView, "show.html", assigns)
+    Phoenix.View.render(GeoRacerWeb.CourseView, "new.html", assigns)
   end
 
   def mount(_session, socket) do
