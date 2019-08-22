@@ -1,7 +1,7 @@
 label {
   display: block;
   color: $color-2;
-  font-family: $font-primary;
+  font-weight: 800;
   margin-bottom: $pad-xxs;
 }
 input, select, textarea {
@@ -11,10 +11,12 @@ input, select, textarea {
   padding: $pad-xs;
   border: solid 3px $color-2;
   border-radius: 10px;
-  font-family: $font-primary;
+  font-family: $font-secondary;
   color: $color-5;
+
   &::placeholder {
-    color: $color-6;
+    font-family: $font-secondary;
+    color: darken($color-1, 30%);
   }
 }
 select {

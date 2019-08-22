@@ -1,8 +1,12 @@
+body {
+  font-family: $font-secondary;
+  color: $color-2;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
   font-weight: 600;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding-bottom: $pad-sm;
 }
 
@@ -17,12 +21,14 @@ h1 {
 }
 
 h2 {
-  @include fluid-type(1.3em, 1.3em);
-  color: $color-2;
+  @include fluid-type(1.5em, 1.7em);
+  font-family: $font-secondary;
+  color: $color-5;
 }
 
 h3 {
   @include fluid-type(1.1em, 1.2em);
+  font-family: $font-secondary;
   color: $color-2;
 }
 
@@ -43,4 +49,24 @@ p {
 b {
   font-weight: 600;
   color: $color-2;
+}
+
+.caption {
+}
+
+.number {
+  font-family: $font-number;
+  font-size: 2em;
+  font-weight: 600;
+  background-color: $color-1;
+  border-radius: $border-radius;
+  box-shadow: inset $shadow;
+  padding: $pad-sm $pad-xs;
+  color: $color-6;
+
+  .caption {
+    font-size: 0.4em;
+    font-weight: 200;
+    color: $color-2;
+  }
 }

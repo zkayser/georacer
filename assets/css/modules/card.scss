@@ -5,7 +5,8 @@
   box-shadow: $shadow;
 
   &--red, &--blue {
-    h1, h2 {
+    @extend .card;
+    h1, h2, h3, h4, p {
       color: $color-7;
     }
   }
@@ -36,6 +37,11 @@
       position: relative;
       box-sizing: content-box;
     }
+  }
+
+  &__logo {
+    max-width: 80%;
+    margin: 0 auto;
   }
 
 

@@ -1,5 +1,16 @@
 .list {
 
+  li {
+    border-radius: 5px;
+    margin: 0;
+    padding: 0 $pad-xs;
+    box-sizing: content-box;
+
+    &:nth-child(even) {
+      background-color: darken($color-1, 3%);
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: 1fr min-content;
@@ -11,17 +22,25 @@
     grid-template-columns: min-content 1fr;
     align-items: center;
     font-size: 0.7em;
+    padding: $pad-xs $pad-xs $pad-xs 0;
 
     img {
+      min-width: 15px;
       max-width: 15px;
-      float: left;
       vertical-align: middle;
     }
   }
 
   &__remove-btn {
-    padding: $pad-sm;
+    padding: $pad-xxs;
+    color: $color-7;
     background-color: $color-3;
     border-radius: 50%;
+    display: grid;
+
+    i {
+      font-size: 1.2em;
+      font-weight: 800;
+    }
   }
 }
