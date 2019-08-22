@@ -32,10 +32,12 @@
         <% end %>
       </ul>
       <label>Race Name</label>
-      <input name="teamname" type="text" placeholder="Amazing Awesome Race">
+      <form phx-change="update_race_name">
+            <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
+      </form>
     </div>
   </div>
   <div class="u-padded--lg">
-    <a href="#" class="btn btn--primary">Create Race</a>
+    <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
   </div>
 </section>

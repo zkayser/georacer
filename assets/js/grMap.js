@@ -8,10 +8,13 @@ Mapbox.accessToken = 'pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1
 class GRMap extends HTMLElement {
   constructor() {
     super();
+    if (!global.__SINGLETON_MAP_INSTANCE__) {
+      global.__SINGLETON_MAP_INSTANCE__ = this;
+    }
   }
 
   attributeChangedCallback() {
-    if (!(this.latitude && this.longitude)) {
+    if (!(this.latitude && this.longitude) || !(this === global.__SINGLETON_MAP_INSTANCE__)) {
       return;
     }
     this.renderMap();
@@ -52,7 +55,6 @@ class GRMap extends HTMLElement {
 
     if (!this.map) {
       const container = this.shadowRoot.querySelector('#raceMap');
-      console.log('Here is your container: ', container);
       this.map = new Mapbox.Map({
         container: container,
         style: 'mapbox://styles/rheubach/cjzcqemj42em61cp9p9cbqllw',
@@ -93,6 +95,9 @@ class GRMap extends HTMLElement {
   }
 
   connectedCallback() {
+    if (!(this === global.__SINGLETON_MAP_INSTANCE__)) {
+      return;
+    }
     this.renderMapContainer();
     this.renderMap();
   }

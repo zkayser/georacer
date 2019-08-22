@@ -18,7 +18,9 @@ defmodule GeoRacer.Courses do
 
   """
   def list_courses do
-    Repo.all(Course)
+    Course
+    |> Repo.all()
+    |> Repo.preload([:waypoints])
   end
 
   @doc """
@@ -35,7 +37,11 @@ defmodule GeoRacer.Courses do
       ** (Ecto.NoResultsError)
 
   """
-  def get_course!(id), do: Repo.get!(Course, id)
+  def get_course!(id) do
+    Course
+    |> Repo.get!(id)
+    |> Repo.preload([:waypoints])
+  end
 
   @doc """
   Creates a course.
@@ -51,6 +57,7 @@ defmodule GeoRacer.Courses do
   """
   def create_course(attrs \\ %{}) do
     %Course{}
+    |> Repo.preload([:waypoints])
     |> Course.changeset(attrs)
     |> Repo.insert()
   end
@@ -69,6 +76,7 @@ defmodule GeoRacer.Courses do
   """
   def update_course(%Course{} = course, attrs) do
     course
+    |> Repo.preload([:waypoints])
     |> Course.changeset(attrs)
     |> Repo.update()
   end
