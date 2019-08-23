@@ -23,7 +23,6 @@ h1 {
 h2 {
   @include fluid-type(1.5em, 1.7em);
   font-family: $font-secondary;
-  color: $color-5;
 }
 
 h3 {
@@ -58,15 +57,19 @@ b {
   font-family: $font-number;
   font-size: 2em;
   font-weight: 600;
-  background-color: $color-1;
-  border-radius: $border-radius;
-  box-shadow: inset $shadow;
   padding: $pad-sm $pad-xs;
-  color: $color-6;
+  color: $color-5;
 
   .caption {
     font-size: 0.4em;
     font-weight: 200;
     color: $color-2;
+  }
+
+  &--background {
+    @extend .number; 
+    background-color: $color-1;
+    border-radius: $border-radius;
+    box-shadow: inset $shadow;
   }
 }

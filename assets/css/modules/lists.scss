@@ -3,7 +3,7 @@
   li {
     border-radius: 5px;
     margin: 0;
-    padding: 0 $pad-xs;
+    padding: $pad-sm;
     box-sizing: content-box;
 
     &:nth-child(even) {
@@ -22,7 +22,6 @@
     grid-template-columns: min-content 1fr;
     align-items: center;
     font-size: 0.7em;
-    padding: $pad-xs $pad-xs $pad-xs 0;
 
     img {
       min-width: 15px;
