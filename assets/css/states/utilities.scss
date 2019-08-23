@@ -38,6 +38,9 @@
 .u-push-top {
   margin-top: $pad;
 
+  &--none {
+    margin-top: 0;
+  }
   &--xs {
     margin-top: $pad-xs;
   }
@@ -69,6 +72,46 @@
   }
   &--xlg {
     margin-bottom: $pad-xlg;
+  }
+}
+
+.u-push-left {
+  margin-left: $pad;
+
+  &--none {
+    margin-left: 0;
+  }
+  &--xs {
+    margin-left: $pad-xs;
+  }
+  &--sm {
+    margin-left: $pad-sm;
+  }
+  &--lg {
+    margin-left: $pad-lg;
+  }
+  &--xlg {
+    margin-left: $pad-xlg;
+  }
+}
+
+.u-push-right {
+  margin-right: $pad;
+
+  &--none {
+    margin-right: 0;
+  }
+  &--xs {
+    margin-right: $pad-xs;
+  }
+  &--sm {
+    margin-right: $pad-sm;
+  }
+  &--lg {
+    margin-right: $pad-lg;
+  }
+  &--xlg {
+    margin-right: $pad-xlg;
   }
 }
 

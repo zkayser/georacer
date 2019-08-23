@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: $pad;
+  grid-gap: $pad-sm;
 
   &--1 {
     grid-template-columns: 1fr;

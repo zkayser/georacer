@@ -4,18 +4,45 @@
   border-radius: $border-radius;
   box-shadow: $shadow;
 
-  &--highlight {
-    background: $gradient-2;
-    h1, h2 {
+  &--red, &--blue {
+    @extend .card;
+    h1, h2, h3, h4, p {
       color: $color-7;
     }
   }
 
-  &__map-container {
+  &--red {
+    background: $gradient-2;
+  }
+
+  &--blue {
+    background: $gradient-3;
+  }
+
+  &__map {
     @extend .card;
-    padding: $pad-sm;
+    padding: $pad-xs;
     height: 68vh;
     width: 80vw;
     margin: 0 auto;
+    position: relative;
+    box-sizing: content-box;
+
+    &--preview {
+      @extend .card;
+      padding: $pad-xs;
+      height: 20vh;
+      width: 80vw;
+      margin: 0 auto;
+      position: relative;
+      box-sizing: content-box;
+    }
   }
+
+  &__logo {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+
 }
