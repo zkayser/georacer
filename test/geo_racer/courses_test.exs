@@ -8,6 +8,16 @@ defmodule GeoRacer.CoursesTest do
 
     @valid_attrs %{
       name: "some name",
+      waypoints: [
+        %{
+          latitude: Float.round(39 + :rand.uniform(), 6),
+          longitude: Float.round(-84 - :rand.uniform(), 6)
+        },
+        %{
+          latitude: Float.round(39 + :rand.uniform(), 6),
+          longitude: Float.round(-84 - :rand.uniform(), 6)
+        }
+      ],
       center: %Geo.Point{
         coordinates:
           {Float.round(-84 - :rand.uniform(), 6), Float.round(39 + :rand.uniform(), 6)},
@@ -16,6 +26,16 @@ defmodule GeoRacer.CoursesTest do
     }
     @update_attrs %{
       name: "some updated name",
+      waypoints: [
+        %{
+          latitude: Float.round(39 + :rand.uniform(), 6),
+          longitude: Float.round(-84 - :rand.uniform(), 6)
+        },
+        %{
+          latitude: Float.round(39 + :rand.uniform(), 6),
+          longitude: Float.round(-84 - :rand.uniform(), 6)
+        }
+      ],
       center: %Geo.Point{
         coordinates:
           {Float.round(-84 - :rand.uniform(), 6), Float.round(39 + :rand.uniform(), 6)},
@@ -50,6 +70,11 @@ defmodule GeoRacer.CoursesTest do
 
     test "create_course/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Courses.create_course(@invalid_attrs)
+    end
+
+    test "create_course/1 requires at least one waypoint for the course" do
+      attributes = %{@valid_attrs | waypoints: []}
+      assert {:error, %Ecto.Changeset{}} = Courses.create_course(attributes)
     end
 
     test "update_course/2 with valid data updates the course" do

@@ -3,7 +3,7 @@ defmodule GeoRacerWeb.PositionLiveTest do
   alias GeoRacerWeb.{PositionLive, Endpoint}
   import Phoenix.LiveViewTest
 
-  @position %{latitude: "39.10", longitude: "84.51"}
+  @position %{latitude: 39.10, longitude: 84.51}
   @topic "position_updates"
 
   describe "PositionLive" do
@@ -16,8 +16,8 @@ defmodule GeoRacerWeb.PositionLiveTest do
     test "subscribes to the position_updates pubsub topic on mount", %{conn: conn} do
       {:ok, view, _html} = live(conn, "/position")
       Endpoint.broadcast(@topic, "update", @position)
-      assert render(view) =~ @position.latitude
-      assert render(view) =~ @position.longitude
+      assert render(view) =~ "#{@position.latitude}"
+      assert render(view) =~ "#{@position.longitude}"
     end
   end
 end

@@ -3,7 +3,7 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
   alias GeoRacerWeb.Endpoint
   import Phoenix.LiveViewTest
 
-  @position %{latitude: "39.10", longitude: "84.51"}
+  @position %{latitude: 39.10, longitude: -84.51}
   @topic "position_updates"
 
   describe "Courses.New" do
@@ -24,7 +24,7 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
       update_position()
       render_click(view, "set_waypoint")
 
-      new_position = %{latitude: "40.10", longitude: "85.51"}
+      new_position = %{latitude: 40.10, longitude: 85.51}
       update_position(new_position)
 
       assert render_click(view, "set_waypoint") =~
@@ -33,6 +33,30 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
       refute render_click(view, "delete_waypoint", "1") =~
                "#{@position.latitude}/#{@position.longitude}"
     end
+  end
+
+  test "create_course creates a course and redirects to /courses/:id", %{conn: conn} do
+    {:ok, view, _html} = live(conn, "/courses/new")
+    update_position()
+    render_click(view, "set_waypoint")
+
+    new_position = %{latitude: 40.10, longitude: -85.51}
+    update_position(new_position)
+
+    render_click(view, "set_waypoint")
+    race_name = "My amazing race #{:rand.uniform() * 100_000}"
+
+    render_change(view, "update_race_name", %{
+      "race_name" => race_name
+    })
+
+    assert_redirect(
+      view,
+      "/courses" <> id,
+      fn ->
+        render_click(view, "create_course")
+      end
+    )
   end
 
   defp update_position(position \\ @position) do
