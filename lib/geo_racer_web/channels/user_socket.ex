@@ -3,7 +3,7 @@ defmodule GeoRacerWeb.UserSocket do
 
   ## Channels
   # channel "room:*", GeoRacerWeb.RoomChannel
-  channel "position:*", GeoRacerWeb.PositionChannel
+  channel "location:*", GeoRacerWeb.LocationChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

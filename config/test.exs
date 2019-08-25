@@ -14,5 +14,7 @@ config :geo_racer, GeoRacerWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :geo_racer, id_generator: &GeoRacer.FakeIdGenerator.id/0
+
 # Print only warnings and errors during test
 config :logger, level: :warn

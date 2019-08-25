@@ -20,6 +20,8 @@ config :geo_racer, GeoRacerWeb.Endpoint,
     signing_salt: "another_dummy_val_for_dev_env"
   ]
 
+config :geo_racer, id_generator: &UUID.uuid4/0
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

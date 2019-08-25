@@ -5,16 +5,16 @@ defmodule GeoRacerWeb.Live.Courses.New do
   alias GeoRacer.Courses.Course
   alias GeoRacerWeb.Router.Helpers, as: Routes
 
-  @topic "position_updates"
+  @topic "position_updates:"
 
   def render(assigns) do
     Phoenix.View.render(GeoRacerWeb.CourseView, "new.html", assigns)
   end
 
-  def mount(_session, socket) do
-    GeoRacerWeb.Endpoint.subscribe(@topic)
+  def mount(%{identifier: identifier}, socket) do
+    :ok = GeoRacerWeb.Endpoint.subscribe(@topic <> identifier)
 
-    {:ok, assign(socket, position: nil, waypoints: [], race_name: "")}
+    {:ok, assign(socket, position: nil, waypoints: [], race_name: "", identifier: identifier)}
   end
 
   def handle_info(%{event: "update", payload: position}, socket) do

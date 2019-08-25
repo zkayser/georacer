@@ -48,6 +48,7 @@ defmodule GeoRacer.MixProject do
       {:geocalc, "~> 0.5"},
       {:geo_postgis, "~> 3.1"},
       {:jason, "~> 1.0"},
+      {:elixir_uuid, "~> 1.2"},
       {:plug_cowboy, "~> 2.0"},
       {:calendar, "~> 0.17.6"}
     ]

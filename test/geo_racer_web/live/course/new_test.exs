@@ -4,7 +4,8 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
   import Phoenix.LiveViewTest
 
   @position %{latitude: 39.10, longitude: -84.51}
-  @topic "position_updates"
+  @topic "position_updates:"
+  @id_generator Application.get_env(:geo_racer, :id_generator)
 
   describe "Courses.New" do
     test "mounts when visiting the /courses/new path", %{conn: conn} do
@@ -60,6 +61,6 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
   end
 
   defp update_position(position \\ @position) do
-    Endpoint.broadcast(@topic, "update", position)
+    Endpoint.broadcast(@topic <> @id_generator.(), "update", position)
   end
 end
