@@ -1,4 +1,5 @@
 import Mapbox from 'mapbox-gl';
+import { GeoLocation } from './geolocation';
 
 const INITIAL_ZOOM = 15;
 const DEFAULT_CENTER = [84.51, 39.10];
@@ -10,6 +11,9 @@ class GRMap extends HTMLElement {
     super();
     if (!global.__SINGLETON_MAP_INSTANCE__) {
       global.__SINGLETON_MAP_INSTANCE__ = this;
+    }
+    if (global.__SINGLETON_MAP_INSTANCE__ === this) {
+      new GeoLocation(this.identifier);
     }
   }
 
@@ -31,6 +35,10 @@ class GRMap extends HTMLElement {
 
   get height() {
     return this.getAttribute('height');
+  }
+
+  get identifier() {
+    return this.getAttribute('identifier');
   }
 
   static get observedAttributes() {

@@ -21,7 +21,7 @@ defmodule GeoRacerWeb.Router do
     get "/style-guide", StyleGuideController, :show
     get "/join-race", JoinRaceController, :show
     resources "/courses", CourseController
-    live "/position", PositionLive
+    live "/race", RaceLive
   end
 
   # Other scopes may use custom stacks.
