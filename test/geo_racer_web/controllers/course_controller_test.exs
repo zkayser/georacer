@@ -1,8 +1,28 @@
 defmodule GeoRacerWeb.CourseControllerTest do
   use GeoRacerWeb.ConnCase
+  alias GeoRacer.Factories.CourseFactory
+
+  setup %{conn: conn} do
+    {:ok, course} = CourseFactory.insert()
+
+    {:ok, conn: conn, course: course}
+  end
 
   test "GET /courses", %{conn: conn} do
     conn = get(conn, "/courses")
     assert html_response(conn, 200)
+  end
+
+  test "GET /courses/:id redirects with to /courses/:id if no race_code query param exists", %{
+    conn: conn
+  } do
+    conn = get(conn, "/courses/2")
+    assert redirected_to(conn) =~ ~r(\/courses\/\d+?\?race_code=[\d\w]{8})
+  end
+
+  test "GET /courses/:id with race_code query param", %{conn: conn, course: course} do
+    race_code = Base.encode16(:crypto.strong_rand_bytes(4))
+    conn = get(conn, "/courses/#{course.id}?race_code=#{race_code}")
+    assert html_response(conn, 200) =~ race_code
   end
 end

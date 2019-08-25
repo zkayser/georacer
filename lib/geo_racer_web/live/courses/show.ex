@@ -7,6 +7,6 @@ defmodule GeoRacerWeb.Live.Courses.Show do
   end
 
   def mount(session, socket) do
-    {:ok, assign(socket, course: session.course)}
+    {:ok, assign(socket, course: session.course, code: session.code)}
   end
 end

@@ -14,7 +14,20 @@ defmodule GeoRacerWeb.CourseController do
     LiveView.Controller.live_render(conn, New, session: %{identifier: @id_generator.()})
   end
 
-  def show(conn, %{"id" => id}) do
-    LiveView.Controller.live_render(conn, Show, session: %{course: Courses.get_course!(id)})
+  def show(conn, %{"id" => id} = params) do
+    case params["race_code"] do
+      nil ->
+        redirect(conn,
+          to:
+            Routes.course_path(conn, :show, id,
+              race_code: Base.encode16(:crypto.strong_rand_bytes(4))
+            )
+        )
+
+      code ->
+        LiveView.Controller.live_render(conn, Show,
+          session: %{course: Courses.get_course!(id), code: code}
+        )
+    end
   end
 end
