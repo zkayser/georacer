@@ -9,7 +9,7 @@
   <div class="grid grid--2 u-push-bottom">
     <div class="card u-padded u-center">
       <h3>Waypoints</h3>
-      <p class="number u-push-bottom--none">5</p>
+      <p class="number u-push-bottom--none"><%= length(@course.waypoints) %></p>
     </div>
     <div class="card u-padded u-center">
       <h3>Boundary</h3>
@@ -26,6 +26,6 @@
   </div>
   <div class="u-padded--lg u-center">
     <a href="#" class="btn">Start Race</a>
-    <a href="#">All Race Courses</a>
+    <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :index, %{}) %>">All Race Courses</a>
   </div>
 </section>

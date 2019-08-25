@@ -4,48 +4,20 @@
     <a href="<%= Routes.course_path(@conn, :new) %>" class="btn">Create New Course</a>
   </div>
 
-  <div class="card u-padded u-push-bottom u-center">
-    <h2 class="u-push-top--sm">Course Name</h2>
-    <div class="grid grid--2 u-push-bottom--sm">
-      <div class="u-padded u-center">
-        <h3>Waypoints</h3>
-        <p class="number--background u-push-bottom--none">5</p>
+  <%= for course <- @courses do %>
+    <div class="card u-padded u-push-bottom u-center">
+      <h2 class="u-push-top--sm"><%= course.name %></h2>
+      <div class="grid grid--2 u-push-bottom--sm">
+        <div class="u-padded u-center">
+          <h3>Waypoints</h3>
+          <p class="number--background u-push-bottom--none"><%= length(course.waypoints) %></p>
+        </div>
+        <div class="u-padded u-center">
+          <h3>Boundary</h3>
+          <p class="number--background u-push-bottom--none">10<span class="caption">mi</span></p>
+        </div>
       </div>
-      <div class="u-padded u-center">
-        <h3>Boundary</h3>
-        <p class="number--background u-push-bottom--none">10<span class="caption">mi</span></p>
-      </div>
+      <a href="<%= Routes.course_path(@conn, :show, course.id) %>" class="btn btn--primary">Start A Race</a>
     </div>
-    <a href="<%= Routes.course_path(@conn, :show, 1) %>" class="btn btn--primary">Start A Race</a>
-  </div>
-
-  <div class="card u-padded u-push-bottom u-center">
-    <h2 class="u-push-top--sm">Course Name</h2>
-    <div class="grid grid--2 u-push-bottom--sm">
-      <div class="u-padded u-center">
-        <h3>Waypoints</h3>
-        <p class="number--background u-push-bottom--none">5</p>
-      </div>
-      <div class="u-padded u-center">
-        <h3>Boundary</h3>
-        <p class="number--background u-push-bottom--none">10<span class="caption">mi</span></p>
-      </div>
-    </div>
-    <a href="<%= Routes.course_path(@conn, :show, 2) %>" class="btn btn--primary">Start A Race</a>
-  </div>
-
-  <div class="card u-padded u-push-bottom u-center">
-    <h2 class="u-push-top--sm">Course Name</h2>
-    <div class="grid grid--2 u-push-bottom--sm">
-      <div class="u-padded u-center">
-        <h3>Waypoints</h3>
-        <p class="number--background u-push-bottom--none">5</p>
-      </div>
-      <div class="u-padded u-center">
-        <h3>Boundary</h3>
-        <p class="number--background u-push-bottom--none">10<span class="caption">mi</span></p>
-      </div>
-    </div>
-    <a href="<%= Routes.course_path(@conn, :show, 3) %>" class="btn btn--primary">Start A Race</a>
-  </div>
+  <% end %>
 </section>

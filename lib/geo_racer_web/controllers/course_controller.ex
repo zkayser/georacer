@@ -1,10 +1,11 @@
 defmodule GeoRacerWeb.CourseController do
   use GeoRacerWeb, :controller
+  alias GeoRacer.Courses
   alias GeoRacerWeb.Live.Courses.{New, Show}
   alias Phoenix.LiveView
 
-  def index(conn, _) do
-    render(conn, "index.html", %{})
+  def index(conn, _params) do
+    render(conn, "index.html", courses: Courses.list_courses())
   end
 
   def new(conn, _) do
@@ -12,6 +13,6 @@ defmodule GeoRacerWeb.CourseController do
   end
 
   def show(conn, %{"id" => id}) do
-    LiveView.Controller.live_render(conn, Show, session: %{id: id})
+    LiveView.Controller.live_render(conn, Show, session: %{course: Courses.get_course!(id)})
   end
 end
