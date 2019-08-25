@@ -1,7 +1,12 @@
-<section class="race u-contain u-padded">
-  <div class="u-center">
-    <h1 class="u-push-top--sm u-push-bottom--xs"> Start <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/></h1>
+<header class="header">
+  <div>
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" class="header__logo" alt="Geo Racer Logo"/>
   </div>
+  <div class="u-right">
+    <h1>Start A Race</h1>
+  </div>
+</header>
+<section class="race u-contain u-padded">
   <div class="card card--red u-padded u-push-bottom u-center">
     <h2 class="u-push-top">Race Code</h2>
     <p class="race__number">35AH5667</p>
@@ -26,6 +31,6 @@
   </div>
   <div class="u-padded--lg u-center">
     <a href="#" class="btn">Start Race</a>
-    <a href="#">All Race Courses</a>
+    <a href="/courses">All Race Courses</a>
   </div>
 </section>

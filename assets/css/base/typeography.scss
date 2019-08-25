@@ -11,13 +11,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include fluid-type(1.7em, 2em);
-  color: $color-3;
-
-  .h1__logo {
-    max-width: 120px;
-    vertical-align:  baseline;
-  }
+  @include fluid-type(1.5em, 1.8em);
+  font-family: $font-secondary;
+  font-weight: 200;
 }
 
 h2 {
@@ -67,7 +63,7 @@ b {
   }
 
   &--background {
-    @extend .number; 
+    @extend .number;
     background-color: $color-1;
     border-radius: $border-radius;
     box-shadow: inset $shadow;
