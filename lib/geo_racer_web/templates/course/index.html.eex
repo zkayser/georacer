@@ -14,7 +14,8 @@
         </div>
         <div class="u-padded u-center">
           <h3>Boundary</h3>
-          <p class="number--background u-push-bottom--none">10<span class="caption">mi</span></p>
+          <% boundary = boundary(course) %>
+          <p class="number--background u-push-bottom--none"><%= boundary.distance %><span class="caption"><%= boundary.units %></span></p>
         </div>
       </div>
       <a href="<%= Routes.course_path(@conn, :show, course.id) %>" class="btn btn--primary">Start A Race</a>

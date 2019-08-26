@@ -6,6 +6,9 @@ defmodule GeoRacer.Courses.Course do
 
   @default_bounds_in_meters 1000
   @srid 4326
+  @cache :boundary_cache
+
+  @type distance :: number()
 
   schema "courses" do
     field :name, :string
@@ -24,6 +27,10 @@ defmodule GeoRacer.Courses.Course do
     |> validate_non_empty(:waypoints)
   end
 
+  @doc """
+  Calculates the geographic center of a list of waypoint coordinates.
+  """
+  @spec calculate_center(list(Waypoint.t())) :: Geo.Point.t() | nil
   def calculate_center([]), do: nil
 
   def calculate_center([waypoint]) do
@@ -46,6 +53,43 @@ defmodule GeoRacer.Courses.Course do
       coordinates: {center_lng, center_lat},
       srid: @srid
     }
+  end
+
+  @doc """
+  Calculates a boundary in meters given a center point.
+  Finds the waypoint located farthest away from the center
+  and adds an extra _distance_ meters to that distance so that
+  the waypoint located farthest from the center is contained
+  within the boundary. _distance_ can be adjusted, but defaults
+  to 1000 meters.
+  """
+  @spec boundary_for(%{center: Geo.PostGIS.Geometry.t(), waypoints: [Waypoint.t()]}, distance()) ::
+          distance()
+  def boundary_for(course, distance \\ 1000) do
+    case :ets.lookup(@cache, course.id) do
+      [{_, boundary}] ->
+        boundary
+
+      [] ->
+        boundary = calculate_boundary(course, distance)
+        :ets.insert(@cache, {course.id, boundary})
+        boundary
+    end
+  end
+
+  defp calculate_boundary(%{center: %{coordinates: {center_lng, center_lat}}} = course, distance) do
+    course.waypoints
+    |> Enum.reduce([], fn %{point: %{coordinates: {lng, lat}}}, acc ->
+      [
+        Geocalc.distance_between(%{latitude: lat, longitude: lng}, %{
+          latitude: center_lat,
+          longitude: center_lng
+        })
+        | acc
+      ]
+    end)
+    |> Enum.max()
+    |> Kernel.+(distance)
   end
 
   defp validate_non_empty(changeset, :waypoints) do

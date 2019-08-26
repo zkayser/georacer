@@ -1,6 +1,8 @@
 defmodule GeoRacer.Courses.CourseTest do
   use ExUnit.Case
+  use GeoRacer.DataCase
   alias GeoRacer.Courses.Course
+  alias GeoRacer.Factories.CourseFactory
 
   @default_bounds_in_meters 1000
   @srid 4326
@@ -28,6 +30,28 @@ defmodule GeoRacer.Courses.CourseTest do
 
       assert %Geo.Point{coordinates: {center_lng, center_lat}, srid: @srid} ==
                Course.calculate_center([waypoint])
+    end
+
+    test "boundary_for/2 returns a bounding box around the center of the course plus 1000 meters (by default)" do
+      {:ok, course} = CourseFactory.insert()
+
+      max_dist_from_center =
+        course.waypoints
+        |> Enum.reduce([], fn waypoint, acc ->
+          %{coordinates: {lng, lat}} = waypoint.point
+          %{coordinates: {center_lng, center_lat}} = course.center
+
+          [
+            Geocalc.distance_between(%{latitude: lat, longitude: lng}, %{
+              latitude: center_lat,
+              longitude: center_lng
+            })
+            | acc
+          ]
+        end)
+        |> Enum.max()
+
+      assert Course.boundary_for(course) == max_dist_from_center + 1000
     end
   end
 end
