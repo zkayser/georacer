@@ -4,15 +4,11 @@
 
   <div class="card card--red u-padded u-push-bottom u-center">
     <h2 class="u-push-top">Race Code</h2>
-    <p class="race__code">35AH5667</p>
+    <p class="race__code"><%= @race_code %></p>
   </div>
-
   <div class="card u-padded u-push-bottom">
-    <label class="u-push-top">Race Code</label>
-    <input name="racecode" type="text" placeholder="Enter 8 Character Code">
-    <label class="u-push-top-sm">Team Name</label>
-    <input name="teamname" type="text" placeholder="Enter Name Here">
-    <a href="/start-race" class="btn">Join Race</a>
+    <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,
+    csrf_token: Phoenix.Controller.get_csrf_token()} ) %>
   </div>
 
 </section>

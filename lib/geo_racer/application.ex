@@ -11,7 +11,9 @@ defmodule GeoRacer.Application do
       # Start the Ecto repository
       GeoRacer.Repo,
       # Start the endpoint when the application starts
-      GeoRacerWeb.Endpoint
+      GeoRacerWeb.Endpoint,
+      # Start the Races.StagingAreaSupervisor
+      GeoRacer.Races.StagingArea.Supervisor
       # Starts a worker by calling: GeoRacer.Worker.start_link(arg)
       # {GeoRacer.Worker, arg},
     ]

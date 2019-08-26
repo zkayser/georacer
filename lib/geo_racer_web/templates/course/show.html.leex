@@ -25,9 +25,9 @@
   <div class="card u-padded">
     <h2 class="u-center u-push-top--sm">Racers</h2>
     <ul class="list u-push-bottom">
-      <li>Team One</li>
-      <li>Team Two</li>
-      <li>Team Three</li>
+      <%= for team <- @teams do %>
+        <li><%= team %></li>
+      <% end %>
     </ul>
   </div>
   <div class="u-padded--lg u-center">

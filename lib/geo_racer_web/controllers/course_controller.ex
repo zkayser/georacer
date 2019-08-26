@@ -1,6 +1,7 @@
 defmodule GeoRacerWeb.CourseController do
   use GeoRacerWeb, :controller
   alias GeoRacer.Courses
+  alias GeoRacer.Races
   alias GeoRacerWeb.Live.Courses.{New, Show}
   alias Phoenix.LiveView
 
@@ -19,15 +20,26 @@ defmodule GeoRacerWeb.CourseController do
       nil ->
         redirect(conn,
           to:
-            Routes.course_path(conn, :show, id,
-              race_code: Base.encode16(:crypto.strong_rand_bytes(4))
-            )
+            Routes.join_race_path(conn, :show, %{course_id: id, race_code: Races.generate_code()})
         )
 
       code ->
         LiveView.Controller.live_render(conn, Show,
-          session: %{course: Courses.get_course!(id), code: code}
+          session: %{
+            course: Courses.get_course!(id),
+            code: code,
+            current_team: get_team_name(conn)
+          }
         )
     end
   end
+
+  defp get_team_name(%{req_cookies: %{"geo_racer_team_name" => team_name}}) do
+    case Base.decode64(team_name, padding: false) do
+      {:ok, name} -> name
+      :error -> ""
+    end
+  end
+
+  defp get_team_name(_), do: ""
 end

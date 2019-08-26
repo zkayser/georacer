@@ -53,7 +53,7 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
 
     assert_redirect(
       view,
-      "/courses" <> id,
+      "/courses/" <> id,
       fn ->
         render_click(view, "create_course")
       end
