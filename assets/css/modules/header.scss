@@ -1,0 +1,14 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  padding: $pad-xs;
+
+  &__logo {
+    max-width: 10em;
+  }
+
+  h1 {
+    padding: 0;
+  }
+}
