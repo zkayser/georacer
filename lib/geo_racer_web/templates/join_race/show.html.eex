@@ -9,7 +9,7 @@
 
   <div class="card u-padded u-push-bottom">
     <label class="u-push-top">Race Code</label>
-    <input name="racecode" type="text" placeholder="Eneter 8 Charter Code">
+    <input name="racecode" type="text" placeholder="Enter 8 Character Code">
     <label class="u-push-top-sm">Team Name</label>
     <input name="teamname" type="text" placeholder="Enter Name Here">
     <a href="/start-race" class="btn">Join Race</a>

@@ -17,36 +17,10 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import LiveSocket from "phoenix_live_view"
-import socket from "./socket"
 import GRMap from './grMap';
 
 customElements.define('gr-map', GRMap);
 
 
 let liveSocket = new LiveSocket("/live")
-liveSocket.connect()
-
-socket.connect()
-
-let channel = socket.channel("position:lobby", {})
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
-
-const positionSuccess = (position) => {
-  channel.push("update", {
-    latitude: position.coords.latitude,
-    longitude: position.coords.longitude
-  })
-}
-
-const positionError = () => {
-  console.log('Error getting position...');
-}
-
-const geoOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 10
-}
-
-navigator.geolocation.watchPosition(positionSuccess, positionError, geoOptions);
+liveSocket.connect();

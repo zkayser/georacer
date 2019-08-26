@@ -6,6 +6,7 @@
 </div>
 <div class="card__map">
   <gr-map
+    identifier="<%= @identifier %>"
       <%= if @position do %>
         latitude="<%= @position.latitude %>"
         longitude="<%= @position.longitude %>"
