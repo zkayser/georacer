@@ -13,7 +13,8 @@
     </div>
     <div class="card u-padded u-center">
       <h3>Boundary</h3>
-      <p class="number u-push-bottom--none">10<span class="caption">mi</span></p>
+      <% boundary = boundary(@course) %>
+      <p class="number u-push-bottom--none"><%= boundary.distance %><span class="caption"><%= boundary.units %></span></p>
     </div>
   </div>
   <div class="card u-padded">

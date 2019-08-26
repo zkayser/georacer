@@ -18,6 +18,7 @@ defmodule GeoRacer.Application do
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
+    :ets.new(:boundary_cache, [:set, :public, :named_table])
     opts = [strategy: :one_for_one, name: GeoRacer.Supervisor]
     Supervisor.start_link(children, opts)
   end

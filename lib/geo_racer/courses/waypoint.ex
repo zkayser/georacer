@@ -5,6 +5,8 @@ defmodule GeoRacer.Courses.Waypoint do
 
   @srid 4326
 
+  @type t :: %{point: Geo.PostGIS.Geometry.t()}
+
   schema "waypoints" do
     field :point, Geo.PostGIS.Geometry
 
