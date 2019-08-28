@@ -32,6 +32,9 @@
       padding: $pad;
     }
   }
+  &--no-top {
+    padding: 0 $pad $pad;
+  }
 }
 
 //MAARGINS

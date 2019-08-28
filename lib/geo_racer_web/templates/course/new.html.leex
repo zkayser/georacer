@@ -1,12 +1,12 @@
 <header class="header">
-  <div>
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" class="header__logo" alt="Geo Racer Logo"/>
+  <div class="header__logo">
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" alt="Geo Racer Logo"/>
   </div>
-  <div class="u-right">
-    <h1>Create New Course</h1>
+  <div class="header__title">
+    <h1>Create New<br /><b>Course</b></h1>
   </div>
 </header>
-<section class="u-contain u-padded">
+<section class="u-contain u-padded--no-top">
   <div class="card u-padded">
     <div>
       <gr-map

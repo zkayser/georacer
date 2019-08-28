@@ -1,11 +1,28 @@
 .header {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 3.5fr;
   align-items: center;
   padding: $pad-xs;
 
   &__logo {
-    max-width: 10em;
+    img {
+      max-width: 8em;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    h1 {
+      padding: 0;
+      font-size: 1.1rem;
+      line-height: 1.1;
+
+      b {
+          font-size: 1.6rem;
+          font-family: $font-primary;
+          text-transform: uppercase;
+      }
+    }
   }
 
   h1 {

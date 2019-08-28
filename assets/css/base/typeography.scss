@@ -3,7 +3,7 @@ body {
   color: $color-2;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-primary;
+  font-family: $font-secondary;
   font-weight: 600;
   line-height: 1;
   text-transform: capitalize;
@@ -11,20 +11,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include fluid-type(1.5em, 1.8em);
-  font-family: $font-secondary;
+  @include fluid-type(1.5em, 2em);
   font-weight: 200;
 }
 
 h2 {
-  @include fluid-type(1.5em, 1.7em);
-  font-family: $font-secondary;
+  @include fluid-type(1.2em, 1.7em);
 }
 
 h3 {
   @include fluid-type(1.1em, 1.2em);
-  font-family: $font-secondary;
-  color: $color-2;
 }
 
 h4 {
