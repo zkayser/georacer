@@ -1,12 +1,13 @@
 .player {
   display: grid;
   position: relative;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2.5fr 1fr;
   align-items: center;
   margin: $pad-xs $pad-sm 0;
 
   .logo {
-    width: 5em;
+    width: 4em;
+    vertical-align: middle;
   }
   &__name {
     padding-bottom: 0;
@@ -15,7 +16,14 @@
   }
   &__time {
     padding-bottom: 0;
+    font-weight: 800;
     text-align: right;
-    color: $color-6;
+    font-size: 1.2em;
+    color: $color-1;
+    background-color: $color-4;
+    border-radius: 5px;
+    width: auto;
+    padding: 0.2em;
+    text-align: center;
   }
 }
