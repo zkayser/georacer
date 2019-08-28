@@ -7,22 +7,20 @@
   </div>
 </header>
 <section class="u-contain u-padded">
-  <div class="u-center">
-      <div class="card__map--preview u-push-bottom--none">
-        <gr-map
-            <%= if @position do %>
-              latitude="<%= @position.latitude %>"
-              longitude="<%= @position.longitude %>"
-            <% end %>
-            identifier="<%= @identifier %>"
-            height="20vh"
-        </gr-map>
+  <div class="card u-padded">
+    <div>
+      <gr-map
+          <%= if @position do %>
+            latitude="<%= @position.latitude %>"
+            longitude="<%= @position.longitude %>"
+          <% end %>
+          identifier="<%= @identifier %>"
+          height="20vh"
+      </gr-map>
     </div>
     <div class="u-padded--lg">
       <a href="#" class="btn" phx-click="set_waypoint">Set Waypoint</a>
     </div>
-  </div>
-  <div class="card u-padded">
     <h2 class="u-push-bottom--none u-push-top--sm u-center">Race Details</h2>
     <div class="u-padded">
       <label>Set Waypoints</label>
@@ -43,9 +41,7 @@
       <form phx-change="update_race_name">
             <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
       </form>
+      <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
     </div>
-  </div>
-  <div class="u-padded--lg">
-    <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
   </div>
 </section>
