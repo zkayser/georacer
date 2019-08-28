@@ -8,9 +8,9 @@
   box-shadow: $shadow;
 
   &__wrap {
-    margin-top: -9em;
-    position: relative;
     z-index: 50;
+    position: relative;
+    margin-top: -9em;
   }
 
   &__frame {
@@ -53,6 +53,11 @@
     font-size: 43px;
     animation: textFade 3s infinite ease;
     opacity: 0.8;
+  }
+
+  &__icon {
+    max-width: 8em;
+    background-color: $color-2;
   }
 
   .light--1 {

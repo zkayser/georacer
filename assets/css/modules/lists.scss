@@ -43,3 +43,26 @@
     }
   }
 }
+
+.race__list {
+  li {
+    padding: $pad-xxs;
+    border-radius: 5px;
+    margin-bottom: $pad-xxs;
+
+    b {
+      color: darken($color-3, 20%);
+      font-weight: 800;
+    }
+
+    &:nth-child(odd) {
+      background-color: $color-4;
+    }
+    &:nth-child(even) {
+      background-color: lighten($color-4, 5%);
+    }
+  }
+  p {
+    margin: 0;
+  }
+}
