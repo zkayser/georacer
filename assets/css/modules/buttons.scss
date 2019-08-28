@@ -1,7 +1,7 @@
 a {
   color: $color-3;
-  font-style: 0.7em;
   font-family: $font-primary;
+  font-style: 0.7em;
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
@@ -22,6 +22,7 @@ a {
   color: $color-7;
   font-family: $font-primary;
   font-size: 1em;
+  line-height: 1.5;
   text-align: center;
   text-decoration: none;
   transition: all 0.4s ease;

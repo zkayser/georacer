@@ -13,6 +13,9 @@
 
   &--red {
     background: $gradient-2;
+    .btn {
+      background: $color-2;
+    }
   }
 
   &--blue {
