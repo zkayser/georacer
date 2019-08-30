@@ -13,11 +13,12 @@ defmodule GeoRacerWeb.CourseControllerTest do
     assert html_response(conn, 200)
   end
 
-  test "GET /courses/:id redirects with to /courses/:id if no race_code query param exists", %{
-    conn: conn
-  } do
+  test "GET /courses/:id redirects with to /join-race with course_id and race_code params if no race_code query param exists",
+       %{
+         conn: conn
+       } do
     conn = get(conn, "/courses/2")
-    assert redirected_to(conn) =~ ~r(\/courses\/\d+?\?race_code=[\d\w]{8})
+    assert redirected_to(conn) =~ ~r(\/join-race\?course_id=\d+?&race_code=[\d\w]{8})
   end
 
   test "GET /courses/:id with race_code query param", %{conn: conn, course: course} do

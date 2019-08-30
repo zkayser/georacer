@@ -17,10 +17,11 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import LiveSocket from "phoenix_live_view"
+import Hooks from './hooks/hooks';
 import GRMap from './grMap';
 
 customElements.define('gr-map', GRMap);
 
 
-let liveSocket = new LiveSocket("/live")
+let liveSocket = new LiveSocket("/live", { hooks: Hooks });
 liveSocket.connect();

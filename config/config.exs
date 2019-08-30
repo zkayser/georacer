@@ -13,7 +13,7 @@ config :geo_racer,
 # Configures the endpoint
 config :geo_racer, GeoRacerWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "dummy_val_for_dev_env",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: GeoRacerWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: GeoRacer.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [
