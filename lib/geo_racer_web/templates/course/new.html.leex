@@ -1,28 +1,44 @@
-<header class="header">
-  <div>
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" class="header__logo" alt="Geo Racer Logo"/>
+<div class="overlay">
+  <div class="card card--red u-padded u-push-bottom--sm">
+    <div class="card__close"></div>
+    <h2 class="u-push-bottom--none u-push-top--sm u-center">How to Create a<br /><b>Course</b></h2>
+    <ul class="u-padded--xs">
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 1:</b> Walk to a desired Waypoint and select "Set Waypoint".</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 2:</b> Repeat step on until all desired waypoints display on map.</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 3:</b> Give your race a name and select "Create Race"</p></li>
+    </ul>
+    <h2 class="u-push-bottom--none u-push-top--xs u-center">Terms and Conditions</h2>
+    <ul class="u-padded--xs">
+      <li><p class="u-push-bottom--none"><b class="color--2">Set Safe Waypoints:</b> Creator agrees to create waypoints that are NOT in hazardous locations (ex. middle of street, edge of cliff ).</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Set Public Waypoints:</b> Creator agrees to create waypoints that public property and avoid all private property locations.</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Share with Public:</b> All races are shared publicly through the Geo Race App. </p></li>
+    </ul>
+    <a href="#" class="btn" >I Accept Terms and Conditions</a>
   </div>
-  <div class="u-right">
-    <h1>Create New Course</h1>
+</div>
+<header class="header">
+  <div class="header__logo">
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" alt="Geo Racer Logo"/>
+  </div>
+  <div class="header__title">
+    <h1>Create New<br /><b>Course</b></h1>
   </div>
 </header>
-<section class="u-contain u-padded">
-  <div class="u-center">
-      <div class="card__map--preview u-push-bottom--none">
-        <gr-map
-            <%= if @position do %>
-              latitude="<%= @position.latitude %>"
-              longitude="<%= @position.longitude %>"
-            <% end %>
-            identifier="<%= @identifier %>"
-            height="20vh"
-        </gr-map>
+<section class="u-contain u-padded--no-top">
+  <div class="card u-padded">
+    <div>
+      <gr-map
+          <%= if @position do %>
+            latitude="<%= @position.latitude %>"
+            longitude="<%= @position.longitude %>"
+          <% end %>
+          identifier="<%= @identifier %>"
+          height="20vh"
+      </gr-map>
     </div>
     <div class="u-padded--lg">
       <a href="#" class="btn" phx-click="set_waypoint">Set Waypoint</a>
     </div>
-  </div>
-  <div class="card u-padded">
     <h2 class="u-push-bottom--none u-push-top--sm u-center">Race Details</h2>
     <div class="u-padded">
       <label>Set Waypoints</label>
@@ -43,9 +59,7 @@
       <form phx-change="update_race_name">
             <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
       </form>
+      <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
     </div>
-  </div>
-  <div class="u-padded--lg">
-    <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
   </div>
 </section>

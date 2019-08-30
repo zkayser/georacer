@@ -13,6 +13,9 @@
 
   &--red {
     background: $gradient-2;
+    .btn {
+      background: $color-2;
+    }
   }
 
   &--blue {
@@ -21,22 +24,10 @@
 
   &__map {
     @extend .card;
-    padding: $pad-xs;
-    height: 68vh;
+    padding: $pad-sm;
     width: 80vw;
     margin: 0 auto;
     position: relative;
-    box-sizing: content-box;
-
-    &--preview {
-      @extend .card;
-      padding: $pad-xs;
-      height: 20vh;
-      width: 80vw;
-      margin: 0 auto;
-      position: relative;
-      box-sizing: content-box;
-    }
   }
 
   &__logo {

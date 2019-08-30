@@ -50,7 +50,7 @@ class GRMap extends HTMLElement {
     let div = document.createElement('div');
     div.setAttribute('id', 'raceMap');
     div.setAttribute('class', 'map');
-    div.setAttribute('style', `height: ${this.height || '67vh'}; width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: $border-radius; z-index: 25;`);
+    div.setAttribute('style', `height: ${this.height || '67vh'}; max-width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: 5px; z-index: 25;`);
     shadow.innerHTML = '<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet" />'
     shadow.appendChild(div);
   }
@@ -70,8 +70,8 @@ class GRMap extends HTMLElement {
         antialias: true
       });
       const canvas = shadowDom.querySelector('.mapboxgl-canvas');
-      canvas.style.left = '10px';
-      canvas.style.top = '10px';
+      canvas.style.left = '0px';
+      canvas.style.top = '0px';
     }
 
     if (!(this.latitude && this.longitude)) {
