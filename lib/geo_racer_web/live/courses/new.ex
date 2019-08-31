@@ -11,10 +11,17 @@ defmodule GeoRacerWeb.Live.Courses.New do
     Phoenix.View.render(GeoRacerWeb.CourseView, "new.html", assigns)
   end
 
-  def mount(%{identifier: identifier}, socket) do
+  def mount(%{identifier: identifier} = session, socket) do
     :ok = GeoRacerWeb.Endpoint.subscribe(@topic <> identifier)
 
-    {:ok, assign(socket, position: nil, waypoints: [], race_name: "", identifier: identifier)}
+    {:ok,
+     assign(socket,
+       position: nil,
+       waypoints: [],
+       race_name: "",
+       has_accepted_terms_and_conditions?: session.has_accepted_terms_and_conditions?,
+       identifier: identifier
+     )}
   end
 
   def handle_info(%{event: "update", payload: position}, socket) do
@@ -46,6 +53,17 @@ defmodule GeoRacerWeb.Live.Courses.New do
       position ->
         {:noreply, assign(socket, waypoints: [position | waypoints])}
     end
+  end
+
+  def handle_event("accept_terms", _value, socket) do
+    {:stop,
+     socket
+     |> redirect(
+       to:
+         Routes.course_path(GeoRacerWeb.Endpoint, :new, %{
+           "accepted_terms_and_conditions" => "yes"
+         })
+     )}
   end
 
   def handle_event("delete_waypoint", value, socket) do

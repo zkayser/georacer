@@ -1,0 +1,18 @@
+<div class="overlay">
+  <div class="card card--red u-padded u-push-bottom--sm">
+    <div class="card__close"></div>
+    <h2 class="u-push-bottom--none u-push-top--sm u-center">How to Create a<br /><b>Course</b></h2>
+    <ul class="u-padded--xs">
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 1:</b> Walk to a desired Waypoint and select "Set Waypoint".</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 2:</b> Repeat step on until all desired waypoints display on map.</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Step 3:</b> Give your race a name and select "Create Race"</p></li>
+    </ul>
+    <h2 class="u-push-bottom--none u-push-top--xs u-center">Terms and Conditions</h2>
+    <ul class="u-padded--xs">
+      <li><p class="u-push-bottom--none"><b class="color--2">Set Safe Waypoints:</b> Creator agrees to create waypoints that are NOT in hazardous locations (ex. middle of street, edge of cliff ).</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Set Public Waypoints:</b> Creator agrees to create waypoints that public property and avoid all private property locations.</p></li>
+      <li><p class="u-push-bottom--none"><b class="color--2">Share with Public:</b> All races are shared publicly through the Geo Race App. </p></li>
+    </ul>
+    <a data-qa="terms_and_conditions" href="#" phx-click="accept_terms" class="btn" >I Accept Terms and Conditions</a>
+  </div>
+</div>

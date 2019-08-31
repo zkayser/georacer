@@ -60,6 +60,46 @@ defmodule GeoRacerWeb.Live.Course.NewTest do
     )
   end
 
+  test "renders the terms and conditions overlay on first visit", %{conn: conn} do
+    {:ok, _view, html} = live(conn, "/courses/new")
+    assert html =~ "data-qa=\"terms_and_conditions\""
+  end
+
+  test "redirects to same path when terms and conditions are accepted", %{conn: conn} do
+    {:ok, view, _html} = live(conn, "/courses/new")
+
+    assert_redirect(
+      view,
+      "/courses/new?accepted_terms_and_conditions=yes",
+      fn ->
+        render_click(view, "accept_terms")
+      end
+    )
+  end
+
+  # Default Opts are required to setup a plug session config
+  @default_opts [
+    store: :cookie,
+    key: "foobar",
+    encryption_salt: "encrypted cookie salt",
+    signing_salt: "signing salt",
+    log: false
+  ]
+  @session_opts Plug.Session.init(@default_opts)
+  @terms_and_conditions_key "geo_racer_accepted_terms_and_conditions"
+  test "does not render terms and conditions for users who have already accepted", %{conn: conn} do
+    conn =
+      conn.secret_key_base
+      |> put_in(System.get_env("SECRET_KEY_BASE"))
+      |> Plug.Session.call(@session_opts)
+      |> fetch_session(@terms_and_conditions_key)
+      |> put_session(@terms_and_conditions_key, "yes")
+
+    {:ok, _view, html} = live(conn, "/courses/new")
+
+    refute html =~ "data-qa=\"terms_and_conditions\""
+  end
+
   defp update_position(position \\ @position) do
     Endpoint.broadcast(@topic <> @id_generator.(), "update", position)
   end
