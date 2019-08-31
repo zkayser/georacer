@@ -6,13 +6,30 @@ defmodule GeoRacerWeb.CourseController do
   alias Phoenix.LiveView
 
   @id_generator Application.get_env(:geo_racer, :id_generator)
+  @terms_and_conditions_session_key "geo_racer_accepted_terms_and_conditions"
 
   def index(conn, _params) do
     render(conn, "index.html", courses: Courses.list_courses())
   end
 
-  def new(conn, _) do
-    LiveView.Controller.live_render(conn, New, session: %{identifier: @id_generator.()})
+  def new(conn, params) do
+    render_view = fn conn, has_accepted_terms_and_conditions? ->
+      LiveView.Controller.live_render(conn, New,
+        session: %{
+          identifier: @id_generator.(),
+          has_accepted_terms_and_conditions?: has_accepted_terms_and_conditions?
+        }
+      )
+    end
+
+    case params["accepted_terms_and_conditions"] do
+      "yes" ->
+        conn = put_session(conn, @terms_and_conditions_session_key, "yes")
+        render_view.(conn, true)
+
+      _ ->
+        render_view.(conn, fetch_has_accepted_terms_and_conditions(conn))
+    end
   end
 
   def show(conn, %{"id" => id} = params) do
@@ -42,4 +59,11 @@ defmodule GeoRacerWeb.CourseController do
   end
 
   defp get_team_name(_), do: ""
+
+  defp fetch_has_accepted_terms_and_conditions(conn) do
+    case get_session(conn, @terms_and_conditions_session_key) do
+      "yes" -> true
+      _ -> false
+    end
+  end
 end
