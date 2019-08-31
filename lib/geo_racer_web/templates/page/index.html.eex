@@ -6,7 +6,7 @@
     </div>
     <div class="u-center">
       <a href="<%= Routes.course_path(@conn, :new) %>" class="btn btn--primary">Create Race</a>
-      <a href="#" class="btn u-push-bottom">Join Race</a>
+      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn u-push-bottom">Join Race</a>
       <div class="u-center">
         <a href="#">Race History</a>
       </div>

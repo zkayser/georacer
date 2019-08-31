@@ -93,7 +93,7 @@ class GRMap extends HTMLElement {
     if (!this.icon) {
       let el = document.createElement('div');
       el.className = 'position-marker';
-      el.style.backgroundImage = 'url(../images/location-marker.svg)';
+      el.style.backgroundImage = `url(${window.location.protocol}//${window.location.host}/images/location-marker.svg)`;
       el.style.width = '26px';
       el.style.height = '40px';
       this.icon = el;

@@ -3,6 +3,7 @@ defmodule GeoRacer.Races.StagingArea.Validators do
   Provides utilities for validating data that is
   used for creating `StagingArea`s.
   """
+  alias GeoRacer.Races
   alias GeoRacer.Races.StagingArea
 
   @type data :: %{
@@ -32,12 +33,19 @@ defmodule GeoRacer.Races.StagingArea.Validators do
   an error tuple with a Keyword list of error messages
   if any of the validations fails. Returns :ok otherwise.
   """
-  @spec run_validations(data()) :: :ok | {:error, Keyword.t(String.t())}
+  @spec run_validations(data()) ::
+          :ok | {:error, Keyword.t(String.t())} | {:already_exists, Races.Race.Impl.t()}
   def run_validations(data) do
-    [:validate_identifier, :validate_unique_team_name, :validate_code_matches]
-    |> Enum.reduce(:ok, fn validation, acc ->
-      run(validation, data, acc)
-    end)
+    case Races.by_course_id_and_code(data.course_id, data.expected_code) do
+      nil ->
+        [:validate_identifier, :validate_unique_team_name, :validate_code_matches]
+        |> Enum.reduce(:ok, fn validation, acc ->
+          run(validation, data, acc)
+        end)
+
+      race ->
+        {:already_exists, race}
+    end
   end
 
   defp run(:validate_identifier, data, acc) do

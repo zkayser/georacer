@@ -82,4 +82,15 @@ defmodule GeoRacer.Races.StagingArea do
   def broadcast_update(identifier, update) do
     GeoRacerWeb.Endpoint.broadcast("staging_area:#{identifier}", "update", update)
   end
+
+  @doc """
+  Broadcasts a message that triggers other clients connected to the same staging area
+  to redirect to the race instance that has been activated.
+  """
+  @spec force_redirect_to_race(String.t(), __MODULE__.Impl.t()) :: :ok
+  def force_redirect_to_race(identifier, race_id) do
+    GeoRacerWeb.Endpoint.broadcast("staging_area:#{identifier}", "redirect_to_race", %{
+      race_id: race_id
+    })
+  end
 end
