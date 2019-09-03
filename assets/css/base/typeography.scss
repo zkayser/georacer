@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1;
   text-transform: capitalize;
-  padding-bottom: $pad-sm;
+  margin-bottom: $pad-sm;
 }
 
 h1 {
@@ -44,7 +44,6 @@ h4 {
 p {
   font-family: $font-secondary;
   font-weight:200;
-  color: lighten($color-2, 15%);
   line-height: 1.4;
   margin-bottom: $pad;
 }

@@ -187,3 +187,20 @@ select {
 .checkbox-label input:checked ~ .checkbox-custom.circular::before {
     border-radius: 50%;
 }
+
+.form {
+  &__option, &__option--selected {
+    padding: $pad-xs $pad-lg;
+    background-color: darken($color-1, 3%);
+    color: $color-2;
+    font-weight: 100;
+    border-radius: 25px;
+    font-size: 1.3em;
+    margin-bottom: $pad-sm;
+  }
+  &__option--selected {
+    background-color: $color-2;
+    color: $color-1;
+    font-weight: 800;
+  }
+}
