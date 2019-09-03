@@ -5,5 +5,7 @@
   <%= text_input f, :team_name, placeholder: "Enter Name Here" %>
   <%= hidden_input f, :course_id, value: @course_id %>
   <%= hidden_input f, :expected_code, value: @race_code %>
-  <a phx-hook="FormSubmit" class="btn">Join Race</a>
+  <div class="u-center">
+    <a phx-hook="FormSubmit" class="btn">Join Race</a>
+  </div>
 <% end %>

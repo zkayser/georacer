@@ -14,14 +14,15 @@ a {
   }
 }
 .btn {
-  display: block;
-  margin: $pad-xs;
-  padding: 1.5em $pad-sm;
+  display: inline-block;
+  margin: $pad-xs auto;
+  padding: $pad-sm $pad-lg;
   border-radius: 75px;
   background: $gradient-3;
   color: $color-7;
-  font-family: $font-primary;
-  font-size: 1em;
+  font-family: $font-secondary;
+  font-weight: 200;
+  font-size: 1.1em;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
