@@ -58,5 +58,50 @@ defmodule GeoRacerWeb.Live.Courses.ShowTest do
       Process.sleep(50)
       refute render(view) =~ new_team
     end
+
+    test "start_race click events redirects to race page", context do
+      {:ok, view, _html} =
+        live(context.conn, "/courses/#{context.course.id}?race_code=#{context.code}")
+
+      assert_redirect(
+        view,
+        "/races/" <> id,
+        fn ->
+          render_click(view, "start_race")
+        end
+      )
+    end
+
+    test "force redirects other views to race page when one client starts a race", context do
+      {:ok, view, _html} =
+        live(context.conn, "/courses/#{context.course.id}?race_code=#{context.code}")
+
+      new_team = GeoRacer.StringGenerator.random_string()
+      StagingArea.put_team("#{context.course.id}:#{context.code}", new_team)
+      Process.sleep(50)
+
+      new_conn =
+        context.conn
+        |> put_req_cookie("geo_racer_web_team", Base.encode64(new_team, padding: false))
+
+      {:ok, view_2, _html} =
+        live(new_conn, "/courses/#{context.course.id}?race_code=#{context.code}")
+
+      render_click(view, "start_race")
+      assert_remove(view_2, _)
+    end
+
+    test "redirects to the race view for created races if current team is a participant",
+         context do
+      {:ok, race} = GeoRacer.Factories.RaceFactory.insert()
+      team_name = race.team_tracker |> Map.keys() |> List.first()
+
+      conn =
+        context.conn
+        |> put_req_cookie("geo_racer_team_name", Base.encode64(team_name, padding: false))
+
+      conn = get(conn, "/courses/#{race.course.id}?race_code=#{race.code}")
+      assert redirected_to(conn) =~ "/races/#{race.id}"
+    end
   end
 end

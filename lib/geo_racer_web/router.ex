@@ -23,6 +23,8 @@ defmodule GeoRacerWeb.Router do
     get "/weapon", WeaponsController, :show
     post "/staging-area", JoinRaceController, :create
     resources "/courses", CourseController
+    get "/races/:id", RaceController, :show
+    get "/races/:course_id/:race_code", RaceController, :show
     live "/race", RaceLive
   end
 

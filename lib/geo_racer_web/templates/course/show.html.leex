@@ -10,7 +10,7 @@
   <div class="card card--red u-padded u-push-bottom u-center">
     <h2 class="u-push-top">Race Code</h2>
     <p class="race__number"><%= @code %></p>
-    <a href="<%= url = Routes.join_race_path(GeoRacerWeb.Endpoint, :show, %{course_id: @course.id, race_code: @code}) %>" class="btn">Copy Share Link</a>
+    <a id="share-link-btn" data-share-link="<%= Routes.join_race_path(GeoRacerWeb.Endpoint, :show, %{course_id: @course.id, race_code: @code}) %>" class="btn">Copy Share Link</a>
   </div>
   <div class="grid grid--2 u-push-bottom">
     <div class="card u-padded u-center">
@@ -33,6 +33,7 @@
   </div>
   <div class="u-padded--lg u-center">
     <a href="#" phx-click="start_race" class="btn">Start Race</a>
+    <br/>
     <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :index, %{}) %>">All Race Courses</a>
   </div>
 </section>

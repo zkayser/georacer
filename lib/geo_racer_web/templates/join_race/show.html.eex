@@ -11,7 +11,7 @@
   <div class="card card--red u-padded u-push-bottom u-center">
     <h2 class="u-push-top">Race Code</h2>
     <p class="number u-push-bottom--none"><%= @race_code %></p>
-    <a href="<%= url = Routes.join_race_url(@conn, :show, %{course_id: @course_id, race_code: @race_code}) %>" class="btn">Copy Share Link</a>
+    <a id="share-link-btn" data-share-link="<%= Routes.join_race_url(@conn, :show, %{course_id: @course_id, race_code: @race_code}) %>" class="btn">Copy Share Link</a>
   </div>
   <div class="card u-padded u-push-bottom">
     <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,

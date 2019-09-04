@@ -35,6 +35,9 @@ defmodule GeoRacerWeb.JoinRaceController do
         |> put_resp_cookie("geo_racer_team_name", Base.encode64(team_name))
         |> redirect(to: Routes.course_path(conn, :show, course_id, %{race_code: expected_code}))
 
+      {:already_exists, race} ->
+        redirect(conn, to: Routes.race_path(conn, :show, race.id))
+
       {:error, errors} ->
         errors
         |> Enum.reduce(conn, fn {error_key, value}, conn ->

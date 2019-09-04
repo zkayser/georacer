@@ -9,6 +9,11 @@ defmodule GeoRacer.Courses.Course do
   @cache :boundary_cache
 
   @type distance :: number()
+  @type t :: %__MODULE__{
+          name: String.t(),
+          center: Geo.PostGIS.Geometry.t(),
+          waypoints: list(Waypoint.t())
+        }
 
   schema "courses" do
     field :name, :string

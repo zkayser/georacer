@@ -3,10 +3,13 @@ defmodule GeoRacerWeb.CourseController do
   alias GeoRacer.Courses
   alias GeoRacer.Races
   alias GeoRacerWeb.Live.Courses.{New, Show}
+  alias GeoRacerWeb.Plugs.FetchTeamName
   alias Phoenix.LiveView
 
   @id_generator Application.get_env(:geo_racer, :id_generator)
   @terms_and_conditions_session_key "geo_racer_accepted_terms_and_conditions"
+
+  plug FetchTeamName when action in [:show]
 
   def index(conn, _params) do
     render(conn, "index.html", courses: Courses.list_courses())
@@ -41,24 +44,16 @@ defmodule GeoRacerWeb.CourseController do
         )
 
       code ->
+        # --> Redirect to race if a Race exists for course_id and race_code
         LiveView.Controller.live_render(conn, Show,
           session: %{
             course: Courses.get_course!(id),
             code: code,
-            current_team: get_team_name(conn)
+            current_team: conn.assigns[:team_name]
           }
         )
     end
   end
-
-  defp get_team_name(%{req_cookies: %{"geo_racer_team_name" => team_name}}) do
-    case Base.decode64(team_name, padding: false) do
-      {:ok, name} -> name
-      :error -> ""
-    end
-  end
-
-  defp get_team_name(_), do: ""
 
   defp fetch_has_accepted_terms_and_conditions(conn) do
     case get_session(conn, @terms_and_conditions_session_key) do

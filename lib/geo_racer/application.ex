@@ -12,8 +12,10 @@ defmodule GeoRacer.Application do
       GeoRacer.Repo,
       # Start the endpoint when the application starts
       GeoRacerWeb.Endpoint,
-      # Start the Races.StagingAreaSupervisor
-      GeoRacer.Races.StagingArea.Supervisor
+      # Start the Races.StagingArea.Supervisor
+      GeoRacer.Races.StagingArea.Supervisor,
+      # Start the Races.Race.Supervisor
+      GeoRacer.Races.Race.Supervisor
       # Starts a worker by calling: GeoRacer.Worker.start_link(arg)
       # {GeoRacer.Worker, arg},
     ]
