@@ -39,7 +39,7 @@ defmodule GeoRacerWeb.RaceLiveTest do
       {:ok, _view, _html} = live(conn, "/races/#{race.id}")
 
       assert_receive %Phoenix.Socket.Broadcast{event: "tick", payload: %{"clock" => "00:01"}},
-                     1000
+                     1050
     end
   end
 end

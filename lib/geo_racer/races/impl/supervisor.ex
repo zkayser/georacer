@@ -23,17 +23,13 @@ defmodule GeoRacer.Races.Race.Supervisor do
   ##############
 
   @doc """
-  Starts a new race process. Requires a string in the format:
-  `race:course_id:race_code` where race_code is an 8-character alphanumeric
-  string
+  Starts a new race process given a
+  Race.Impl struct
   """
-  @spec create_race(String.t()) ::
+  @spec create_race(Race.Impl.t()) ::
           {:ok, String.t()} | {:error, :invalid_name} | {:error, term()}
-  def create_race(identifier) when is_binary(identifier) do
-    case Regex.match?(~r(\d+), identifier) do
-      true -> start_supervisor(identifier)
-      false -> {:error, :invalid_name}
-    end
+  def create_race(%Race.Impl{} = race) do
+    start_supervisor(race)
   end
 
   def create_race(_), do: {:error, :invalid_name}
@@ -60,36 +56,26 @@ defmodule GeoRacer.Races.Race.Supervisor do
     end
   end
 
-  def name_for(course_id, race_code) do
-    {:global, "race:#{course_id}:#{race_code}"}
-  end
-
   def name_for(identifier) do
     {:global, "race:#{identifier}"}
   end
 
-  def start_supervisor(identifier) do
-    case GeoRacer.Repo.get(Race.Impl, Regex.replace(~r(\D+), identifier, "")) do
-      %Race.Impl{} = race ->
-        spec = %{
-          id: Race,
-          start: {Race, :new, [race.id]},
-          restart: :transient
-        }
+  def start_supervisor(race) do
+    spec = %{
+      id: Race,
+      start: {Race, :new, [race]},
+      restart: :transient
+    }
 
-        case DynamicSupervisor.start_child(__MODULE__, spec) do
-          {:ok, pid} when is_pid(pid) ->
-            {:ok, "#{race.id}"}
+    case DynamicSupervisor.start_child(__MODULE__, spec) do
+      {:ok, pid} when is_pid(pid) ->
+        {:ok, "#{race.id}"}
 
-          {:error, {:already_started, _pid}} ->
-            {:ok, "#{race.id}"}
+      {:error, {:already_started, _pid}} ->
+        {:ok, "#{race.id}"}
 
-          other ->
-            {:error, other}
-        end
-
-      nil ->
-        {:error, :invalid_name}
+      other ->
+        {:error, other}
     end
   end
 end

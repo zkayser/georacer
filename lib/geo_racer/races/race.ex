@@ -2,7 +2,8 @@ defmodule GeoRacer.Races.Race do
   @moduledoc """
   Exposes a client API for driving Race GenServer processes.
   """
-  alias GeoRacer.Races.Race.{Server, Supervisor}
+  alias GeoRacer.Courses.Waypoint
+  alias GeoRacer.Races.Race.{Server, Supervisor, Impl}
   require Logger
 
   @name &Supervisor.name_for/1
@@ -14,8 +15,9 @@ defmodule GeoRacer.Races.Race do
   @doc """
   Starts a new Race GenServer process
   """
-  def new(id) do
-    GenServer.start_link(Server, "#{id}", name: @name.(id))
+  @spec new(Impl.t()) :: :ok
+  def new(%Impl{} = race) do
+    GenServer.start_link(Server, race, name: @name.(race.id))
   end
 
   @doc """
@@ -25,5 +27,13 @@ defmodule GeoRacer.Races.Race do
   @spec stop(String.t()) :: :ok
   def stop(identifier) do
     Supervisor.stop_race(identifier)
+  end
+
+  @doc """
+  Gets the next waypoint for `team`.
+  """
+  @spec next_waypoint(Impl.t(), String.t()) :: Waypoint.t()
+  def next_waypoint(race, team_name) do
+    GenServer.call(@name.(race.id), {:next_waypoint, team_name})
   end
 end

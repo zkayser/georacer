@@ -3,7 +3,7 @@ defmodule GeoRacer.Races.Race.Impl do
   Implements a struct encapsulating data for a race.
   """
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
-  alias GeoRacer.Courses.Course
+  alias GeoRacer.Courses.{Course, Waypoint}
   use Ecto.Schema
   import Ecto.Changeset
   import Ecto.Query
@@ -12,6 +12,7 @@ defmodule GeoRacer.Races.Race.Impl do
     field :code, :string
     field :team_tracker, :map
     field :status, :string
+    field :time, :integer, virtual: true, default: 0
     belongs_to :course, GeoRacer.Courses.Course, on_replace: :delete
     timestamps()
   end
@@ -25,6 +26,7 @@ defmodule GeoRacer.Races.Race.Impl do
   @type t() :: %__MODULE__{
           code: String.t(),
           course: Course.t(),
+          time: String.t(),
           team_tracker: team_tracker,
           status: status
         }
@@ -53,6 +55,7 @@ defmodule GeoRacer.Races.Race.Impl do
             )
           end),
         status: "started",
+        time: 0,
         course_id: course.id
       }
 
@@ -85,5 +88,19 @@ defmodule GeoRacer.Races.Race.Impl do
       message: "another race created from this course id has the same code"
     )
     |> unique_constraint(:code, name: :identifier_index)
+  end
+
+  @doc """
+  Returns the next waypoint for `team`.
+  """
+  @spec next_waypoint(t(), String.t()) :: Waypoint.t()
+  def next_waypoint(
+        %__MODULE__{course: %Course{waypoints: waypoints}, team_tracker: team_tracker},
+        team
+      ) do
+    case team_tracker[team] do
+      [] -> nil
+      [id | _] -> hd(Enum.reject(waypoints, fn waypoint -> waypoint.id != id end))
+    end
   end
 end

@@ -15,6 +15,7 @@ config :geo_racer, GeoRacerWeb.Endpoint,
   server: false
 
 config :geo_racer, id_generator: &GeoRacer.FakeIdGenerator.id/0
+config :geo_racer, geo_calc_module: GeoRacer.FakeCalc
 
 # Print only warnings and errors during test
 config :logger, level: :warn
