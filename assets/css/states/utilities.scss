@@ -179,9 +179,12 @@
   }
 }
 
-
-
-
 .u-border-radius {
   border-radius: $border-radius;
+}
+
+.u-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
