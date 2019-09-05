@@ -61,6 +61,29 @@ defmodule GeoRacer.Courses.Course do
   end
 
   @doc """
+  Returns a bounding box (southwest lat/lng coordinates + northeast lat/lng coordinates)
+  for a Course based on the center point.
+  """
+  @spec bounding_box(t(), non_neg_integer()) :: %{
+          southwest: %{lat: Float.t(), lng: Float.t()},
+          northeast: %{lat: Float.t(), lng: Flat.t()}
+        }
+  def bounding_box(%{center: %{coordinates: {lat, lng}}}, distance \\ 1000) do
+    [[sw_lat, sw_lng], [ne_lat, ne_lng]] = Geocalc.bounding_box([lat, lng], distance)
+
+    %{
+      southwest: %{
+        lat: sw_lat,
+        lng: sw_lng
+      },
+      northeast: %{
+        lat: ne_lat,
+        lng: ne_lng
+      }
+    }
+  end
+
+  @doc """
   Calculates a boundary in meters given a center point.
   Finds the waypoint located farthest away from the center
   and adds an extra _distance_ meters to that distance so that

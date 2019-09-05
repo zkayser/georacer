@@ -12,13 +12,17 @@
   </div>
 </div>
 <div class="card__map">
-  <gr-map
+  <race-map
+    swLat="<%= @bounding_box.southwest.lat %>"
+    swLng="<%= @bounding_box.southwest.lng %>"
+    neLat="<%= @bounding_box.northeast.lat %>"
+    neLng="<%= @bounding_box.northeast.lng %>"
     identifier="<%= @identifier %>"
       <%= if @position do %>
         latitude="<%= @position.latitude %>"
         longitude="<%= @position.longitude %>"
       <% end %> >
-  </gr-map>
+  </race-map>
 </div>
 <div class="meter__wrap">
   <div class="meter">
