@@ -53,5 +53,12 @@ defmodule GeoRacer.Courses.CourseTest do
 
       assert Course.boundary_for(course) == max_dist_from_center + 1000
     end
+
+    test "bounding_box/2 returns a map with :southwest and :northeast keys" do
+      {:ok, course} = CourseFactory.insert()
+
+      assert %{southwest: %{lat: lat, lng: lng}, northeast: %{lat: ne_lat, lng: ne_lng}} =
+               Course.bounding_box(course)
+    end
   end
 end

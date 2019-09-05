@@ -20,8 +20,10 @@ import LiveSocket from "phoenix_live_view"
 import Hooks from './hooks/hooks';
 import { setupShareLinks } from './share_link';
 import GRMap from './grMap';
+import RaceMap from './race_map';
 
 customElements.define('gr-map', GRMap);
+customElements.define('race-map', RaceMap);
 
 setupShareLinks();
 let liveSocket = new LiveSocket("/live", { hooks: Hooks });

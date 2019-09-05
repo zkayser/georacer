@@ -22,7 +22,7 @@ defmodule GeoRacerWeb.RaceLiveTest do
     test "mounts when visiting the /races path", %{conn: conn, race: race} do
       {:ok, view, html} = live(conn, "/races/#{race.id}")
       assert view.module == RaceLive
-      assert html =~ "<gr-map"
+      assert html =~ "<race-map"
     end
 
     test "subscribes to the position_updates pubsub topic on mount", %{conn: conn, race: race} do

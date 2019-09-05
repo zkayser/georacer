@@ -1,6 +1,7 @@
 defmodule GeoRacerWeb.RaceLive do
   @moduledoc false
   use Phoenix.LiveView
+  alias GeoRacer.Courses.Course
   alias GeoRacer.Races.Race
   alias GeoRacerWeb.Router.Helpers, as: Routes
 
@@ -30,6 +31,7 @@ defmodule GeoRacerWeb.RaceLive do
           |> assign(:identifier, identifier)
           |> assign(:team_name, team_name)
           |> assign(:race, race)
+          |> assign(:bounding_box, Course.bounding_box(race.course))
           |> assign(:timer, "00:00")
 
         {:ok, assign(socket, position: nil, identifier: identifier)}
