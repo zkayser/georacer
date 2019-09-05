@@ -1,11 +1,18 @@
-<section class="u-contain u-padded">
-  <h1 class="u-push-bottom"><img src="<%= Routes.static_path(@conn, "/images/geo-racer-logo.svg") %>" class="h1__logo" alt="Geo Racer Logo"/>Style Guide</h1>
-  <div class="card card--highlight u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Logo Identity</h2>
+<header class="header">
+  <div class="header__logo">
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" alt="Geo Racer Logo"/>
+  </div>
+  <div class="header__title">
+    <h1>Style<br /><b>Guide</b></h1>
+  </div>
+</header>
+<section class="u-contain u-padded--no-top">
+  <div class="card card--red u-padded u-push-bottom">
+    <h2 class="u-push-bottom u-push-top--xs u-center">Logo Identity</h2>
     <img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="u-push-top--sm u-push-bottom" alt="Geo Racer Logo"/>
   </div>
   <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom--none u-push-top--xs">Colors</h2>
+    <h2 class="u-push-bottom--none u-push-top--xs u-center">Colors</h2>
     <div class="grid grid--2">
       <div class="grid__child--span-2 u-padded--xlg section--color-7 u-border-radius u-center">
         <p class="u-push-top--sm u-push-bottom--none">#F9F9F9</p>
@@ -51,7 +58,7 @@
   </div>
   <div class="grid grid--1 grid--2-lg">
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Typeography</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Typeography</h2>
       <p>&#60;p&#62;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.</p>
       <p><b>&#60;b&#62;Sed ut perspiciatis</b></p>
       <h1>&#60;h1&#62; Heading 1</h1>
@@ -59,7 +66,7 @@
       <h3>&#60;h3&#62; Heading 3</h3>
     </div>
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Buttons</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Buttons</h2>
       <a href="#" class="btn btn--primary">.btn--primary</a>
       <a href="#" class="btn u-push-bottom">.btn</a>
       <div class="u-center">
@@ -67,7 +74,7 @@
       </div>
     </div>
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Grid</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Grid</h2>
       <h3 class="color--3">2 Column Grid</h3>
       <p>&#60;div class="grid grid--2"&#62; &#60;/div&#62;</p>
       <div class="grid grid--2 u-push-bottom--lg">
@@ -103,7 +110,7 @@
       </div>
     </div>
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Utility Classes</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Utility Classes</h2>
       <h3 class="color--3">.u-contain</h3>
       <p>adds a max-width of 1000px and centers content on desktop screen sizes</p>
       <h3 class="color--3">.u-border-radius</h3>
@@ -120,7 +127,7 @@
   </div>
   <div class="grid grid--1 grid--2-lg">
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Form Elements</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Form Elements</h2>
       <form>
           <label>Text Input</label>
           <input name="firstname" type="text" placeholder="Jon Doe">
@@ -136,7 +143,7 @@
       </form>
     </div>
     <div class="card u-padded u-push-bottom">
-      <h2 class="u-push-bottom u-push-top--xs">Game Icons</h2>
+      <h2 class="u-push-bottom u-push-top--xs u-center">Race Icons</h2>
       <div class="grid grid--2 grid--3-md">
         <div>
           <img src="<%= Routes.static_path(@conn, "/images/meter-bomb.svg") %>" class="u-push-top--sm u-push-bottom" alt="Meter Bomb"/>
@@ -166,7 +173,7 @@
     </div>
   </div>
   <div class="card u-padded u-push-bottom">
-    <h2 class="u-push-bottom u-push-top--xs">Hot & Cold Meter States</h2>
+    <h2 class="u-push-bottom u-push-top--xs u-center">Hot & Cold Meter States</h2>
     <div class="grid grid--1 grid--3-md">
       <div>
         <div class="meter">

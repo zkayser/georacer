@@ -33,7 +33,7 @@
           <li class="list__grid">
             <div class="list__lat-long">
               <div><img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>" alt="Waypoint" /></div>
-              <div> <span class="u-push-left--xs"><%= waypoint.latitude %>/<%= waypoint.longitude %></span></div>
+              <div class="u-ellipsis"> <span class="u-push-left--xs"><%= waypoint.latitude %>/<%= waypoint.longitude %></span></div>
             </div>
             <div class="list__remove-btn" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
               <i class="material-icons">close</i>
