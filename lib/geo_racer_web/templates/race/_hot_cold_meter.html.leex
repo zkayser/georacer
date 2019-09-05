@@ -1,0 +1,44 @@
+<% classes = classes(@hot_cold_level) %>
+<% gradient = gradient(@hot_cold_level) %>
+<% text = text(@hot_cold_level) %>
+<div class="meter">
+  <svg viewBox="0 0 517 516">
+    <g id="meter__light">
+      <path d="M85.7 100.1C48.3 140.9 27 192.9 24.9 248.3H234L85.7 100.1z" class="<%= classes[:light_1] %>"/>
+    </g>
+    <g id="meter__light">
+      <path d="M248.1 234.2V24.4c-55.5 2.2-107.5 23.8-148.3 61.5l148.3 148.3z" class="<%= classes[:light_2] %>"/>
+    </g>
+    <g id="meter__light">
+      <path  d="M268.1 24.4v209.7l148-147.8c-40.7-37.8-92.6-59.4-148-61.9z" class="<%= classes[:light_3] %>"/>
+    </g>
+    <g id="meter__light">
+      <path d="M490.6 248.3c-2.1-55.2-23.2-107.1-60.4-147.9L282.3 248.3h208.3z" class="<%= classes[:light_4] %>"/>
+    </g>
+    <g id="meter__light">
+      <path d="M429.1 415.1c37.3-40.4 58.9-91.9 61.4-146.8H282.3l146.8 146.8z" class="<%= classes[:light_5] %>"/>
+    </g>
+    <g id="meter__light">
+      <path d="M268.1 490c54.8-2.4 106.3-23.7 146.8-60.7L268.1 282.5V490z" class="<%= classes[:light_6] %>"/>
+    </g>
+    <g id="meter__light">
+      <path d="M248.1 490V282.5L101 429.6c40.6 37 92.2 58.2 147.1 60.4z" class="<%= classes[:light_7] %>"/>
+    </g>
+    <g id="meter__light">
+      <path  d="M25 268.3c2.6 55.1 24.2 106.7 61.8 147.2L234 268.3H25z" class="<%= classes[:light_8] %>"/>
+    </g>
+    <g id="meter__frame">
+      <path class="meter__frame" d="M436.6 78.3C388.9 30.5 325.3 4.2 257.7 4.2S126.6 30.5 78.8 78.3C31.1 126.1 4.7 189.6 4.7 257.2S31 388.3 78.8 436.1c47.8 47.8 111.3 74.1 178.9 74.1s131.1-26.3 178.9-74.1c47.8-47.8 74.1-111.3 74.1-178.9s-26.3-131.1-74.1-178.9zm54 170h-32c-2.1-48-21-91.7-51.1-125.2l22.6-22.6c37.2 40.8 58.4 92.6 60.5 147.8zm-74.5-162l-22.6 22.6c-33.4-30.5-77.1-50-125.3-52.4v-32c55.3 2.4 107.2 24 147.9 61.8zm-168-61.9v32C199.8 58.7 156 78 122.5 108.5L99.8 85.9c40.8-37.7 92.8-59.2 148.3-61.5zM85.7 100.1l22.6 22.6C78.1 156.3 59 200.1 56.9 248.3h-32c2.1-55.4 23.4-107.4 60.8-148.2zM25 268.3h32c2.6 47.9 22 91.3 52.4 124.6l-22.6 22.6C49.2 375 27.6 323.4 25 268.3zm76 161.3l22.6-22.6c33.3 29.9 76.7 48.8 124.5 51v32c-54.9-2.2-106.5-23.4-147.1-60.4zM268.1 490v-32c47.6-2.4 90.9-21.4 124.1-51.4l22.6 22.6c-40.4 37.1-91.8 58.4-146.7 60.8zm161-74.9l-22.6-22.6c30.2-33.2 49.4-76.4 52-124.2h32c-2.6 55-24.1 106.4-61.4 146.8z"/>
+    </g>
+    <g id="meter__center">
+      <radialGradient id="<%= gradient[:id] %>" cx="256" cy="650" r="<%= gradient[:r] %>" fx="100" fy="550" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#ff2b52"/>
+        <stop offset="1" stop-color="#053049"/>
+      </radialGradient>
+      <circle class="meter__center--<%= @hot_cold_level %>" cx="257.7" cy="257.2" r="177.2" fill:"url(#grad1)" />
+    </g>
+    <text class="meter__text" transform="<%= text[:transform] %>">
+      <%= text[:meter_text] %>
+    </text>
+  </svg>
+</div>

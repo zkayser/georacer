@@ -21,6 +21,15 @@ defmodule GeoRacer.Courses.Waypoint do
     |> validate_required([:point])
   end
 
+  @doc """
+  Returns a map with :lat and :lng keys from
+  a Waypoint.
+  """
+  @spec to_coordinates(t()) :: %{lat: Float.t(), lng: Float.t()}
+  def to_coordinates(%__MODULE__{point: %{coordinates: {lng, lat}}}) do
+    %{lat: lat, lng: lng}
+  end
+
   defp convert_to_geometry(%{latitude: lat, longitude: lng}) do
     %Geo.Point{
       coordinates: {lng, lat},

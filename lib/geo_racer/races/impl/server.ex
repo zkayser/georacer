@@ -4,11 +4,11 @@ defmodule GeoRacer.Races.Race.Server do
   """
   use GenServer
   require Logger
-  alias GeoRacer.Races.Race.Time
+  alias GeoRacer.Races.Race.{Time, Impl}
 
-  def init(identifier) do
+  def init(%Impl{} = race) do
     send(self(), :begin_clock)
-    {:ok, %{time: 0, identifier: identifier}}
+    {:ok, race}
   end
 
   def handle_info(:begin_clock, state) do
@@ -19,8 +19,12 @@ defmodule GeoRacer.Races.Race.Server do
   def handle_info(:tick, %{time: seconds} = state) do
     new_time =
       seconds
-      |> Time.update(state[:identifier])
+      |> Time.update(state.id)
 
-    {:noreply, %{state | time: new_time}}
+    {:noreply, %Impl{state | time: new_time}}
+  end
+
+  def handle_call({:next_waypoint, team_name}, _from, state) do
+    {:reply, Impl.next_waypoint(state, team_name), state}
   end
 end

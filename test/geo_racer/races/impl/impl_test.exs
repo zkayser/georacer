@@ -5,8 +5,8 @@ defmodule GeoRacer.Races.Race.ImplTest do
 
   setup do
     {:ok, course} = GeoRacer.Factories.CourseFactory.insert()
-
-    {:ok, course: course}
+    {:ok, race} = GeoRacer.Factories.RaceFactory.insert()
+    {:ok, course: course, race: race}
   end
 
   describe "from_staging_area/1" do
@@ -20,6 +20,21 @@ defmodule GeoRacer.Races.Race.ImplTest do
       assert race.status == "started"
 
       assert Enum.all?(staging_area.teams, fn team -> team in Map.keys(race.team_tracker) end)
+    end
+  end
+
+  describe "next_waypoint/2" do
+    test "returns the next waypoint for the given team", %{race: race} do
+      team = race.team_tracker |> Map.keys() |> hd()
+      waypoint = Race.next_waypoint(race, team)
+
+      assert waypoint.id == Enum.at(race.team_tracker[team], 0)
+    end
+
+    test "returns nil if the team is finished", %{race: race} do
+      team = race.team_tracker |> Map.keys() |> hd()
+      race = %{race | team_tracker: %{race.team_tracker | team => []}}
+      refute Race.next_waypoint(race, team)
     end
   end
 end
