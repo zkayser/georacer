@@ -5,6 +5,8 @@ defmodule GeoRacerWeb.Live.Courses.Show do
   alias GeoRacerWeb.Router.Helpers, as: Routes
   use Phoenix.LiveView
 
+  @start_countdown_milliseconds Application.get_env(:geo_racer, :start_countdown_milliseconds) ||
+                                  6050
   def render(assigns) do
     Phoenix.View.render(GeoRacerWeb.CourseView, "show.html", assigns)
   end
@@ -18,7 +20,14 @@ defmodule GeoRacerWeb.Live.Courses.Show do
         StagingArea.put_team("#{session.course.id}:#{session.code}", session.current_team)
         StagingArea.subscribe_to_updates(session.course.id, session.code)
         send(self(), {:setup, session})
-        {:ok, assign(socket, code: session.code, course: session.course, teams: [])}
+
+        {:ok,
+         assign(socket,
+           code: session.code,
+           course: session.course,
+           teams: [],
+           begin_countdown: nil
+         )}
     end
   end
 
@@ -41,11 +50,24 @@ defmodule GeoRacerWeb.Live.Courses.Show do
     {:stop, redirect(socket, to: Routes.race_path(GeoRacerWeb.Endpoint, :show, race_id))}
   end
 
+  def handle_info({:start_countdown, _race}, socket) do
+    :erlang.send_after(@start_countdown_milliseconds, self(), :redirect_to_race)
+    {:noreply, assign(socket, begin_countdown: true)}
+  end
+
+  def handle_info(
+        :redirect_to_race,
+        %{assigns: %{course: course, code: code, race: race}} = socket
+      ) do
+    StagingArea.force_redirect_to_race("#{course.id}:#{code}", race.id)
+    {:stop, redirect(socket, to: Routes.race_path(GeoRacerWeb.Endpoint, :show, race.id))}
+  end
+
   def handle_event("start_race", _, %{assigns: %{course: course, code: code}} = socket) do
     case Races.create_from_staging_area(StagingArea.state("#{course.id}:#{code}")) do
       {:ok, %Race.Impl{} = race} ->
-        StagingArea.force_redirect_to_race("#{course.id}:#{code}", race.id)
-        {:stop, redirect(socket, to: Routes.race_path(GeoRacerWeb.Endpoint, :show, race.id))}
+        send(self(), {:start_countdown, race})
+        {:noreply, assign(socket, :race, race)}
 
       _ ->
         {:noreply, socket}

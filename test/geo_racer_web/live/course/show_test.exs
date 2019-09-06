@@ -59,15 +59,17 @@ defmodule GeoRacerWeb.Live.Courses.ShowTest do
       refute render(view) =~ new_team
     end
 
-    test "start_race click events redirects to race page", context do
+    test "start_race click events trigger the start countdown message and redirects", context do
       {:ok, view, _html} =
         live(context.conn, "/courses/#{context.course.id}?race_code=#{context.code}")
+
+      render_click(view, "start_race")
 
       assert_redirect(
         view,
         "/races/" <> id,
         fn ->
-          render_click(view, "start_race")
+          nil
         end
       )
     end

@@ -37,3 +37,6 @@
     <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :index, %{}) %>">All Race Courses</a>
   </div>
 </section>
+<%= if @begin_countdown do %>
+  <%= render "_countdown_animation.html" %>
+<% end %>
