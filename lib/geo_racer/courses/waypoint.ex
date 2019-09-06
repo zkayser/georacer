@@ -30,6 +30,18 @@ defmodule GeoRacer.Courses.Waypoint do
     %{lat: lat, lng: lng}
   end
 
+  @doc """
+  Returns true if Waypoint and `coordinates`
+  are within `radius` of each other.
+  """
+  @spec within_radius?(t(), %{lat: Float.t(), lng: Float.t()}, non_neg_integer()) :: boolean()
+  def within_radius?(%__MODULE__{} = waypoint, coords, radius \\ 3) do
+    waypoint
+    |> to_coordinates()
+    |> Geocalc.distance_between(coords)
+    |> Kernel.<=(radius)
+  end
+
   defp convert_to_geometry(%{latitude: lat, longitude: lng}) do
     %Geo.Point{
       coordinates: {lng, lat},

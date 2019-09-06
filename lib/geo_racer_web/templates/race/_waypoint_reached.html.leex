@@ -1,3 +1,9 @@
+<% found = @number_waypoints - length(@race.team_tracker[@team_name]) %>
+<% by_rank = Enum.reduce(@race.team_tracker, %{}, fn {team, remaining}, acc ->
+  Map.put(acc, team, length(remaining))
+ end) %>
+<% sorted = Enum.sort_by(by_rank, fn {_, length} -> length end) %>
+<% ranks = Enum.map(sorted, fn {team, _} -> team end) %>
 <div class="overlay">
   <div class="card card--red u-padded u-push-bottom--sm">
     <div class="card__close"></div>
@@ -44,16 +50,16 @@
         <path d="M258.5 124.7c-46 0-83.3 37.3-83.3 83.3s56.8 181.7 83.3 181.7S341.8 254 341.8 208s-37.3-83.3-83.3-83.3zm0 128.7c-25.1 0-45.4-20.3-45.4-45.4s20.3-45.4 45.4-45.4 45.4 20.3 45.4 45.4-20.3 45.4-45.4 45.4z" class="st5"/>
       </svg>
     </div>
-    <p class="u-center u-push-top--xs">You have found <b>2</b> out of <b>5</b> waypoints.</p>
+    <p class="u-center u-push-top--xs">You have found <b><%= found %></b> out of <b><%= @number_waypoints %></b> waypoints.</p>
     <h2 class="u-push-bottom--none u-push-top--xs u-center">Leader Board</h2>
     <div class="u-padded-no-top">
       <ul class="race__list">
-        <li><p><b>1:</b> Team One</p></li>
-        <li><p><b>2:</b> Team Two</p></li>
-        <li><p><b>3:</b> Team Three</p></li>
+      <%= for {team, rank} <- Enum.with_index(ranks) do %>
+        <li><p><b><%= rank + 1 %>:</b> <%= team %></p></li>
+      <% end %>
       </ul>
     </div>
     <a href="#" class="btn" >Use A Weapon</a>
-    <a href="#" class="btn" >Shield Yourself</a>
+    <a phx-click="shield_yourself" href="#" class="btn" >Shield Yourself</a>
   </div>
 </div>

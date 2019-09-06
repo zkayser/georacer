@@ -36,4 +36,13 @@ defmodule GeoRacer.Races.Race do
   def next_waypoint(race, team_name) do
     GenServer.call(@name.(race.id), {:next_waypoint, team_name})
   end
+
+  @doc """
+  Drops a waypoint from `team`'s list of
+  remaining waypoints.
+  """
+  @spec drop_waypoint(Impl.t(), String.t()) :: :ok
+  def drop_waypoint(race, team_name) do
+    GenServer.cast(@name.(race.id), {:drop_waypoint, team_name})
+  end
 end
