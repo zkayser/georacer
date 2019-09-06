@@ -2,7 +2,7 @@ defmodule GeoRacerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :geo_racer
 
   socket "/socket", GeoRacerWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket
