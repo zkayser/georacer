@@ -37,4 +37,20 @@ defmodule GeoRacer.Races.Race.ImplTest do
       refute Race.next_waypoint(race, team)
     end
   end
+
+  describe "drop_waypoint/2" do
+    test "drops a single waypoint for the given team", %{race: race} do
+      team = race.team_tracker |> Map.keys() |> hd()
+      initial_remaining = length(race.team_tracker[team])
+      assert {:ok, updated_race} = Race.drop_waypoint(race, team)
+
+      refute initial_remaining == length(updated_race.team_tracker[team])
+    end
+
+    test "returns an error tuple if the given team is not participating in the race", %{
+      race: race
+    } do
+      assert {:error, :invalid_team} = Race.drop_waypoint(race, "non-participating-team")
+    end
+  end
 end

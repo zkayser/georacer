@@ -1,5 +1,6 @@
-
-<%# <%= render "_waypoint_reached.html" %>
+<%= if @has_reached_waypoint? do %>
+  <%= render "_waypoint_reached.html", race: @race, number_waypoints: @number_waypoints, team_name: @team_name %>
+<% end %>
 <div class="u-padded--sm">
   <div class="player">
     <p class="player__name u-push-bottom--none">

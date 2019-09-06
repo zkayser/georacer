@@ -103,4 +103,25 @@ defmodule GeoRacer.Races.Race.Impl do
       [id | _] -> hd(Enum.reject(waypoints, fn waypoint -> waypoint.id != id end))
     end
   end
+
+  @doc """
+  Drops a single waypoint from the list of
+  `team`'s remaining waypoints.
+  """
+  @spec drop_waypoint(t(), String.t()) ::
+          {:ok, t()} | {:error, Ecto.Changeset.t()} | {:error, :invalid_team}
+  def drop_waypoint(%__MODULE__{team_tracker: team_tracker} = race, team_name) do
+    case team_name in Map.keys(team_tracker) do
+      false ->
+        {:error, :invalid_team}
+
+      true ->
+        attrs = %{
+          team_tracker: %{team_tracker | team_name => Enum.drop(team_tracker[team_name], 1)}
+        }
+
+        race
+        |> GeoRacer.Races.update_race(attrs)
+    end
+  end
 end

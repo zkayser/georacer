@@ -9,10 +9,10 @@ Mapbox.accessToken = 'pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1
 class RaceMap extends HTMLElement {
   constructor() {
     super();
-    if (!global.__SINGLETON_RACE_MAP_INSTANCE__) {
-      global.__SINGLETON_RACE_MAP_INSTANCE__ = this;
+    if (!window.__SINGLETON_RACE_MAP_INSTANCE__) {
+      window.__SINGLETON_RACE_MAP_INSTANCE__ = this;
     }
-    if (global.__SINGLETON_RACE_MAP_INSTANCE__ === this) {
+    if (window.__SINGLETON_RACE_MAP_INSTANCE__ === this) {
       new GeoLocation(this.identifier);
     }
   }
@@ -71,7 +71,7 @@ class RaceMap extends HTMLElement {
     if (!shadowDom) {
       this.renderMapContainer();
     }
-
+    3
     if (!this.map) {
       const container = this.shadowRoot.querySelector('#raceMap');
       this.map = new Mapbox.Map({
@@ -123,7 +123,7 @@ class RaceMap extends HTMLElement {
     if (!this.icon) {
       let el = document.createElement('div');
       el.className = 'position-marker';
-      el.style.backgroundImage = `url(${window.location.protocol}//${window.location.host}/images/location-marker.svg)`;
+      el.style.backgroundImage = `url(${document.location.protocol}//${window.location.host}/images/location-marker.svg)`;
       el.style.width = '26px';
       el.style.height = '40px';
       this.icon = el;

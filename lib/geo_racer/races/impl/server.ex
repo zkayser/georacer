@@ -27,4 +27,9 @@ defmodule GeoRacer.Races.Race.Server do
   def handle_call({:next_waypoint, team_name}, _from, state) do
     {:reply, Impl.next_waypoint(state, team_name), state}
   end
+
+  def handle_cast({:drop_waypoint, team_name}, state) do
+    {:ok, race} = Impl.drop_waypoint(state, team_name)
+    {:noreply, race}
+  end
 end
