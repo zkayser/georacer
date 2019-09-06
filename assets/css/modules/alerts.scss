@@ -1,0 +1,31 @@
+.alert {
+  display: grid;
+  z-index: 100;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  align-items: center;
+  width: 80%;
+  padding: $pad-sm $pad;
+  transform: translateX(-50%);
+  border-radius: 60px;
+  box-shadow: $shadow;
+  font-family: $font-secondary;
+  font-weight: 200;
+  text-align: center;
+
+  &--hide {
+    display: none;
+  }
+
+  &--info {
+    border: solid 2px $color-4;
+    background-color: $color-1;
+    color: $color-5;
+  }
+
+  &--danger {
+    background: $gradient-2;
+    color: $color-1;
+  }
+}

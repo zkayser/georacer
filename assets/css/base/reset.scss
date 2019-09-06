@@ -30,10 +30,11 @@ html {
 	overflow-x: hidden;
 }
 body {
-	font-size: 16px;
-	line-height: 1;
+	position: relative;
   background-color: $color-1;
 	background-image: url('/images/map-background.svg');
+	font-size: 16px;
+	line-height: 1;
 }
 ol, ul {
 	list-style: none;
@@ -57,7 +58,4 @@ input {
 }
 img {
   max-width: 100%;
-}
-.alert {
-  display: none;
 }
