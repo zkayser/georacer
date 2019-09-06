@@ -1,7 +1,7 @@
 a {
   color: $color-3;
   font-family: $font-primary;
-  font-style: 0.7em;
+  font-size: 0.7em;
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
@@ -14,7 +14,7 @@ a {
   }
 }
 .btn {
-  display: inline-block;
+  display: block;
   margin: $pad-xs auto;
   padding: $pad-sm $pad-lg;
   border-radius: 75px;
