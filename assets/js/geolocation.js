@@ -3,7 +3,8 @@ import socket from './socket';
 const positionSuccess = (channel) => (position) => {
   channel.push("update", {
     latitude: position.coords.latitude,
-    longitude: position.coords.longitude
+    longitude: position.coords.longitude,
+    accuracy: position.coords.accuracy
   })
 }
 
@@ -13,7 +14,8 @@ const positionError = () => {
 
 const geoOptions = {
   enableHighAccuracy: true,
-  maximumAge: 10
+  maximumAge: 10,
+  timeout: 1000
 }
 
 export class GeoLocation {

@@ -1,6 +1,6 @@
 <%=  form_for :staging_area, Routes.join_race_path(GeoRacerWeb.Endpoint, :create), [csrf_token: @csrf_token], fn f -> %>
   <%= label f, :race_code, class: "u-push-top", do: "Race Code" %>
-  <%= text_input f, :race_code, placeholder: "Enter 8 Character Code" %>
+  <%= text_input f, :race_code, placeholder: "Enter 8 Character Code", value: @race_code %>
   <%= label f, :team_name, class: "u-push-top-sm", do: "Team Name" %>
   <%= text_input f, :team_name, placeholder: "Enter Name Here" %>
   <%= hidden_input f, :course_id, value: @course_id %>

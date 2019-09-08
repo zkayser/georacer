@@ -93,13 +93,13 @@ defmodule GeoRacer.Races.Race.Impl do
   @doc """
   Returns the next waypoint for `team`.
   """
-  @spec next_waypoint(t(), String.t()) :: Waypoint.t()
+  @spec next_waypoint(t(), String.t()) :: Waypoint.t() | :finished
   def next_waypoint(
         %__MODULE__{course: %Course{waypoints: waypoints}, team_tracker: team_tracker},
         team
       ) do
     case team_tracker[team] do
-      [] -> nil
+      [] -> :finished
       [id | _] -> hd(Enum.reject(waypoints, fn waypoint -> waypoint.id != id end))
     end
   end

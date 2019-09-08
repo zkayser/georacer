@@ -31,10 +31,10 @@ defmodule GeoRacer.Races.Race.ImplTest do
       assert waypoint.id == Enum.at(race.team_tracker[team], 0)
     end
 
-    test "returns nil if the team is finished", %{race: race} do
+    test "returns :finished when the team has no more waypoints left", %{race: race} do
       team = race.team_tracker |> Map.keys() |> hd()
       race = %{race | team_tracker: %{race.team_tracker | team => []}}
-      refute Race.next_waypoint(race, team)
+      assert :finished = Race.next_waypoint(race, team)
     end
   end
 
