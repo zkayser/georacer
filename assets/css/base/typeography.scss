@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  @include fluid-type(1.5em, 2em);
+  @include fluid-type(1.8em, 2em);
   font-weight: 200;
   b {
     @include fluid-type(1.6em, 2em);
