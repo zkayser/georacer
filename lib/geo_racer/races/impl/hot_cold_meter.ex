@@ -5,6 +5,7 @@ defmodule GeoRacer.Races.Race.HotColdMeter do
   the user has reached a Waypoint.
   """
   alias GeoRacer.Courses.Waypoint
+  require Logger
   @type coordinates :: %{lat: Float.t(), lng: Float.t()}
   @geo_calc Application.get_env(:geo_racer, :geo_calc_module) || Geocalc
 
@@ -15,8 +16,11 @@ defmodule GeoRacer.Races.Race.HotColdMeter do
   """
   @spec level(Waypoint.t(), coordinates, Float.t()) :: non_neg_integer
   def level(waypoint, coordinates, boundary) do
+    distance = @geo_calc.distance_between(Waypoint.to_coordinates(waypoint), coordinates)
+    Logger.debug("Distance between waypoint and current location: #{inspect(distance)}")
+
     score_for_level(
-      (boundary - @geo_calc.distance_between(Waypoint.to_coordinates(waypoint), coordinates)) /
+      (boundary - distance) /
         boundary
     )
   end
