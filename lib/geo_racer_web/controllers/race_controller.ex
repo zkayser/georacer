@@ -31,4 +31,23 @@ defmodule GeoRacerWeb.RaceController do
         redirect(conn, to: Routes.race_path(conn, :show, race))
     end
   end
+
+  def notifications(
+        conn,
+        %{
+          "race_id" => race_id,
+          "hazard" => hazard,
+          "attacking_team" => attacking_team
+        }
+      ) do
+    LiveView.Controller.live_render(
+      conn,
+      GeoRacerWeb.Race.NotificationsLive,
+      session: %{
+        race_id: race_id,
+        hazard: hazard,
+        attacking_team: attacking_team
+      }
+    )
+  end
 end

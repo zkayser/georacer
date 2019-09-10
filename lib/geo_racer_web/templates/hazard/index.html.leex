@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="header__logo">
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
+  </div>
+  <div class="header__title">
+    <h1>At Your<br /><b>Waypoint</b></h1>
+  </div>
+</header>
+<section class="u-contain u-padded--no-top">
+
+  <div class="card u-padded u-push-bottom u-center">
+    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/#{@hazard.image}") %>" class="u-push-top--sm weapon__icon" alt="<%= @hazard.display_name %>" />
+    <h2 class="u-push-top--sm u-push-bottom--none"><%= @hazard.display_name %></h2>
+    <p class="u-padded--no-top u-push-bottom--none"><%= @hazard.description %></p>
+
+    <%= for team <- @teams do %>
+      <div class="form__option<%= is_selected?(team, @selected_team) %>" phx-click="select_team" phx-value-selected="<%= team %>"><%= team %></div>
+    <% end %>
+
+    <a href="#" phx-click="use_hazard" class="btn btn--primary">Deploy @hazard.display_name</a>
+  </div>
+
+</section>

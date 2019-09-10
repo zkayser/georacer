@@ -26,8 +26,8 @@ defmodule GeoRacer.Courses.WaypointTest do
 
     test "returns false if distance between Waypoint and coordinate is not with radius" do
       waypoint = %Waypoint{point: %{coordinates: {-84.51, 39.10}}}
-      coordinates = %{lat: 39.1001, lng: -84.5101}
-      # 3 meter radius by default
+      coordinates = %{lat: 39.12, lng: -84.52}
+      # 10 meter radius by default
       refute Waypoint.within_radius?(waypoint, coordinates)
     end
   end

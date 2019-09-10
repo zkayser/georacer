@@ -8,6 +8,7 @@ defmodule GeoRacerWeb.RaceLive do
 
   @topic "position_updates:"
   @time_topic "race_time:"
+  @race_topic_prefix "races:"
   @view_model_operations [
     :set_next_waypoint,
     :waypoint_reached,
@@ -32,6 +33,7 @@ defmodule GeoRacerWeb.RaceLive do
         Race.Supervisor.create_race(race)
         GeoRacerWeb.Endpoint.subscribe(@topic <> identifier)
         GeoRacerWeb.Endpoint.subscribe("#{@time_topic}#{race.id}")
+        GeoRacerWeb.Endpoint.subscribe("#{@race_topic_prefix}#{race.id}")
         send(self(), :set_next_waypoint)
 
         {:ok, assign(socket, view_model: ViewModel.from_session(session))}
@@ -52,6 +54,39 @@ defmodule GeoRacerWeb.RaceLive do
     {:noreply, assign(socket, view_model: ViewModel.set_timer(view_model, clock))}
   end
 
+  def handle_info(
+        %{
+          event: "race_update",
+          payload: %{
+            "update" => new_race,
+            "hazard_deployed" => %{
+              "on" => team,
+              "name" => hazard_name,
+              "by" => attacking_team
+            }
+          }
+        },
+        %{assigns: %{view_model: view_model}} = socket
+      ) do
+    case team == view_model.team_name do
+      true ->
+        {:stop,
+         redirect(socket,
+           to:
+             Routes.race_path(
+               GeoRacerWeb.Endpoint,
+               :notifications,
+               view_model.race.id,
+               hazard_name,
+               attacking_team
+             )
+         )}
+
+      false ->
+        {:noreply, assign(socket, view_model: ViewModel.update_race(view_model, new_race))}
+    end
+  end
+
   def handle_info({operation, extra_arg}, %{assigns: %{view_model: view_model}} = socket)
       when operation in @view_model_operations do
     {:noreply, assign(socket, view_model: apply(ViewModel, operation, [view_model, extra_arg]))}
@@ -62,7 +97,10 @@ defmodule GeoRacerWeb.RaceLive do
     {:noreply, assign(socket, view_model: apply(ViewModel, operation, [view_model]))}
   end
 
-  def handle_event("shield_yourself", _, socket) do
-    {:stop, redirect(socket, to: Routes.weapons_path(GeoRacerWeb.Endpoint, :show, %{}))}
+  def handle_event("use_hazard", _, socket) do
+    {:stop,
+     redirect(socket,
+       to: Routes.race_hazard_path(GeoRacerWeb.Endpoint, :index, socket.assigns.view_model.race)
+     )}
   end
 end

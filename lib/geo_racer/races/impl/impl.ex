@@ -2,6 +2,9 @@ defmodule GeoRacer.Races.Race.Impl do
   @moduledoc """
   Implements a struct encapsulating data for a race.
   """
+  alias GeoRacer.Hazards
+  alias GeoRacer.Hazards.MeterBomb
+  alias GeoRacer.Races.Race.HotColdMeter
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
   alias GeoRacer.Courses.{Course, Waypoint}
   use Ecto.Schema
@@ -13,6 +16,12 @@ defmodule GeoRacer.Races.Race.Impl do
     field :team_tracker, :map
     field :status, :string
     field :time, :integer, virtual: true, default: 0
+
+    has_many :hazards, GeoRacer.Hazards.Hazard,
+      on_delete: :delete_all,
+      on_replace: :delete,
+      foreign_key: :race_id
+
     belongs_to :course, GeoRacer.Courses.Course, on_replace: :delete
     timestamps()
   end
@@ -27,6 +36,7 @@ defmodule GeoRacer.Races.Race.Impl do
           code: String.t(),
           course: Course.t(),
           time: String.t(),
+          hazards: map(),
           team_tracker: team_tracker,
           status: status
         }
@@ -122,6 +132,24 @@ defmodule GeoRacer.Races.Race.Impl do
 
         race
         |> GeoRacer.Races.update_race(attrs)
+    end
+  end
+
+  @doc """
+  Returns the HotColdMeter implementation for `team`
+  based on whether the team is currently affected by
+  a `MeterBomb` hazard.
+  """
+  @spec hot_cold_meter(t(), String.t()) :: HotColdMeter | MeterBomb
+  def hot_cold_meter(%__MODULE__{time: seconds} = race, team) do
+    race.hazards
+    |> Enum.filter(fn %{affected_team: affected} -> affected end)
+    |> Enum.filter(fn %{name: name, expiration: expiration} ->
+      name == Hazards.name_for(MeterBomb) and expiration >= seconds
+    end)
+    |> case do
+      [] -> HotColdMeter
+      _ -> MeterBomb
     end
   end
 end

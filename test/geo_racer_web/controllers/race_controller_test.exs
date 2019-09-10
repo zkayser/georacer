@@ -51,4 +51,10 @@ defmodule GeoRacerWeb.RaceControllerTest do
 
     assert redirected_to(conn) =~ "/courses"
   end
+
+  test "GET /races/:id/notifications/:hazard/:attacking_team", %{conn: conn, race: race} do
+    conn = get(conn, "/races/#{race.id}/notifications/MeterBomb/the%20attackers")
+
+    assert html_response(conn, 200) =~ "Meter Bomb"
+  end
 end

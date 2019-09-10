@@ -36,7 +36,7 @@ defmodule GeoRacer.Races.StagingArea.Supervisor do
            Regex.named_captures(@valid_name_regex, identifier) do
       spec = %{
         id: StagingArea,
-        start: {StagingArea, :new, [course_id, race_code]},
+        start: {StagingArea, :new, [course_id, String.upcase(race_code)]},
         restart: :transient
       }
 

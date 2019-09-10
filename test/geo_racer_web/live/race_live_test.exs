@@ -41,5 +41,52 @@ defmodule GeoRacerWeb.RaceLiveTest do
       assert_receive %Phoenix.Socket.Broadcast{event: "tick", payload: %{"clock" => "00:01"}},
                      1050
     end
+
+    test "redirects when current team is affected by a hazard", %{
+      conn: conn,
+      race: race,
+      team: team
+    } do
+      {:ok, view, _html} = live(conn, "/races/#{race.id}")
+
+      expected_path = "#{race.id}" <> "/notifications/MeterBomb/Attacking%20team"
+
+      send(view.pid, %{
+        event: "race_update",
+        payload: %{
+          "update" => race,
+          "hazard_deployed" => %{
+            "on" => team,
+            "name" => "MeterBomb",
+            "by" => "Attacking team"
+          }
+        }
+      })
+
+      assert_receive {_, {:redirect, _, %{to: "/races/" <> ^expected_path}}}
+    end
+
+    test "doesnt redirect when current is not affected by a hazard", %{
+      conn: conn,
+      race: race
+    } do
+      {:ok, view, _html} = live(conn, "/races/#{race.id}")
+
+      expected_path = "#{race.id}" <> "/notifications/MeterBomb/Attacking%20team"
+
+      send(view.pid, %{
+        event: "race_update",
+        payload: %{
+          "update" => race,
+          "hazard_deployed" => %{
+            "on" => "billy some such",
+            "name" => "MeterBomb",
+            "by" => "Attacking team"
+          }
+        }
+      })
+
+      refute_receive {_, {:redirect, _, %{to: "/races/" <> ^expected_path}}}
+    end
   end
 end

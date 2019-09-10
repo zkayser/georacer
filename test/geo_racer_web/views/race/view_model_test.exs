@@ -154,6 +154,17 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
     end
   end
 
+  describe "update_race/2" do
+    test "replaces the race property with the race passed in", %{session: session} do
+      view_model = ViewModel.from_session(session)
+
+      original = view_model.race
+      updated = ViewModel.update_race(view_model, %GeoRacer.Races.Race.Impl{}).race
+
+      refute original == updated
+    end
+  end
+
   describe "set_hot_cold_level/2" do
     test "updates the hot_cold_meter with the given level", %{session: session} do
       view_model = ViewModel.from_session(session)
