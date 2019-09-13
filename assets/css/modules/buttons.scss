@@ -15,31 +15,36 @@ a {
 }
 .btn {
   display: block;
-  margin: $pad-xs auto;
-  padding: $pad-sm $pad-lg;
+  margin: 0 auto $pad-sm;
+  padding: $pad-sm $pad-sm;
   border-radius: 75px;
-  background: $gradient-3;
-  color: $color-7;
-  font-family: $font-secondary;
+  background-color: $color-2;
+  color: $color-1;
+  font-family: $font-primary;
   font-weight: 200;
-  font-size: 1em;
+  font-size: 0.8em;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
   transition: all 0.4s ease;
 
   &:hover {
-    background: $color-4;
-    color: $color-7;
+    background-color: $color-4;
+    color: $color-1;
     cursor: pointer;
     transition: all 0.4s ease;
   }
 
-  &--primary {
-    background: $gradient-2;
+  &--secondary {
+    background-color: $color-1;
+    border: solid 3px $color-2;
+    color: $color-2;
+    display: inline-block;
+    padding: $pad-xs $pad;
+    font-size: 0.7em;
     transition: all 0.4s ease;
     &:hover {
-      background: $gradient-3;
+      background-color: $color-2;
     }
   }
 }

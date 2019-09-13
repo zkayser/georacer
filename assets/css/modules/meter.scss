@@ -10,7 +10,6 @@
   &__wrap {
     z-index: 50;
     position: relative;
-    margin-top: -9em;
   }
 
   &__frame {
@@ -56,7 +55,8 @@
   }
 
   &__icon {
-    max-width: 8em;
+    min-width: 8em;
+    min-height: 8em;
     background-color: $color-2;
   }
 

@@ -1,15 +1,38 @@
 .home {
   &__container {
     display: grid;
-    grid-template-rows: 60vh 38vh;
+    grid-template-rows: 60vh 20vh 20vh;
     align-items: center;
-    max-width: 80vw;
-    margin: 0 auto;
 
     .gaslight-logo {
       display: block;
       max-width: 12em;
       margin: 0 auto;
     }
+  }
+
+  &__logo {
+    max-width: 11em;
+    margin: 0 auto;
+  }
+}
+
+.page {
+  &__container {
+    display: grid;
+    grid-template-rows: 25vh minmax(75vh, min-content);
+    align-items: center;
+  }
+
+  &__header {
+    img {
+      max-width: 8em;
+      margin: 0 auto $pad-xs;
+    }
+  }
+
+  .section--drop {
+    background-position: center -10vh;
+    background-size: 500px;
   }
 }

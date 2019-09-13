@@ -1,40 +1,52 @@
-<header class="header">
-  <div class="header__logo">
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
-  </div>
-  <div class="header__title">
-    <h1>Start A<br /><b>Race</b></h1>
-  </div>
-</header>
-<section class="race u-contain u-padded">
-  <div class="card card--red u-padded u-push-bottom u-center">
-    <h2 class="u-push-top">Race Code</h2>
-    <p class="race__number"><%= @code %></p>
-    <a id="share-link-btn" data-share-link="<%= Routes.join_race_path(GeoRacerWeb.Endpoint, :show, %{course_id: @course.id, race_code: @code}) %>" class="btn">Copy Share Link</a>
-  </div>
-  <div class="grid grid--2 u-push-bottom">
-    <div class="card u-padded u-center">
-      <h3>Waypoints</h3>
-      <p class="number u-push-bottom--none"><%= length(@course.waypoints) %></p>
+<section class="page u-contain">
+  <div class="page__container section--drop">
+    <header class="page__header">
+      <div class="u-center">
+        <div class="header__logo">
+          <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
+        </div>
+        <div class="header__title">
+          <h1>Start The Race</h1>
+        </div>
+      </div>
+    </header>
+    <div class="u-padded--side">
+      <div class="card u-padded u-push-bottom">
+        <div class="number--background u-center u-push-bottom--sm">
+          <p class="caption">Race Code</p>
+          <p class="u-push-bottom--none"><%= @code %></p>
+        </div>
+
+        <div class="grid grid--2 u-push-bottom">
+          <div class="number--background u-center">
+            <p class="caption">waypoints</p>
+            <p class="u-push-bottom--none"><%= length(@course.waypoints) %></p>
+          </div>
+          <div class="number--background u-center">
+            <p class="caption">boundary</p>
+            <% boundary = boundary(@course) %>
+            <p class="u-push-bottom--none"><%= boundary.distance %><span class="caption"><%= boundary.units %></span></p>
+          </div>
+        </div>
+
+        <h2 class="u-center u-push-top--sm">Racers</h2>
+        <ul class="list u-push-bottom">
+          <%= for team <- @teams do %>
+            <li><%= team %></li>
+          <% end %>
+        </ul>
+
+        <a href="#" phx-click="start_race" class="btn">Start Race</a>
+
+        <div class="u-center u-push-bottom">
+          <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :index, %{}) %>">All Race Courses</a>
+        </div>
+      </div>
+      <div class="card__icon--below u-center">
+        <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>"  alt="Location Marker"/>
+        <p>Your race creator will start the race.</p>
+      </div>
     </div>
-    <div class="card u-padded u-center">
-      <h3>Boundary</h3>
-      <% boundary = boundary(@course) %>
-      <p class="number u-push-bottom--none"><%= boundary.distance %><span class="caption"><%= boundary.units %></span></p>
-    </div>
-  </div>
-  <div class="card u-padded">
-    <h2 class="u-center u-push-top--sm">Racers</h2>
-    <ul class="list u-push-bottom">
-      <%= for team <- @teams do %>
-        <li><%= team %></li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="u-padded--lg u-center">
-    <a href="#" phx-click="start_race" class="btn">Start Race</a>
-    <br/>
-    <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :index, %{}) %>">All Race Courses</a>
   </div>
 </section>
 <%= if @begin_countdown do %>

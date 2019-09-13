@@ -51,3 +51,15 @@
     }
   }
 }
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 2em;
+  align-items: center;
+  grid-gap: 10px;
+
+  P {
+    margin: 0;
+  }
+}
