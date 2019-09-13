@@ -6,11 +6,8 @@
 
 //PADDING
 .u-padded {
-  padding: $pad-sm;
+  padding: $pad;
 
-  @media (min-width: $screen-mobile) {
-    padding: $pad;
-  }
   &--none {
     padding: 0;
   }
@@ -21,19 +18,16 @@
     padding: $pad-sm;
   }
   &--lg {
-    padding: $pad-sm;
-    @media (min-width: $screen-mobile) {
-      padding: $pad;
-    }
+    padding: $pad-lg;
   }
   &--xlg {
-    padding: $pad-sm;
-    @media (min-width: $screen-mobile) {
-      padding: $pad;
-    }
+    padding: $pad-xlg;
   }
   &--no-top {
     padding: 0 $pad $pad;
+  }
+  &--side {
+    padding: 0 $pad;
   }
 }
 

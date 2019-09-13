@@ -1,30 +1,39 @@
-<%= if @view_model.next_waypoint == :at_waypoint do %>
-  <%= render "_waypoint_reached.html", race: @view_model.race, number_waypoints: @view_model.number_waypoints, team_name: @view_model.team_name %>
-<% end %>
-<div class="u-padded--sm">
-  <div class="player">
-    <p class="player__name u-push-bottom--none">
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" class="logo" alt="Geo Racer Logo"/>
-      <%= @view_model.team_name %>
-    </p>
-    <p class="player__time u-push-bottom--none">
-      <%= @view_model.timer %>
-    </p>
+
+<div class="race">
+  <%= if @view_model.next_waypoint == :at_waypoint do %>
+    <%= render "_waypoint_reached.html", race: @view_model.race, number_waypoints: @view_model.number_waypoints, team_name: @view_model.team_name %>
+  <% end %>
+  <div class="race__map">
+    <race-map
+      swLat="<%= @view_model.bounding_box.southwest.lat %>"
+      swLng="<%= @view_model.bounding_box.southwest.lng %>"
+      neLat="<%= @view_model.bounding_box.northeast.lat %>"
+      neLng="<%= @view_model.bounding_box.northeast.lng %>"
+      identifier="<%= @view_model.identifier %>"
+        <%= if @view_model.position do %>
+          latitude="<%= @view_model.position.latitude %>"
+          longitude="<%= @view_model.position.longitude %>"
+        <% end %> >
+    </race-map>
   </div>
-</div>
-<div class="card__map">
-  <race-map
-    swLat="<%= @view_model.bounding_box.southwest.lat %>"
-    swLng="<%= @view_model.bounding_box.southwest.lng %>"
-    neLat="<%= @view_model.bounding_box.northeast.lat %>"
-    neLng="<%= @view_model.bounding_box.northeast.lng %>"
-    identifier="<%= @view_model.identifier %>"
-      <%= if @view_model.position do %>
-        latitude="<%= @view_model.position.latitude %>"
-        longitude="<%= @view_model.position.longitude %>"
-      <% end %> >
-  </race-map>
-</div>
-<div class="meter__wrap">
-  <%= render "_hot_cold_meter.html", hot_cold_level: @view_model.hot_cold_level %>
+  <div class="u-padded--sm">
+    <div class="race__header card">
+      <div class="race__player u-push-bottom--none">
+        <h2><%= @view_model.team_name %></h2>
+      </div>
+      <div class="race__waypoints u-push-bottom--none u-center">
+        <p class="number">5</p>
+        <p class="caption u-push-bottom--none">waypoints</p>
+      </div>
+      <div class="race__time u-push-bottom--none u-center">
+        <p class="number"><%= @view_model.timer %></p>
+        <p class="caption u-push-bottom--none">race time</p>
+      </div>
+    </div>
+  </div>
+  <div class="race__meter">
+    <div class="meter__wrap">
+      <%= render "_hot_cold_meter.html", hot_cold_level: @view_model.hot_cold_level %>
+    </div>
+  </div>
 </div>

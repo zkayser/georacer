@@ -1,21 +1,29 @@
-<header class="header">
-  <div class="header__logo">
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
-  </div>
-  <div class="header__title">
-    <h1>Join A<br /><b>Race</b></h1>
-  </div>
-</header>
-<section class="u-contain u-padded">
 
-  <div class="card card--red u-padded u-push-bottom u-center">
-    <h2 class="u-push-top">Race Code</h2>
-    <p class="number u-push-bottom--none"><%= @race_code %></p>
-    <a id="share-link-btn" data-share-link="<%= Routes.join_race_url(@conn, :show, %{course_id: @course_id, race_code: @race_code}) %>" class="btn">Copy Share Link</a>
+<section class="page u-contain">
+  <div class="page__container section--drop">
+    <header class="page__header">
+      <div class="u-center">
+        <div class="header__logo">
+          <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
+        </div>
+        <div class="header__title">
+          <h1>Join The Race</h1>
+        </div>
+      </div>
+    </header>
+    <div class="u-padded--side">
+      <div class="card u-padded u-push-bottom">
+        <div class="number--background u-center">
+          <p class="caption">Race Code</p>
+          <p class="u-push-bottom--none"><%= @race_code %></p>
+        </div>
+        <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,
+        csrf_token: Phoenix.Controller.get_csrf_token()} ) %>
+      </div>
+      <div class="card__icon--below u-center">
+        <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>"  alt="Location Marker"/>
+        <p>Your race creator will start the race.</p>
+      </div>
+    </div>
   </div>
-  <div class="card u-padded u-push-bottom">
-    <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,
-    csrf_token: Phoenix.Controller.get_csrf_token()} ) %>
-  </div>
-
 </section>
