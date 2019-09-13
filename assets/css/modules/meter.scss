@@ -1,11 +1,4 @@
-.meter {
-  max-width: 30vh;
-  max-height: 30vh;
-  margin: 0 auto;
-  padding: $pad-sm;
-  border-radius: 50%;
-  background-color: $color-7;
-  box-shadow: $shadow;
+.meter, .racer-logo{
 
   &__wrap {
     z-index: 50;
@@ -138,4 +131,14 @@
   0% { fill: $color-4; }
   50% { fill: $color-3; }
   100% { fill: $color-4; }
+}
+
+.meter {
+  max-width: 30vh;
+  max-height: 30vh;
+  margin: 0 auto;
+  padding: $pad-sm;
+  border-radius: 50%;
+  background-color: $color-7;
+  box-shadow: $shadow;
 }
