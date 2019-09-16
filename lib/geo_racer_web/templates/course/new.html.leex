@@ -1,50 +1,54 @@
 <%= if not @has_accepted_terms_and_conditions? do %>
   <%= render "_terms_and_conditions.html" %>
 <% end %>
-<header class="header">
-  <div class="header__logo">
-    <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>" alt="Geo Racer Logo"/>
-  </div>
-  <div class="header__title">
-    <h1>Create New<br /><b>Course</b></h1>
-  </div>
-</header>
-<section class="u-contain u-padded--no-top">
-  <div class="card u-padded">
-    <div>
-      <gr-map
-          <%= if @position do %>
-            latitude="<%= @position.latitude %>"
-            longitude="<%= @position.longitude %>"
+
+<section class="page u-contain">
+  <div class="page__container section--drop">
+    <header class="page__header">
+      <div class="u-center">
+        <div class="header__logo">
+          <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
+        </div>
+        <div class="header__title">
+          <h1 class="u-push-bottom--none">Create Course</h1>
+        </div>
+      </div>
+    </header>
+    <div class="u-padded--side">
+    <div class="card u-padded u-push-bottom">
+      <div class="u-push-bottom--sm">
+        <gr-map
+            <%= if @position do %>
+              latitude="<%= @position.latitude %>"
+              longitude="<%= @position.longitude %>"
+            <% end %>
+            identifier="<%= @identifier %>"
+            height="20vh"
+        </gr-map>
+      </div>
+      <p class="u-push-bottom--sm">Walk to the desired location for each waypoint and select <span class="color--3">"Set Waypoint"</span> for each desired poiint in your race.</p>
+      <a href="#" class="btn u-push-bottom" phx-click="set_waypoint">Set Waypoint</a>
+      <div>
+        <label>Course Waypoints</label>
+        <ul class="list u-push-bottom">
+           <%= for {waypoint, index} <- Enum.zip(@waypoints, 0..length(@waypoints)) do %>
+            <li class="list__grid">
+              <div class="list__lat-long">
+                <div><img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>" alt="Waypoint" /></div>
+                <div class="u-ellipsis"> <span class="u-push-left--xs"><%= waypoint.latitude %>/<%= waypoint.longitude %></span></div>
+              </div>
+              <div class="list__remove-btn" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
+                <i class="material-icons">close</i>
+              </div>
+            </li>
           <% end %>
-          identifier="<%= @identifier %>"
-          height="20vh"
-      </gr-map>
-    </div>
-    <div class="u-padded--lg">
-      <a href="#" class="btn" phx-click="set_waypoint">Set Waypoint</a>
-    </div>
-    <h2 class="u-push-bottom--none u-push-top--sm u-center">Race Details</h2>
-    <div class="u-padded">
-      <label>Set Waypoints</label>
-      <ul class="list u-push-bottom">
-         <%= for {waypoint, index} <- Enum.zip(@waypoints, 0..length(@waypoints)) do %>
-          <li class="list__grid">
-            <div class="list__lat-long">
-              <div><img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/location-marker.svg") %>" alt="Waypoint" /></div>
-              <div class="u-ellipsis"> <span class="u-push-left--xs"><%= waypoint.latitude %>/<%= waypoint.longitude %></span></div>
-            </div>
-            <div class="list__remove-btn" phx-value="<%= index %>" phx-click="delete_waypoint" onclick="">
-              <i class="material-icons">close</i>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-      <label>Race Name</label>
-      <form phx-change="update_race_name">
-            <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
-      </form>
-      <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
+        </ul>
+        <label>Race Name</label>
+        <form phx-change="update_race_name">
+              <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
+        </form>
+        <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
+      </div>
     </div>
   </div>
 </section>

@@ -1,7 +1,45 @@
 .race {
+  position: relative;
+  width: 100vw;
+  height:100vh;
 
   &__number {
-    font-size: 2em;
     font-family: $font-number;
+    font-size: 2em;
+  }
+
+  &__map {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &__header {
+    grid-gap: 5px;
+    display: grid;
+    z-index: 25;
+    position: relative;
+    grid-template-columns: 2.2fr 1fr 1fr;
+    align-items: center;
+    padding: $pad-sm;
+
+    h2 {
+      margin: 0;
+    }
+
+    .number {
+      margin-bottom: 0;
+      color: $color-3;
+      font-size: 1.2em;
+    }
+  }
+
+  &__meter {
+    position: absolute;
+    bottom: $pad;
+    width: 100%;
   }
 }

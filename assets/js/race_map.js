@@ -61,7 +61,7 @@ class RaceMap extends HTMLElement {
     let div = document.createElement('div');
     div.setAttribute('id', 'raceMap');
     div.setAttribute('class', 'map');
-    div.setAttribute('style', `height: ${this.height || '67vh'}; max-width: 80vw; margin: 0 auto; display: flex; align-items: center; justify-content: center; border-radius: 5px; z-index: 25;`);
+    div.setAttribute('style', `height: ${this.height || '100%'}; max-width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: center; z-index: 25;`);
     shadow.innerHTML = '<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css" rel="stylesheet" />'
     shadow.appendChild(div);
   }
@@ -124,8 +124,8 @@ class RaceMap extends HTMLElement {
       let el = document.createElement('div');
       el.className = 'position-marker';
       el.style.backgroundImage = `url(${document.location.protocol}//${window.location.host}/images/location-marker.svg)`;
-      el.style.width = '26px';
-      el.style.height = '40px';
+      el.style.width = '55px';
+      el.style.height = '55px';
       this.icon = el;
       this.positionMarker = new Mapbox.Marker(this.icon).setLngLat([this.longitude, this.latitude])
       this.positionMarker.addTo(this.map);

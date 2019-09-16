@@ -6,7 +6,7 @@
     padding: $pad-sm;
     box-sizing: content-box;
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
       background-color: darken($color-1, 3%);
     }
   }

@@ -1,12 +1,19 @@
-<section class="u-contain u-padded">
+<section class="u-contain">
   <div class="home__container">
-    <div>
-      <h1><img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
-      <img src="<%= Routes.static_path(@conn, "/images/powered-by-gaslight.svg") %>" class="gaslight-logo" alt="powered by Gaslight"/>
+    <div class="section--drop">
+      <div class="u-padded u-center">
+        <h1><img src="<%= Routes.static_path(@conn, "/images/geo-racer-full-logo.svg") %>" class="home__logo" alt="Geo Racer Logo"/></h1>
+        <img src="<%= Routes.static_path(@conn, "/images/powered-by-gaslight.svg") %>" class="gaslight-logo" alt="powered by Gaslight"/>
+      </div>
     </div>
-    <div class="u-center">
-      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn btn--primary">Create Race</a>
-      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn u-push-bottom">Join Race</a>
+    <div class="u-center u-padded">
+      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Join Race</a>
+      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn btn--secondary">Create Course</a>
+      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn btn--secondary">Start Race</a>
+    </div>
+    <div class="icon-grid">
+      <img src="<%= Routes.static_path(@conn, "/images/location-marker.svg") %>" alt="location marker"/>
+      <p><b>Find Way Points<br />Obstruct Your Oppenants<br />Race To The Finish</b></p>
     </div>
   </div>
 </section>
