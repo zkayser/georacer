@@ -143,7 +143,7 @@ defmodule GeoRacer.Races.Race.Impl do
   @spec hot_cold_meter(t(), String.t()) :: HotColdMeter | MeterBomb
   def hot_cold_meter(%__MODULE__{time: seconds} = race, team) do
     race.hazards
-    |> Enum.filter(fn %{affected_team: affected} -> affected end)
+    |> Enum.filter(fn %{affected_team: affected} -> affected == team end)
     |> Enum.filter(fn %{name: name, expiration: expiration} ->
       name == Hazards.name_for(MeterBomb) and expiration >= seconds
     end)

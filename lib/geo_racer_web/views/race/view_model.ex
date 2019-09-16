@@ -144,7 +144,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   end
 
   defp detect_if_waypoint_reached(
-         %__MODULE__{next_waypoint: %Waypoint{} = waypoint} = view_model,
+         %__MODULE__{next_waypoint: %Waypoint{} = waypoint},
          position
        ) do
     view_pid = self()
