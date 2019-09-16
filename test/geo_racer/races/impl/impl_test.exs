@@ -53,4 +53,41 @@ defmodule GeoRacer.Races.Race.ImplTest do
       assert {:error, :invalid_team} = Race.drop_waypoint(race, "non-participating-team")
     end
   end
+
+  describe "hot_cold_meter/2" do
+    test "returns MeterBomb if team is affected by a MeterBomb", %{race: race} do
+      affected_team = List.first(Map.keys(race.team_tracker))
+
+      {:ok, _hazard} =
+        GeoRacer.Factories.HazardFactory.insert(race, %{
+          name: GeoRacer.Hazards.name_for(GeoRacer.Hazards.MeterBomb),
+          expiration: 60
+        })
+
+      race = GeoRacer.Races.get_race!(race.id)
+
+      assert GeoRacer.Hazards.MeterBomb == Race.hot_cold_meter(race, affected_team)
+    end
+
+    test "returns HotColdMeter if team is not affected by any hazards", %{race: race} do
+      team = List.first(Map.keys(race.team_tracker))
+      assert GeoRacer.Races.Race.HotColdMeter == Race.hot_cold_meter(race, team)
+    end
+
+    test "returns HotColdMeter instead of MeterBomb if MeterBomb hazards have been expired", %{
+      race: race
+    } do
+      affected_team = List.first(Map.keys(race.team_tracker))
+
+      {:ok, _hazard} =
+        GeoRacer.Factories.HazardFactory.insert(race, %{
+          name: GeoRacer.Hazards.name_for(GeoRacer.Hazards.MeterBomb),
+          expiration: 60
+        })
+
+      race = GeoRacer.Races.get_race!(race.id)
+      race = %Race{race | time: 61}
+      assert GeoRacer.Races.Race.HotColdMeter == Race.hot_cold_meter(race, affected_team)
+    end
+  end
 end

@@ -20,10 +20,14 @@ defmodule GeoRacerWeb.Router do
     get "/", PageController, :index
     get "/style-guide", StyleGuideController, :show
     get "/join-race", JoinRaceController, :show
-    get "/weapon", WeaponsController, :show
     post "/staging-area", JoinRaceController, :create
     resources "/courses", CourseController
-    get "/races/:id", RaceController, :show
+
+    resources "/races", RaceController, only: [:show] do
+      resources "/hazards", HazardController, only: [:index]
+    end
+
+    get "/races/:race_id/notifications/:hazard/:attacking_team", RaceController, :notifications
     get "/races/:course_id/:race_code", RaceController, :show
     live "/race", RaceLive
   end

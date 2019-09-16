@@ -5,6 +5,7 @@ defmodule GeoRacer.Races do
   import Ecto.Query, warn: false
   alias GeoRacer.Repo
 
+  alias GeoRacer.Hazards
   alias GeoRacer.Races.Race.Impl, as: Race
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
 
@@ -31,7 +32,7 @@ defmodule GeoRacer.Races do
   def get_race!(id) do
     Race
     |> Repo.get!(id)
-    |> Repo.preload(course: [:waypoints])
+    |> Repo.preload([:hazards, course: [:waypoints]])
   end
 
   @doc """
@@ -49,7 +50,17 @@ defmodule GeoRacer.Races do
     course_id
     |> Race.course_and_code_query(code)
     |> Repo.one()
-    |> Repo.preload(course: [:waypoints])
+    |> Repo.preload([:hazards, course: [:waypoints]])
+  end
+
+  @doc """
+  Gets the `Hazards` applied to the `targeted`
+  team for the given race.
+  """
+  @spec get_hazards(Race.t(), [{:for, String.t()}]) :: list(Hazards.Hazard.t())
+  def get_hazards(race, for: targeted) do
+    race.id
+    |> Hazards.by_targeted(targeted)
   end
 
   @doc """
@@ -69,8 +80,11 @@ defmodule GeoRacer.Races do
     |> Race.changeset(attrs)
     |> Repo.insert()
     |> case do
-      {:ok, %Race{} = race} -> {:ok, Repo.preload(race, course: [:waypoints])}
-      error -> error
+      {:ok, %Race{} = race} ->
+        {:ok, Repo.preload(race, [:hazards, course: [:waypoints]])}
+
+      error ->
+        error
     end
   end
 

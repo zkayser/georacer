@@ -6,8 +6,14 @@ defmodule GeoRacer.Races.Race.HotColdMeter do
   """
   alias GeoRacer.Courses.Waypoint
   require Logger
+
   @type coordinates :: %{lat: Float.t(), lng: Float.t()}
   @geo_calc Application.get_env(:geo_racer, :geo_calc_module) || Geocalc
+
+  @doc """
+  Interface for HotColdMeter implementations
+  """
+  @callback level(Waypoint.t(), coordinates, Float.t()) :: non_neg_integer
 
   @doc """
   Determines on a scale of 0-8 how close

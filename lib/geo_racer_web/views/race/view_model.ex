@@ -10,7 +10,6 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   """
   alias GeoRacer.Courses.{Course, Waypoint}
   alias GeoRacer.Races.Race
-  alias Race.HotColdMeter
 
   defstruct position: nil,
             identifier: nil,
@@ -77,6 +76,15 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   end
 
   @doc """
+  Replaces the race property with the `race`
+  passed in.
+  """
+  @spec update_race(t(), GeoRacer.Races.Race.Impl.t()) :: t()
+  def update_race(%__MODULE__{} = view_model, race) do
+    %__MODULE__{view_model | race: race}
+  end
+
+  @doc """
   Sets the next waypoint attribute to the atom,
   `:at_waypoint`. This represents a special state
   in that we can forego updating the position attributes
@@ -127,15 +135,18 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
       do: view_model
 
   def maybe_update_position(
-        %__MODULE__{next_waypoint: %Waypoint{} = waypoint, race: race} = view_model,
+        %__MODULE__{} = view_model,
         position
       ) do
     detect_if_waypoint_reached(view_model, position)
-    update_hot_cold_meter(waypoint, position, race.course)
+    update_hot_cold_meter(view_model, position)
     %__MODULE__{view_model | position: position}
   end
 
-  defp detect_if_waypoint_reached(%__MODULE__{next_waypoint: %Waypoint{} = waypoint}, position) do
+  defp detect_if_waypoint_reached(
+         %__MODULE__{next_waypoint: %Waypoint{} = waypoint},
+         position
+       ) do
     view_pid = self()
 
     Task.start(fn ->
@@ -145,17 +156,24 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
     end)
   end
 
-  defp update_hot_cold_meter(waypoint, position, course) do
+  defp update_hot_cold_meter(
+         %__MODULE__{
+           next_waypoint: %Waypoint{} = waypoint,
+           team_name: current_team,
+           race: race
+         },
+         position
+       ) do
     view_pid = self()
 
     Task.start(fn ->
       send(
         view_pid,
         {:set_hot_cold_level,
-         HotColdMeter.level(
+         Race.hot_cold_meter(race, for: current_team).level(
            waypoint,
            position,
-           Course.boundary_for(course)
+           Course.boundary_for(race.course)
          )}
       )
     end)

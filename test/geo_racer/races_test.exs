@@ -98,5 +98,13 @@ defmodule GeoRacer.RacesTest do
       assert %Race{} = actual = Races.by_course_id_and_code(course.id, race.code)
       assert race == actual
     end
+
+    test "get_hazards/2 returns the hazards for the targeted team" do
+      {:ok, race} = GeoRacer.Factories.RaceFactory.insert()
+      {:ok, %GeoRacer.Hazards.Hazard{} = hazard} = GeoRacer.Factories.HazardFactory.insert(race)
+
+      hazards = Races.get_hazards(race, for: hazard.affected_team)
+      assert hazard == List.first(hazards)
+    end
   end
 end
