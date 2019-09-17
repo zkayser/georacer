@@ -4,6 +4,14 @@
 # If you run "mix test --cover", coverage assets end up here.
 /cover/
 
+# Ignore run and remote shell scripts
+/rel/run.sh
+/rel/remote_shell.sh
+
+# K8s secrets and issuers
+/k8s/secrets/
+/k8s/issuers/
+
 # Tooling
 /.elixir_ls
 /.DS_Store

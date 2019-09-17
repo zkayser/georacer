@@ -4,7 +4,7 @@ defmodule GeoRacerWeb.RaceController do
   alias GeoRacerWeb.Plugs.FetchTeamName
   alias Phoenix.LiveView
 
-  @id_generator Application.get_env(:geo_racer, :id_generator)
+  @id_generator Application.get_env(:geo_racer, :id_generator) || (&UUID.uuid4/0)
 
   plug FetchTeamName when action in [:show]
 

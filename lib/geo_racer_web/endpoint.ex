@@ -2,10 +2,26 @@ defmodule GeoRacerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :geo_racer
 
   socket "/socket", GeoRacerWeb.UserSocket,
-    websocket: [timeout: 45_000],
+    websocket: [
+      timeout: 45_000,
+      check_origin: [
+        "//georacer.io",
+        "//www.georacer.io",
+        "//localhost"
+      ]
+    ],
     longpoll: false
 
-  socket "/live", Phoenix.LiveView.Socket
+  socket "/live", Phoenix.LiveView.Socket,
+    websocket: [
+      timeout: 45_000,
+      check_origin: [
+        "//georacer.io",
+        "//www.georacer.io",
+        "//localhost"
+      ]
+    ],
+    longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
   #

@@ -20,7 +20,7 @@ defmodule GeoRacer.MixProject do
   def application do
     [
       mod: {GeoRacer.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :peerage]
     ]
   end
 
@@ -40,6 +40,7 @@ defmodule GeoRacer.MixProject do
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev], runtime: false},
       {:ecto_sql, "~> 3.1"},
+      {:peerage, "~> 1.0.2"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

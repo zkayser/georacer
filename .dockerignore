@@ -1,0 +1,16 @@
+_build/
+.elixir_ls/
+.git/
+.vscode/
+deps/
+priv/static/
+k8s/
+test/
+.dockerignore
+.env
+.tool-versions
+.formatter.exs
+.gitignore
+.gitlab-ci.yml
+Dockerfile
+README.md
