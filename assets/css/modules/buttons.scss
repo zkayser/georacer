@@ -18,7 +18,8 @@ a {
   margin: 0 auto $pad-sm;
   padding: $pad-sm $pad-sm;
   border-radius: 75px;
-  background: $gradient-1;
+  background:  linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.9) 45%,rgba($color-5,1) 85% );
+  background-size: 400% 400%;
   color: $color-1;
   font-family: $font-primary;
   font-weight: 200;
@@ -27,6 +28,7 @@ a {
   text-align: center;
   text-decoration: none;
   transition: all 0.4s ease;
+  animation: btnGradient 25s ease infinite;
 
   &:hover {
     background: $color-4;
@@ -49,7 +51,7 @@ a {
 }
 
 @keyframes btnGradient {
-  0% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%); }
-  50% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 35%); }
-  100% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%); }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
