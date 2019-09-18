@@ -18,7 +18,7 @@ a {
   margin: 0 auto $pad-sm;
   padding: $pad-sm $pad-sm;
   border-radius: 75px;
-  background-color: $color-2;
+  background: $gradient-1;
   color: $color-1;
   font-family: $font-primary;
   font-weight: 200;
@@ -29,22 +29,27 @@ a {
   transition: all 0.4s ease;
 
   &:hover {
-    background-color: $color-4;
+    background: $color-4;
     color: $color-1;
     cursor: pointer;
     transition: all 0.4s ease;
   }
 
   &--secondary {
-    background-color: $color-1;
-    border: solid 3px $color-2;
-    color: $color-2;
+    background: $color-2;
     display: inline-block;
     padding: $pad-xs $pad;
     font-size: 0.7em;
     transition: all 0.4s ease;
+    color: $color-1;
     &:hover {
       background-color: $color-2;
     }
   }
+}
+
+@keyframes btnGradient {
+  0% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%); }
+  50% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 35%); }
+  100% { background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%); }
 }

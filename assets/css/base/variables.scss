@@ -33,8 +33,9 @@ $color-4: #f87b7b;
 $color-5: lighten($color-2, 20%);
 $color-6: lighten($color-2, 45%);
 $color-7: #f9f9f9;
+$color-8: lighten($color-2, 8%);
 
-$gradient-1: linear-gradient(140deg, rgba($color-2,1) 0%, rgba($color-3,1) 75%, rgba($color-3,1) 85%);
+$gradient-1: linear-gradient(140deg, rgba($color-2,1) 0%, rgba($color-8,1) 75%);
 $gradient-2: linear-gradient(113deg, rgba($color-4,1) 0%, rgba($color-3,1) 75%);
 $gradient-3: linear-gradient(113deg, rgba($color-6,1) 0%, rgba($color-5,1) 75%);
 $gradient-4: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.8) 75%);
