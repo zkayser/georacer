@@ -45,6 +45,10 @@
     }
   }
 
+  &--icon {
+    overflow: visible;
+  }
+
   form {
     padding: 0 $pad-sm;
   }

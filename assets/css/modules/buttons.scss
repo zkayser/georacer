@@ -16,9 +16,9 @@ a {
 .btn {
   display: block;
   margin: 0 auto $pad-sm;
-  padding: $pad-sm $pad-sm;
+  padding: calc(2rem/1.5) $pad-sm;
   border-radius: 75px;
-  background:  linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.9) 45%,rgba($color-5,1) 85% );
+  background: linear-gradient(113deg, rgba($color-5,1) 0%, rgba($color-2,0.9) 45%,rgba($color-5,1) 85% );
   background-size: 400% 400%;
   color: $color-1;
   font-family: $font-primary;
@@ -40,12 +40,21 @@ a {
   &--secondary {
     background: $color-2;
     display: inline-block;
-    padding: $pad-xs $pad;
+    padding: calc(2rem/1.5) $pad;
     font-size: 0.7em;
     transition: all 0.4s ease;
     color: $color-1;
     &:hover {
-      background-color: $color-2;
+      background: $color-2;
+    }
+  }
+
+  &--red {
+    @extend .btn;
+    background: linear-gradient(113deg, rgba($color-4,1) 0%, rgba($color-3,1) 35%, rgba($color-3,1) 65%,rgba($color-4,1) 85% );
+
+    &:hover {
+      background: $color-4;
     }
   }
 }
