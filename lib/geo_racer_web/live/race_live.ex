@@ -13,7 +13,8 @@ defmodule GeoRacerWeb.RaceLive do
     :set_next_waypoint,
     :waypoint_reached,
     :refresh_race,
-    :set_hot_cold_level
+    :set_hot_cold_level,
+    :set_hot_cold_meter
   ]
 
   @spec render([{any, any}] | map) :: any

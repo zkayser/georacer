@@ -9,6 +9,9 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   information.
   """
   alias GeoRacer.Courses.{Course, Waypoint}
+  alias GeoRacer.Hazards
+  alias GeoRacer.Hazards.MeterBomb
+  alias GeoRacer.Races.Race.HotColdMeter
   alias GeoRacer.Races.Race
 
   defstruct position: nil,
@@ -17,7 +20,9 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
             race: nil,
             next_waypoint: nil,
             number_waypoints: 0,
+            hazards: MapSet.new(),
             hot_cold_level: 0,
+            hot_cold_meter: HotColdMeter,
             has_reached_waypoint?: false,
             bounding_box: nil,
             timer: "00:00"
@@ -31,7 +36,9 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
           race: GeoRacer.Races.Race.Impl.t(),
           next_waypoint: Waypoint.t() | :at_waypoint | :finished | nil,
           number_waypoints: non_neg_integer(),
+          hazards: MapSet.t(Hazards.hazard()),
           hot_cold_level: non_neg_integer(),
+          hot_cold_meter: HotColdMeter | MeterBomb,
           bounding_box: %{southwest: coordinates, northeast: coordinates},
           timer: String.t()
         }
@@ -108,6 +115,15 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   end
 
   @doc """
+  Sets the hot cold meter implementation.
+  """
+  @spec set_hot_cold_meter(t(), HotColdMeter | MeterBomb) :: t()
+  def set_hot_cold_meter(%__MODULE__{} = view_model, meter)
+      when meter in [HotColdMeter, MeterBomb] do
+    %__MODULE__{view_model | hot_cold_meter: meter}
+  end
+
+  @doc """
   Sets the timer to the specified time.
   """
   @spec set_timer(t(), String.t()) :: t()
@@ -165,17 +181,20 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
          position
        ) do
     view_pid = self()
+    hot_cold_meter = Race.hot_cold_meter(race, for: current_team)
 
     Task.start(fn ->
       send(
         view_pid,
         {:set_hot_cold_level,
-         Race.hot_cold_meter(race, for: current_team).level(
+         hot_cold_meter.level(
            waypoint,
            position,
            Course.boundary_for(race.course)
          )}
       )
+
+      send(view_pid, {:set_hot_cold_meter, hot_cold_meter})
     end)
   end
 end
