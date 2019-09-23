@@ -4,17 +4,27 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
-    <title>GeoRacer · Phoenix Framework</title>
+
+    <title>GeoRacer</title>
+
+    <link rel="icon" href="/favicon.ico?v=1.1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#064763">
+    <meta name="msapplication-TileColor" content="#f87b7b">
+    <meta name="theme-color" content="#f87b7b">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+          rel="stylesheet">
 
   </head>
   <body>
 
-      <p class="alert alert--info alert--hide" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert--danger alert--hide" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
+    <p class="alert alert--info alert--hide" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert--danger alert--hide" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= render @view_module, @view_template, assigns %>
 
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
