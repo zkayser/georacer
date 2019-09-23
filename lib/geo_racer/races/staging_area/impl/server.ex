@@ -5,7 +5,10 @@ defmodule GeoRacer.Races.StagingArea.Server do
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
   use GenServer
 
+  # One day in milliseconds
+  @one_day 86_400_000
   def init(identifier) do
+    Process.send_after(self(), :close, @one_day)
     {:ok, StagingArea.from_identifier(identifier)}
   end
 
@@ -33,5 +36,9 @@ defmodule GeoRacer.Races.StagingArea.Server do
 
   def handle_call(:get_state, _from, state) do
     {:reply, state, state}
+  end
+
+  def handle_info(:close, state) do
+    {:stop, :normal, state}
   end
 end

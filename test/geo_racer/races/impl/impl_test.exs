@@ -1,6 +1,7 @@
 defmodule GeoRacer.Races.Race.ImplTest do
   use GeoRacer.DataCase
   alias GeoRacer.Races.Race.Impl, as: Race
+  alias GeoRacer.Races.StagingArea.Supervisor
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
 
   setup do
@@ -20,6 +21,19 @@ defmodule GeoRacer.Races.Race.ImplTest do
       assert race.status == "started"
 
       assert Enum.all?(staging_area.teams, fn team -> team in Map.keys(race.team_tracker) end)
+    end
+
+    test "spins down the staging area process", %{course: course} do
+      {:ok, identifier} =
+        Supervisor.create_staging_area("#{course.id}:#{GeoRacer.Races.generate_code()}")
+
+      staging_area = GeoRacer.Races.StagingArea.state(identifier)
+      pid = Supervisor.get_pid(identifier)
+      assert Process.alive?(pid)
+
+      {:ok, %Race{}} = Race.from_staging_area(staging_area)
+
+      refute Process.alive?(pid)
     end
   end
 
