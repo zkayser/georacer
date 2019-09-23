@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: geo-racer
+spec:
+  clusterIP: None
+  selector:
+    app: geo-racer
+  ports:
+  - name: http
+    port: 4000
+  - name: epmd
+    port: 4369
+  - name: https
+    port: 443
+    targetPort: 4000

@@ -10,9 +10,17 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :geo_racer, GeoRacerWeb.Endpoint,
-  url: [scheme: "https", host: "geo-racer.herokuapp", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  server: true
+
+# force_ssl: [rewrite_on: [:x_forwarded_proto]],
+
+# Uncomment below to run mix db tasks directly
+# against the prod database with `MIX_ENV=prod`.
+# Ask someone with access to the prod DB if you
+# need a special task run on the database in prod.
+# db_url = System.fetch_env!("DB_URL")
+# config :geo_racer, GeoRacer.Repo, url: db_url
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -50,7 +58,3 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"
