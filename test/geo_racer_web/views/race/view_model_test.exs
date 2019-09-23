@@ -2,7 +2,8 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
   use GeoRacer.DataCase
   alias GeoRacer.StringGenerator
   alias GeoRacer.Courses.Waypoint
-  alias GeoRacer.Races.Race.Supervisor
+  alias GeoRacer.Hazards.MeterBomb
+  alias GeoRacer.Races.Race.{Supervisor, HotColdMeter}
   alias GeoRacerWeb.RaceView.ViewModel
 
   setup do
@@ -170,6 +171,17 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
       view_model = ViewModel.from_session(session)
 
       assert 3 = ViewModel.set_hot_cold_level(view_model, 3).hot_cold_level
+    end
+  end
+
+  describe "set_hot_cold_meter/2" do
+    test "updates the hot_cold_meter with the given HotColdMeter implementation", %{
+      session: session
+    } do
+      view_model = ViewModel.from_session(session)
+
+      assert MeterBomb == ViewModel.set_hot_cold_meter(view_model, MeterBomb).hot_cold_meter
+      assert HotColdMeter == ViewModel.set_hot_cold_meter(view_model, HotColdMeter).hot_cold_meter
     end
   end
 

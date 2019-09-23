@@ -53,6 +53,11 @@
     background-color: $color-2;
   }
 
+  &__glass {
+    fill: lighten($color-2, 50%);
+    opacity: 0.6;
+  }
+
   .light--1 {
     fill: $color-6;
     animation-duration: 0.8s;

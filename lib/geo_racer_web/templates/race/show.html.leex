@@ -3,7 +3,8 @@
   <%= if @view_model.next_waypoint == :at_waypoint do %>
     <%= render "_waypoint_reached.html", race: @view_model.race, number_waypoints: @view_model.number_waypoints, team_name: @view_model.team_name %>
   <% end %>
-  <div class="race__map">
+  <% map_spin = if GeoRacer.Hazards.MapBomb in @view_model.hazards, do: "map--spin", else: "" %>
+  <div class="race__map <%= map_spin %>">
     <race-map
       swLat="<%= @view_model.bounding_box.southwest.lat %>"
       swLng="<%= @view_model.bounding_box.southwest.lng %>"
@@ -33,7 +34,7 @@
   </div>
   <div class="race__meter">
     <div class="meter__wrap">
-      <%= render "_hot_cold_meter.html", hot_cold_level: @view_model.hot_cold_level %>
+      <%= render "_hot_cold_meter.html", hot_cold_level: @view_model.hot_cold_level, hot_cold_meter: @view_model.hot_cold_meter %>
     </div>
   </div>
 </div>

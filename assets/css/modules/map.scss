@@ -5,4 +5,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &--spin {
+    filter: blur(2px);
+    transform: scale(0) rotate(0deg);
+    animation: spinningMap 0.5s cubic-bezier(0, 1.44, 0.55, -0.32)  infinite;
+  }
+
+}
+
+//ANIMATIONS
+@keyframes spinningMap {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(5) rotate(0deg); }
+  50% { transform: scale(10) rotate(360deg); }
+  75% { transform: scale(5) rotate(0deg); }
+  100% { transform: scale(1) rotate(0deg);  }
 }
