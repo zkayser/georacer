@@ -22,7 +22,7 @@ defmodule GeoRacer.Races.Race do
   end
 
   @doc """
-  Stops the `StagingArea` GenServer process with the
+  Stops the `Race` GenServer process with the
   given identifier.
   """
   @spec stop(String.t()) :: :ok

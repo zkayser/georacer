@@ -56,4 +56,25 @@ defmodule GeoRacer.Races.RaceTest do
       assert hazard.name == "MeterBomb"
     end
   end
+
+  describe "stop_race/1" do
+    test "saves the race state when the server process is terminated", %{race: race} do
+      affected_team = List.first(Map.keys(race.team_tracker))
+      attacking_team = Enum.at(Map.keys(race.team_tracker), 1)
+
+      Race.put_hazard(race,
+        type: "MeterBomb",
+        on: affected_team,
+        by: attacking_team
+      )
+
+      Race.stop("race:#{race.id}")
+
+      Process.sleep(50)
+
+      new_race = GeoRacer.Races.get_race!(race.id)
+
+      refute race == new_race
+    end
+  end
 end

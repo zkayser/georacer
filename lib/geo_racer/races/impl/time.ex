@@ -7,6 +7,7 @@ defmodule GeoRacer.Races.Race.Time do
 
   @minute 60
   @hour 60 * 60
+  @day 60 * 60 * 24
 
   @doc """
   Broadcasts a "tick" event to subscribers on
@@ -26,6 +27,12 @@ defmodule GeoRacer.Races.Race.Time do
 
     update
   end
+
+  @doc """
+  Returns one day in seconds.
+  """
+  @spec one_day() :: integer()
+  def one_day, do: @day
 
   @doc """
   Takes in number of seconds and returns a string

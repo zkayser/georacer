@@ -11,11 +11,14 @@ defmodule GeoRacer.Races.Race.Impl do
   import Ecto.Changeset
   import Ecto.Query
 
+  @one_day 60 * 60 * 24
+
   schema "races" do
     field :code, :string
     field :team_tracker, :map
     field :status, :string
-    field :time, :integer, virtual: true, default: 0
+    field :time, :integer, default: 0
+    field :becomes_idle_at, :integer, virtual: true, default: @one_day
 
     has_many :hazards, GeoRacer.Hazards.Hazard,
       on_delete: :delete_all,
@@ -36,6 +39,7 @@ defmodule GeoRacer.Races.Race.Impl do
           code: String.t(),
           course: Course.t(),
           time: String.t(),
+          becomes_idle_at: integer(),
           hazards: map(),
           team_tracker: team_tracker,
           status: status
