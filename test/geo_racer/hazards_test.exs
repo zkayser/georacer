@@ -71,26 +71,79 @@ defmodule GeoRacer.HazardsTest do
     end
 
     test "all/0 returns a list of all the hazards available" do
-      assert Hazards.all() == [Hazards.MeterBomb]
+      assert Hazards.all() == [Hazards.MeterBomb, Hazards.WaypointBomb]
     end
 
     test "name_for/1 returns the string name representing the hazard" do
       assert "MeterBomb" == Hazards.name_for(Hazards.MeterBomb)
+      assert "WaypointBomb" == Hazards.name_for(Hazards.WaypointBomb)
     end
 
     test "from_string/1 returns an ok tuple with a hazard derived from the given string" do
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("MeterBomb")
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("Meter Bomb")
+      assert {:ok, Hazards.WaypointBomb} = Hazards.from_string("WaypointBomb")
+      assert {:ok, Hazards.WaypointBomb} = Hazards.from_string("Waypoint Bomb")
     end
 
     test "from_string/1 returns an error tuple when given an invalid hazard string" do
       assert {:error, :invalid_hazard} = Hazards.from_string("This is not even a real hazard.")
+    end
+
+    test "apply_hazard/2 returns a new race with affected teams waypoints shuffled if hazard is a waypoint bomb", %{
+      race: race
+    } do
+      old_waypoint_list = race.team_tracker[affected_team(race)]
+      new_race = Hazards.apply_hazard(waypoint_bomb_fixture(race), race)
+      refute old_waypoint_list == new_race.team_tracker[affected_team(race)]
+    end
+
+    test "apply_hazard/2 returns the same race if hazard is not a waypoint bomb", %{
+      race: race
+    } do
+      old_waypoint_list = race.team_tracker[affected_team(race)]
+      new_race = Hazards.apply_hazard(meter_bomb_fixture(race), race)
+      assert old_waypoint_list == new_race.team_tracker[affected_team(race)]
     end
   end
 
   defp hazard_fixture(race) do
     attrs = %{
       name: random_hazard(),
+      attacking_team: attacking_team(race),
+      affected_team: affected_team(race),
+      expiration: 60,
+      race_id: race.id
+    }
+
+    {:ok, hazard} =
+      %Hazard{}
+      |> Hazard.changeset(attrs)
+      |> Repo.insert()
+
+    hazard
+  end
+
+  defp waypoint_bomb_fixture(race) do
+    attrs = %{
+      name: "WaypointBomb",
+      attacking_team: attacking_team(race),
+      affected_team: affected_team(race),
+      expiration: 0,
+      race_id: race.id
+    }
+
+    {:ok, hazard} =
+      %Hazard{}
+      |> Hazard.changeset(attrs)
+      |> Repo.insert()
+
+    hazard
+  end
+
+  defp meter_bomb_fixture(race) do
+    attrs = %{
+      name: "MeterBomb",
       attacking_team: attacking_team(race),
       affected_team: affected_team(race),
       expiration: 60,

@@ -45,6 +45,7 @@ defmodule GeoRacer.Races.Race.Server do
       |> Hazards.create_hazard()
 
     new_state = GeoRacer.Races.get_race!(state.id)
+    new_state = Hazards.apply_hazard(hazard, new_state)
     new_state = %Impl{new_state | time: state.time}
 
     GeoRacer.Races.Race.broadcast_update(%{

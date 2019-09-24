@@ -152,4 +152,16 @@ defmodule GeoRacer.Races.Race.Impl do
       _ -> MeterBomb
     end
   end
+
+  @spec shuffle_waypoints(t(), String.t()) :: t()
+  def shuffle_waypoints(%__MODULE__{course: course, team_tracker: team_tracker} = race, affected_team) do
+    new_team_tracker = %{
+      team_tracker
+      | affected_team =>
+          team_tracker[affected_team]
+          |> Enum.reverse()
+    }
+
+    GeoRacer.Races.update_race(race, %{team_tracker: new_team_tracker})
+  end
 end
