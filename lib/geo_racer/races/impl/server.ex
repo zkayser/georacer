@@ -12,9 +12,9 @@ defmodule GeoRacer.Races.Race.Server do
     {:ok, race}
   end
 
-  def handle_info(:begin_clock, state) do
+  def handle_info(:begin_clock, %Impl{} = race) do
     :timer.send_interval(1000, :tick)
-    {:noreply, state}
+    {:noreply, %Impl{race | becomes_idle_at: race.time + Time.one_day()}}
   end
 
   def handle_info(:tick, %{time: seconds} = state) do
@@ -22,7 +22,15 @@ defmodule GeoRacer.Races.Race.Server do
       seconds
       |> Time.update(state.id)
 
+    if new_time > state.becomes_idle_at do
+      send(self(), :close)
+    end
+
     {:noreply, %Impl{state | time: new_time}}
+  end
+
+  def handle_info(:close, state) do
+    {:stop, :normal, state}
   end
 
   def handle_call({:next_waypoint, team_name}, _from, state) do
@@ -35,7 +43,7 @@ defmodule GeoRacer.Races.Race.Server do
 
   def handle_cast({:drop_waypoint, team_name}, state) do
     {:ok, race} = Impl.drop_waypoint(state, team_name)
-    {:noreply, race}
+    {:noreply, %Impl{race | becomes_idle_at: race.time + Time.one_day()}}
   end
 
   def handle_cast({:put_hazard, attrs}, state) do
@@ -45,7 +53,7 @@ defmodule GeoRacer.Races.Race.Server do
       |> Hazards.create_hazard()
 
     new_state = GeoRacer.Races.get_race!(state.id)
-    new_state = %Impl{new_state | time: state.time}
+    new_state = %Impl{new_state | time: state.time, becomes_idle_at: state.time + Time.one_day()}
 
     GeoRacer.Races.Race.broadcast_update(%{
       "update" => new_state,
@@ -56,6 +64,16 @@ defmodule GeoRacer.Races.Race.Server do
       }
     })
 
+    save(new_state)
     {:noreply, new_state}
+  end
+
+  def terminate(_reason, %Impl{} = race) do
+    save(race)
+    :ok
+  end
+
+  defp save(%Impl{} = race) do
+    Task.start(fn -> GeoRacer.Races.update_race(race, %{}) end)
   end
 end

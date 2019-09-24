@@ -24,6 +24,8 @@ defmodule GeoRacer.Application do
     # for other strategies and supported options
     :ets.new(:boundary_cache, [:set, :public, :named_table])
     opts = [strategy: :one_for_one, name: GeoRacer.Supervisor]
+    # Ensure migrations have been run
+    GeoRacer.Release.migrate()
     Supervisor.start_link(children, opts)
   end
 
