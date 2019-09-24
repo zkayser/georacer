@@ -69,6 +69,8 @@ defmodule GeoRacer.Races.Race.Impl do
         course_id: course.id
       }
 
+      GeoRacer.Races.StagingArea.stop("#{course_id}:#{race_code}")
+
       GeoRacer.Races.create_race(race_attrs)
     else
       _ -> {:error, :invalid}
