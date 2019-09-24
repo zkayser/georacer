@@ -20,6 +20,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
             race: nil,
             next_waypoint: nil,
             number_waypoints: 0,
+            waypoints_reached: 0,
             hazards: MapSet.new(),
             hot_cold_level: 0,
             hot_cold_meter: HotColdMeter,
@@ -36,6 +37,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
           race: GeoRacer.Races.Race.Impl.t(),
           next_waypoint: Waypoint.t() | :at_waypoint | :finished | nil,
           number_waypoints: non_neg_integer(),
+          waypoints_reached: non_neg_integer(),
           hazards: MapSet.t(Hazards.hazard()),
           hot_cold_level: non_neg_integer(),
           hot_cold_meter: HotColdMeter | MeterBomb,
@@ -56,6 +58,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
       team_name: team_name,
       race: race,
       number_waypoints: length(race.course.waypoints),
+      waypoints_reached: length(race.course.waypoints) - length(race.team_tracker[team_name]),
       bounding_box: Course.bounding_box(race.course)
     }
   end
@@ -102,7 +105,14 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   def waypoint_reached(%__MODULE__{} = view_model) do
     Race.drop_waypoint(view_model.race, view_model.team_name)
     send(self(), :refresh_race)
-    %__MODULE__{view_model | next_waypoint: :at_waypoint}
+
+    %__MODULE__{
+      view_model
+      | next_waypoint: :at_waypoint,
+        waypoints_reached:
+          view_model.number_waypoints -
+            (length(view_model.race.team_tracker[view_model.team_name]) - 1)
+    }
   end
 
   @doc """

@@ -32,7 +32,7 @@ defmodule GeoRacer.Races do
   def get_race!(id) do
     Race
     |> Repo.get!(id)
-    |> Repo.preload([:hazards, course: [:waypoints]])
+    |> Repo.preload([:hazards, :results, course: [:waypoints]])
   end
 
   @doc """
@@ -50,7 +50,7 @@ defmodule GeoRacer.Races do
     course_id
     |> Race.course_and_code_query(code)
     |> Repo.one()
-    |> Repo.preload([:hazards, course: [:waypoints]])
+    |> Repo.preload([:hazards, :results, course: [:waypoints]])
   end
 
   @doc """
@@ -81,7 +81,7 @@ defmodule GeoRacer.Races do
     |> Repo.insert()
     |> case do
       {:ok, %Race{} = race} ->
-        {:ok, Repo.preload(race, [:hazards, course: [:waypoints]])}
+        {:ok, Repo.preload(race, [:hazards, :results, course: [:waypoints]])}
 
       error ->
         error

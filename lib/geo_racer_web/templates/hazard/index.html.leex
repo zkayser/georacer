@@ -17,7 +17,9 @@
 
         <h2 class="u-push-top--sm u-push-bottom--xs"><%= @hazard.display_name %></h2>
         <p><%= @hazard.description %></p>
-
+        <%= if :team_not_selected in @errors do %>
+          <p class="color--3">Select a team to attack</p>
+        <% end %>
         <%= for team <- @teams do %>
           <div class="form__option<%= is_selected?(team, @selected_team) %>" phx-click="select_team" phx-value-selected="<%= team %>"><%= team %></div>
         <% end %>

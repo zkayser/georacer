@@ -33,6 +33,24 @@ defmodule GeoRacer.Races.Race.Server do
     {:stop, :normal, state}
   end
 
+  def handle_info({:record_finished, team}, state) do
+    case Impl.record_finished(state, team) do
+      {:ok, updated} ->
+        GeoRacer.Races.Race.broadcast_update(%{"update" => updated})
+        {:noreply, updated}
+
+      _ ->
+        {:noreply, state}
+    end
+  end
+
+  def handle_info({:check_for_race_completed, race}, state) do
+    case Impl.is_race_completed?(race) do
+      true -> {:stop, :normal, state}
+      false -> {:noreply, state}
+    end
+  end
+
   def handle_call({:next_waypoint, team_name}, _from, state) do
     {:reply, Impl.next_waypoint(state, team_name), state}
   end
@@ -43,6 +61,7 @@ defmodule GeoRacer.Races.Race.Server do
 
   def handle_cast({:drop_waypoint, team_name}, state) do
     {:ok, race} = Impl.drop_waypoint(state, team_name)
+    send(self(), {:check_for_race_completed, race})
     {:noreply, %Impl{race | becomes_idle_at: race.time + Time.one_day()}}
   end
 
@@ -64,16 +83,18 @@ defmodule GeoRacer.Races.Race.Server do
       }
     })
 
-    save(new_state)
+    save_time(new_state)
     {:noreply, new_state}
   end
 
   def terminate(_reason, %Impl{} = race) do
-    save(race)
+    save_time(race)
     :ok
   end
 
-  defp save(%Impl{} = race) do
-    Task.start(fn -> GeoRacer.Races.update_race(race, %{}) end)
+  defp save_time(%Impl{} = race) do
+    Task.start(fn ->
+      GeoRacer.Races.update_race(GeoRacer.Races.get_race!(race.id), %{time: race.time})
+    end)
   end
 end

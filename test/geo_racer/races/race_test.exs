@@ -77,4 +77,25 @@ defmodule GeoRacer.Races.RaceTest do
       refute race == new_race
     end
   end
+
+  describe "drop_waypoint/2" do
+    test "shuts down the server process when the final waypoint is reached", %{race: race} do
+      [team_1, team_2] = Map.keys(race.team_tracker)
+      number_waypoints = length(race.course.waypoints)
+      pid = Race.Supervisor.get_pid(race.id)
+      assert Process.alive?(pid)
+
+      for _ <- 1..number_waypoints do
+        Race.drop_waypoint(race, team_1)
+      end
+
+      for _ <- 1..number_waypoints do
+        Race.drop_waypoint(race, team_2)
+      end
+
+      Process.sleep(50)
+
+      assert {:error, :not_started} = Race.Supervisor.get_pid(race.id)
+    end
+  end
 end

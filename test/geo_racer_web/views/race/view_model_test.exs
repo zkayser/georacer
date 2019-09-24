@@ -23,6 +23,11 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
     test "takes a session map and creates a new view model", %{race: race, session: session} do
       assert %ViewModel{race: ^race} = ViewModel.from_session(session)
     end
+
+    test "calculates the number of waypoints reached by team", %{session: session} do
+      view_model = ViewModel.from_session(session)
+      assert view_model.waypoints_reached == 0
+    end
   end
 
   describe "set_next_waypoint/1" do
@@ -61,6 +66,17 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
 
       refute view_model.next_waypoint ==
                GeoRacer.Races.Race.next_waypoint(view_model.race, team_name(view_model.race))
+    end
+
+    test "updates the waypoints_reached attribute", %{session: session} do
+      view_model =
+        session
+        |> ViewModel.from_session()
+        |> ViewModel.set_next_waypoint()
+
+      updated_view_model = ViewModel.waypoint_reached(view_model)
+
+      assert updated_view_model.waypoints_reached == view_model.waypoints_reached + 1
     end
 
     test "sends a :refresh_race_state message", %{session: session} do
