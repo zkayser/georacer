@@ -1,6 +1,6 @@
 
-<section class="page u-contain">
-  <div class="page__container section--drop">
+<section class="page">
+  <div class="page__container">
     <header class="page__header">
       <div class="u-center">
         <div class="header__logo">

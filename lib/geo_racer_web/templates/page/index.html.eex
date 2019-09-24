@@ -1,7 +1,7 @@
-<section class="u-contain">
+<section class="home">
   <div class="home__container">
-    <div class="section--drop">
-      <div class="u-padded u-center">
+    <div class="home__header section--drop">
+      <div class="home__header u-padded u-center">
         <svg viewBox="0 0 695 535" class="racer-logo">
           <style>
             .st0{fill:#064763}.st1{fill:#0c6fa8}.st2{fill:#41b1f2}.st3{fill:#ff2b52}.st4{fill:#f87b7b}.st5{fill:url(#XMLID_2_)}.st6{opacity:.97}.st7{fill:#f7f6f2}
@@ -48,11 +48,11 @@
         <img src="<%= Routes.static_path(@conn, "/images/powered-by-gaslight.svg") %>" class="gaslight-logo" alt="powered by Gaslight"/>
       </div>
     </div>
-    <div class="u-center u-padded">
+    <div class="home__cta u-center u-padded">
       <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Start A Race</a>
       <a href="<%= Routes.course_path(@conn, :new) %>" class="btn--secondary">Create Course</a>
     </div>
-    <div class="icon-grid">
+    <div class="home__content icon-grid">
       <img src="<%= Routes.static_path(@conn, "/images/location-marker.svg") %>" alt="location marker"/>
       <p><b>Find Way Points<br />Obstruct Your Opponents<br />Race To The Finish</b></p>
     </div>
