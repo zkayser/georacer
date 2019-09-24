@@ -38,14 +38,10 @@ a {
   }
 
   &--secondary {
+    @extend .btn;
     background: $color-8;
-    display: inline-block;
-    padding: calc(2rem/1.5) $pad;
-    font-size: 0.7em;
-    transition: all 0.4s ease;
-    color: $color-1;
     &:hover {
-      background: $color-2;
+      background: $color-4;
     }
   }
 

@@ -49,9 +49,8 @@
       </div>
     </div>
     <div class="u-center u-padded">
-      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Join Race</a>
-      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn btn--secondary">Create Course</a>
-      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn btn--secondary">Start Race</a>
+      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Start A Race</a>
+      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn--secondary">Create Course</a>
     </div>
     <div class="icon-grid">
       <img src="<%= Routes.static_path(@conn, "/images/location-marker.svg") %>" alt="location marker"/>
