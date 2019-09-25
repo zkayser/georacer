@@ -90,6 +90,7 @@ class RaceMap extends HTMLElement {
       this.map.setZoom(INITIAL_ZOOM);
     } else {
       this.map.setCenter(this.bounds.getCenter());
+      this.addBoundary();
       this.map.setZoom(INITIAL_ZOOM);
     }
   }
@@ -110,6 +111,43 @@ class RaceMap extends HTMLElement {
       this.centerIcon = el;
       this.centerMarker = new Mapbox.Marker(this.centerIcon).setLngLat(this.bounds.getCenter());
       this.centerMarker.addTo(this.map);
+    }
+  }
+
+  addBoundary() {
+    if (!this.map.getLayer('boundary')) {
+      const [southwest, northwest, northeast, southeast] = [
+        this.bounds.getSouthWest(),
+        this.bounds.getNorthWest(),
+        this.bounds.getNorthEast(),
+        this.bounds.getSouthEast()
+      ]
+      console.log('Maybe adding the boundary... \shruggy');
+      this.map.addLayer({
+        'id': 'boundary',
+        'type': 'line',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [[
+                [southwest.lng, southwest.lat],
+                [northwest.lng, northwest.lat],
+                [northeast.lng, northeast.lat],
+                [southeast.lng, southeast.lat]
+              ]]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'line-color': '#088',
+          'line-opacity': 0.8,
+          'line-width': 5
+        }
+      })
     }
   }
 
