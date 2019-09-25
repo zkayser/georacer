@@ -16,6 +16,7 @@
         <div class="number--background u-center">
           <p class="caption">Race Code</p>
           <p class="u-push-bottom--none"><%= @race_code %></p>
+          <p class="caption">Share this link with fellow racers:<br /><a href="<%= Routes.join_race_url(GeoRacerWeb.Endpoint, :show, %{course_id: @course_id, race_code: @race_code}) %>"><%= Routes.join_race_url(GeoRacerWeb.Endpoint, :show, %{course_id: @course_id, race_code: @race_code}) %></a></p> 
         </div>
         <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,
         csrf_token: Phoenix.Controller.get_csrf_token()} ) %>
