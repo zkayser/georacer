@@ -15,6 +15,10 @@
       grid-template-rows: 1fr 1fr;
       height: 100vh;
     }
+
+    @media (orientation: landscape) and (max-width: $screen-tablet) {
+      grid-template-rows: 1fr;
+    }
   }
 
   &__logo {
@@ -44,7 +48,7 @@
     }
 
     .racer-logo {
-      max-width: 11em;
+      max-width: 25em;
       margin: 0 auto;
 
       @media (min-width: $screen-tablet) {
@@ -83,13 +87,17 @@
 .page {
   &__container {
     display: grid;
-    grid-template-rows: 25vh minmax(75vh, min-content);
+    grid-template-rows: minmax(200px, 25vh) minmax(75vh, min-content);
     align-items: center;
     width: 100%;
     background: url('/images/drop-background.png');
     background-position: top center;
     background-size: 400px;
     background-repeat: no-repeat;
+
+    @media (orientation: landscape) and (max-width: $screen-tablet) {
+      background-size: cover;
+    }
 
     @media (min-width: $screen-tablet) {
       grid-template-columns: 2fr 2fr;
