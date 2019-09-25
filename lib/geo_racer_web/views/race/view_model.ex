@@ -200,7 +200,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
          hot_cold_meter.level(
            waypoint,
            position,
-           Course.boundary_for(race.course)
+           Course.boundary_for(race.course, 0)
          )}
       )
 
