@@ -21,7 +21,7 @@
           <p class="color--3">Select a team to attack</p>
         <% end %>
         <%= for team <- @teams do %>
-          <div class="form__option<%= is_selected?(team, @selected_team) %>" phx-click="select_team" phx-value-selected="<%= team %>"><%= team %></div>
+          <div class="form__option<%= is_selected?(team, @selected_team) %>" onclick="function() {void(0);}" phx-click="select_team" phx-value-selected="<%= team %>"><%= team %></div>
         <% end %>
 
         <a href="#" phx-click="use_hazard" class="btn--red">Deploy <%= @hazard.display_name %></a>
