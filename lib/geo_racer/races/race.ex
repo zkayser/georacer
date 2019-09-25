@@ -82,4 +82,8 @@ defmodule GeoRacer.Races.Race do
       ) do
     GeoRacerWeb.Endpoint.broadcast("#{@races_topic_prefix}#{race.id}", "race_update", payload)
   end
+
+  def broadcast_update(%{"update" => race} = payload) do
+    GeoRacerWeb.Endpoint.broadcast("#{@races_topic_prefix}#{race.id}", "race_update", payload)
+  end
 end

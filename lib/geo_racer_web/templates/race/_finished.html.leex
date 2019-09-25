@@ -1,9 +1,9 @@
-<% %{finished: results, in_progress: in_progress} = standings(@race) %>
+<% %{finished: results, in_progress: in_progress} = standings(@view_model.race) %>
 <div class="overlay">
   <div class="card u-push-bottom--sm">
     <div class="card__close"></div>
     <div class="section--drop">
-      <h1 class="u-push-bottom--none u-push-top--sm u-center">You Reached Your<br /><b>Waypoint!</b></h1>
+      <h1 class="u-push-bottom--none u-push-top--sm u-center">You Finished the<br /><b>Race!</b></h1>
       <div class="meter meter__icon">
         <svg viewBox="0 0 517 516">
           <style>
@@ -47,7 +47,7 @@
         </svg>
       </div>
       <div class="u-padded--side">
-        <p class="u-center u-push-top--xs">You have found <b><%= @waypoints_reached %></b> out of <b><%= @number_waypoints %></b> waypoints.</p>
+        <p class="u-center u-push-top--xs"><%= @view_model.timer %></p>
         <h2 class="u-push-bottom--xs u-push-top--xs u-center">Leader Board</h2>
         <div class="u-padded-no-top">
           <ul class="list u-push-bottom--sm">
@@ -55,13 +55,11 @@
             <li><%= rank %>: <%= result.team %> finished in <%= result.time %></li>
           <% end %>
           <%= for {rank, team} <- in_progress do %>
-            <% remaining = if team == @team_name, do: @number_waypoints - @waypoints_reached, else: (@number_waypoints - length(@race.team_tracker[team])) + @number_waypoints %>
-            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= remaining %></li>
+            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= (@view_model.number_waypoints - length(@view_model.race.team_tracker[team])) + @view_model.number_waypoints %></li>
           <% end %>
           </ul>
         </div>
-        <a href="#" phx-click="use_hazard" class="btn" >Use Hazard</a>
-        <a phx-click="shield_yourself" href="#" class="btn" >Shield Yourself</a>
+        <a href="<%= Routes.page_path(GeoRacerWeb.Endpoint, :index) %>" class="btn" >Race Again</a>
       </div>
     </div>
   </div>

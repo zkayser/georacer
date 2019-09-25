@@ -1,6 +1,7 @@
 defmodule GeoRacer.Races.Race.ImplTest do
   use GeoRacer.DataCase
   alias GeoRacer.Races.Race.Impl, as: Race
+  alias GeoRacer.Races.Race.Result
   alias GeoRacer.Races.StagingArea.Supervisor
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
 
@@ -65,6 +66,26 @@ defmodule GeoRacer.Races.Race.ImplTest do
       race: race
     } do
       assert {:error, :invalid_team} = Race.drop_waypoint(race, "non-participating-team")
+    end
+  end
+
+  describe "record_finished/2" do
+    test "records the time when team finished", %{race: race} do
+      race = %Race{race | time: 60}
+      team = List.first(Map.keys(race.team_tracker))
+      {:ok, _race} = Race.record_finished(race, team)
+
+      race = GeoRacer.Races.get_race!(race.id)
+
+      assert %Result{} = result = List.first(race.results)
+      assert result.team == team
+      assert result.time == "01:00"
+    end
+
+    test "returns {:error, :invalid_team} if the team is not participating in the race", %{
+      race: race
+    } do
+      assert {:error, :invalid_team} = Race.record_finished(race, "sdasdasdas")
     end
   end
 

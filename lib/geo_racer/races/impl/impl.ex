@@ -4,7 +4,7 @@ defmodule GeoRacer.Races.Race.Impl do
   """
   alias GeoRacer.Hazards
   alias GeoRacer.Hazards.MeterBomb
-  alias GeoRacer.Races.Race.HotColdMeter
+  alias GeoRacer.Races.Race.{HotColdMeter, Result}
   alias GeoRacer.Races.StagingArea.Impl, as: StagingArea
   alias GeoRacer.Courses.{Course, Waypoint}
   use Ecto.Schema
@@ -25,6 +25,11 @@ defmodule GeoRacer.Races.Race.Impl do
       on_replace: :delete,
       foreign_key: :race_id
 
+    has_many :results, GeoRacer.Races.Race.Result,
+      on_delete: :delete_all,
+      on_replace: :delete,
+      foreign_key: :race_id
+
     belongs_to :course, GeoRacer.Courses.Course, on_replace: :delete
     timestamps()
   end
@@ -38,7 +43,7 @@ defmodule GeoRacer.Races.Race.Impl do
   @type t() :: %__MODULE__{
           code: String.t(),
           course: Course.t(),
-          time: String.t(),
+          time: integer(),
           becomes_idle_at: integer(),
           hazards: map(),
           team_tracker: team_tracker,
@@ -96,7 +101,7 @@ defmodule GeoRacer.Races.Race.Impl do
   @spec changeset(t(), term()) :: Ecto.Changeset.t()
   def changeset(race, attrs) do
     race
-    |> cast(attrs, [:code, :team_tracker, :status, :course_id])
+    |> cast(attrs, [:code, :team_tracker, :status, :course_id, :time])
     |> validate_required([:code, :team_tracker, :course_id])
     |> validate_inclusion(:status, ["started", "not_started", "completed"])
     |> validate_length(:code, is: 8)
@@ -115,8 +120,45 @@ defmodule GeoRacer.Races.Race.Impl do
         team
       ) do
     case team_tracker[team] do
-      [] -> :finished
-      [id | _] -> hd(Enum.reject(waypoints, fn waypoint -> waypoint.id != id end))
+      [] ->
+        send(self(), {:record_finished, team})
+        :finished
+
+      [id | _] ->
+        hd(Enum.reject(waypoints, fn waypoint -> waypoint.id != id end))
+    end
+  end
+
+  @doc """
+  Records the time at which `team` finished.
+  """
+  @spec record_finished(t(), String.t()) ::
+          {:ok, t()} | {:error, Ecto.Changeset.t()} | {:error, :invalid_team}
+  def record_finished(%__MODULE__{} = race, team) do
+    with false <- team in Enum.map(race.results, fn result -> result.team end),
+         true <- team in Map.keys(race.team_tracker) do
+      Result.create(team, race)
+      GeoRacer.Races.update_race(GeoRacer.Races.get_race!(race.id), %{time: race.time})
+    else
+      _ -> {:error, :invalid_team}
+    end
+  end
+
+  @doc """
+  Returns true when the race is completed, meaning
+  all teams have reached all of their waypoints.
+  """
+  @spec is_race_completed?(t()) :: boolean()
+  def is_race_completed?(%__MODULE__{team_tracker: team_tracker} = race) do
+    case Enum.all?(Map.values(team_tracker), fn remaining_waypoints ->
+           Enum.empty?(remaining_waypoints)
+         end) do
+      true ->
+        Task.start(fn -> GeoRacer.Races.update_race(race, %{status: "completed"}) end)
+        true
+
+      false ->
+        false
     end
   end
 

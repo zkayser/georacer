@@ -88,6 +88,11 @@ defmodule GeoRacerWeb.RaceLive do
     end
   end
 
+  def handle_info(%{event: "race_update", payload: %{"update" => new_race}}, socket) do
+    {:noreply,
+     assign(socket, view_model: ViewModel.update_race(socket.assigns.view_model, new_race))}
+  end
+
   def handle_info({operation, extra_arg}, %{assigns: %{view_model: view_model}} = socket)
       when operation in @view_model_operations do
     {:noreply, assign(socket, view_model: apply(ViewModel, operation, [view_model, extra_arg]))}
