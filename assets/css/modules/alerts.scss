@@ -28,4 +28,22 @@
     background: $gradient-2;
     color: $color-1;
   }
+
+  &--desktop {
+    background: $color-1;
+    display: inline-block;
+    padding: $pad-sm;
+    border-radius: 25px;
+    margin-bottom: $pad-sm;
+    max-width: 25em;
+
+    p {
+      margin-bottom: 0;
+      font-size: 1.5em;
+    }
+
+    @media only screen and (max-width: $screen-tablet) {
+      display: none;
+    }
+  }
 }
