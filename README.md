@@ -4,7 +4,7 @@ Race your friends anywhere, any time with [GeoRacer.io](https://georacer.io/). T
 
 Geo Racer was created by a small mighty [Gaslight](https://teamgaslight.com/) team using [Phoenix](https://phoenixframework.org/) and [LiveView](https://github.com/phoenixframework/phoenix_live_view) for [Phoenix Phrenzy](https://phoenixphrenzy.com)
 
-![ ](assets/static/images/geo-racer-full-logo.svg =250x "Geo Racer")
+<img src="/assets/static/images/geo-racer-full-logo.svg"  alt="Geo Racer" width="250px" />
 
 ## Start your Phoenix server
 
