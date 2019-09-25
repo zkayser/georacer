@@ -4,8 +4,9 @@
       <div class="u-padded u-center">
         <div>
           <div class="alert--desktop">
-            <p>Please access the application on your mobile device browser to play Geo Racer.</p>
+            <p>Open application on your mobile device browser for best game experience.</p>
           </div>
+          <br />
           <svg viewBox="0 0 695 535" class="racer-logo">
             <style>
               .st0{fill:#064763}.st1{fill:#0c6fa8}.st2{fill:#41b1f2}.st3{fill:#ff2b52}.st4{fill:#f87b7b}.st5{fill:url(#XMLID_2_)}.st6{opacity:.97}.st7{fill:#f7f6f2}
