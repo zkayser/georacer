@@ -14,7 +14,7 @@ config :geo_racer, GeoRacerWeb.Endpoint,
   secret_key_base: secret_key_base,
   url: [
     host: {:system, "APP_HOST"},
-    port: {:system, "PORT"}
+    scheme: "https"
   ]
 
 # Peerage
