@@ -89,6 +89,35 @@ defmodule GeoRacer.Races.Race.ImplTest do
     end
   end
 
+  describe "current_hazards/2" do
+    test "returns an empty list when team is not currently affected by any hazards", %{race: race} do
+      team = List.first(Map.keys(race.team_tracker))
+      assert MapSet.new() == Race.current_hazards(race, team)
+    end
+
+    test "returns a list of hazards in effect for current team", %{race: race} do
+      affected_team = List.first(Map.keys(race.team_tracker))
+
+      {:ok, _meter_bomb} =
+        GeoRacer.Factories.HazardFactory.insert(race, %{
+          name: GeoRacer.Hazards.name_for(GeoRacer.Hazards.MeterBomb),
+          expiration: 60
+        })
+
+      {:ok, _map_bomb} =
+        GeoRacer.Factories.HazardFactory.insert(race, %{
+          name: GeoRacer.Hazards.name_for(GeoRacer.Hazards.MapBomb),
+          expiration: 60
+        })
+
+      race = GeoRacer.Races.get_race!(race.id)
+      hazards_in_effect = Race.current_hazards(race, affected_team)
+
+      assert GeoRacer.Hazards.MeterBomb in hazards_in_effect
+      assert GeoRacer.Hazards.MapBomb in hazards_in_effect
+    end
+  end
+
   describe "hot_cold_meter/2" do
     test "returns MeterBomb if team is affected by a MeterBomb", %{race: race} do
       affected_team = List.first(Map.keys(race.team_tracker))

@@ -95,25 +95,6 @@ class RaceMap extends HTMLElement {
     }
   }
 
-  renderCenterIcon() {
-    if (!this.shadowRoot) {
-      return;
-    }
-    if (!this.centerIcon) {
-      let el = document.createElement('div');
-      el.className = 'center-icon';
-      el.style.width = '26px';
-      el.style.height = '26px';
-      el.style.border = '5px solid red';
-      el.style.backgroundColor = 'red';
-      el.style.opacity = '0.5';
-      el.style.borderRadius = '50%';
-      this.centerIcon = el;
-      this.centerMarker = new Mapbox.Marker(this.centerIcon).setLngLat(this.bounds.getCenter());
-      this.centerMarker.addTo(this.map);
-    }
-  }
-
   addBoundary() {
     if (!this.map.getLayer('boundary')) {
       const [southwest, northwest, northeast, southeast] = [
@@ -122,7 +103,6 @@ class RaceMap extends HTMLElement {
         this.bounds.getNorthEast(),
         this.bounds.getSouthEast()
       ]
-      console.log('Maybe adding the boundary... \shruggy');
       this.map.addLayer({
         'id': 'boundary',
         'type': 'line',
@@ -176,7 +156,6 @@ class RaceMap extends HTMLElement {
     }
     this.renderMapContainer();
     this.renderMap();
-    this.renderCenterIcon();
   }
 }
 

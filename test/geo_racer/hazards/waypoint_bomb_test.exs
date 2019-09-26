@@ -17,7 +17,7 @@ defmodule GeoRacer.Hazards.WaypointBombTest do
   end
 
   describe "display_name/0" do
-    test "returns the string 'Meter Bomb'" do
+    test "returns the string 'Waypoint Bomb'" do
       assert "Waypoint Bomb" == WaypointBomb.display_name()
     end
   end

@@ -59,6 +59,15 @@ defmodule GeoRacer.Races.Race do
   end
 
   @doc """
+  Returns a set of all hazards currently
+  in effect for `team`.
+  """
+  @spec current_hazards(Impl.t(), String.t()) :: MapSet.t(MapBomb | MeterBomb)
+  def current_hazards(race, team) do
+    GenServer.call(@name.(race.id), {:current_hazards, team})
+  end
+
+  @doc """
   Creates a hazard and updates race state with the new hazard.
   """
   @spec put_hazard(Impl.t(), Keyword.t()) :: :ok
