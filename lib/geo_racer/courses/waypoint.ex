@@ -4,6 +4,7 @@ defmodule GeoRacer.Courses.Waypoint do
   import Ecto.Changeset
 
   @srid 4326
+  @waypoint_radius Application.get_env(:geo_racer, :waypoint_radius)
 
   @type t :: %{point: Geo.PostGIS.Geometry.t()}
 
@@ -35,7 +36,7 @@ defmodule GeoRacer.Courses.Waypoint do
   are within `radius` of each other.
   """
   @spec within_radius?(t(), %{lat: Float.t(), lng: Float.t()}, non_neg_integer()) :: boolean()
-  def within_radius?(%__MODULE__{} = waypoint, coords, radius \\ 15) do
+  def within_radius?(%__MODULE__{} = waypoint, coords, radius \\ @waypoint_radius) do
     waypoint
     |> to_coordinates()
     |> Geocalc.distance_between(coords)

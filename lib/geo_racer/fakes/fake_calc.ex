@@ -4,14 +4,14 @@ defmodule GeoRacer.FakeCalc do
   in tests.
   """
 
-  def distance_between(_map, 0), do: 9
-  def distance_between(_map, 1), do: 8
-  def distance_between(_map, 2), do: 7
-  def distance_between(_map, 3), do: 6
-  def distance_between(_map, 4), do: 5
-  def distance_between(_map, 5), do: 4
-  def distance_between(_map, 6), do: 3
-  def distance_between(_map, 7), do: 2
-  def distance_between(_map, 8), do: 1
+  def distance_between(_waypoint, %{"level" => 9}), do: 30
+  def distance_between(_waypoint, %{"level" => 8}), do: 35
+  def distance_between(_waypoint, %{"level" => 7}), do: 40
+  def distance_between(_waypoint, %{"level" => 6}), do: 45
+  def distance_between(_waypoint, %{"level" => 5}), do: 50
+  def distance_between(_waypoint, %{"level" => 4}), do: 55
+  def distance_between(_waypoint, %{"level" => 3}), do: 60
+  def distance_between(_waypoint, %{"level" => 2}), do: 65
+  def distance_between(_waypoint, %{"level" => 1}), do: 70
   def distance_between(_, _), do: 0
 end

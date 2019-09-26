@@ -199,8 +199,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
         {:set_hot_cold_level,
          hot_cold_meter.level(
            waypoint,
-           position,
-           Course.boundary_for(race.course, 0)
+           position
          )}
       )
 

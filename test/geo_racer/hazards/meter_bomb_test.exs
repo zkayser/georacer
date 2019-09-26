@@ -5,7 +5,7 @@ defmodule GeoRacer.Hazards.MeterBombTest do
 
   describe "level/3" do
     test "returns a number between 0 and 9" do
-      assert MeterBomb.level(%Waypoint{}, %{}, 84.51) in 0..9
+      assert MeterBomb.level(%Waypoint{}, %{}) in 0..9
     end
   end
 
