@@ -3,14 +3,14 @@ defmodule GeoRacer.Hazards.WaypointBomb do
   Implements the Hazard behaviour for
   WaypointBombs.
   """
-
+  alias GeoRacer.Hazards.Hazard
   @behaviour Hazard
 
   @doc """
   Returns a plain text explanation of the
   Waypoint Bomb's effect on opponents.
   """
-  @impl true
+  @impl Hazard
   @spec explain() :: String.t()
   def explain do
     "Change an opposing team's next waypoint."
@@ -20,7 +20,7 @@ defmodule GeoRacer.Hazards.WaypointBomb do
   Returns a plain test explanation of the
   Waypoint Bomb's effect to affected parties.
   """
-  @impl true
+  @impl Hazard
   @spec description() :: String.t()
   def description do
     "Your meter is now sending you to a different waypoint."
@@ -29,7 +29,7 @@ defmodule GeoRacer.Hazards.WaypointBomb do
   @doc """
   Returns the string "Waypoing Bomb"
   """
-  @impl true
+  @impl Hazard
   @spec display_name() :: String.t()
   def display_name, do: "Waypoint Bomb"
 
@@ -37,7 +37,7 @@ defmodule GeoRacer.Hazards.WaypointBomb do
   Returns a String represention an image
   fill for the Waypoint Bomb.
   """
-  @impl true
+  @impl Hazard
   @spec image() :: String.t()
   def image, do: "waypoint-bomb.svg"
 end
