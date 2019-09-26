@@ -93,11 +93,15 @@ defmodule GeoRacer.Races.Race.Server do
   end
 
   def handle_continue(:stop_if_idle, state) do
-    {:stop, :normal, state}
+    case state.time >= state.becomes_idle_at do
+      true -> {:stop, :normal, state}
+      false -> {:noreply, state}
+    end
   end
 
-  def terminate(_reason, %Impl{} = race) do
+  def terminate(reason, %Impl{} = race) do
     save_time(race)
+    Logger.warn "Terminating race for reason: #{reason}"
     :ok
   end
 

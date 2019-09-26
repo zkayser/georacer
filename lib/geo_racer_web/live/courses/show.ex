@@ -46,8 +46,9 @@ defmodule GeoRacerWeb.Live.Courses.Show do
     {:noreply, assign(socket, :teams, staging_area.teams)}
   end
 
-  def handle_info(%{event: "redirect_to_race", payload: %{race_id: race_id}}, socket) do
-    {:stop, redirect(socket, to: Routes.race_path(GeoRacerWeb.Endpoint, :show, race_id))}
+  def handle_info(%{event: "update", payload: %{command: :start_countdown}}, socket) do
+    :erlang.send_after(@start_countdown_milliseconds, self(), :redirect_to_race)
+    {:noreply, assign(socket, begin_countdown: true)}
   end
 
   def handle_info({:start_countdown, _race}, socket) do
@@ -55,18 +56,14 @@ defmodule GeoRacerWeb.Live.Courses.Show do
     {:noreply, assign(socket, begin_countdown: true)}
   end
 
-  def handle_info(
-        :redirect_to_race,
-        %{assigns: %{course: course, code: code, race: race}} = socket
-      ) do
-    StagingArea.force_redirect_to_race("#{course.id}:#{code}", race.id)
+  def handle_info(:redirect_to_race, %{assigns: %{race: race}} = socket) do
     {:stop, redirect(socket, to: Routes.race_path(GeoRacerWeb.Endpoint, :show, race.id))}
   end
 
   def handle_event("start_race", _, %{assigns: %{course: course, code: code}} = socket) do
     case Races.create_from_staging_area(StagingArea.state("#{course.id}:#{code}")) do
       {:ok, %Race.Impl{} = race} ->
-        send(self(), {:start_countdown, race})
+        StagingArea.broadcast_update("#{course.id}:#{code}", %{command: :start_countdown})
         {:noreply, assign(socket, :race, race)}
 
       _ ->
