@@ -8,15 +8,17 @@ const positionSuccess = (channel) => (position) => {
   })
 }
 
-const positionError = () => {
-  console.log('Error getting position...');
+const positionError = (channel) => (e) => {
+  channel.push("update", {
+    latitude: 39.10,
+    longitude: -84.51
+  })
 }
 
 const geoOptions = {
   enableHighAccuracy: true,
-  maximumAge: 10,
-  timeout: 1000
-}
+  timeout: 5000
+};
 
 export class GeoLocation {
   constructor(channelIdentifier) {
@@ -32,10 +34,12 @@ export class GeoLocation {
 
     this.channel = socket.channel(`location:${this.channelIdentifier}`, {});
     this.channel.join()
-      .receive("ok", resp => console.log('joined location channel successfully', resp));
+      .receive("ok", () => {
+        this.watchLocation();
+      });
   }
 
   watchLocation() {
-    navigator.geolocation.watchPosition(positionSuccess(this.channel), positionError, geoOptions);
+    navigator.geolocation.watchPosition(positionSuccess(this.channel), positionError(this.channel), geoOptions);
   }
 }

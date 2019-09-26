@@ -100,10 +100,11 @@ defmodule GeoRacer.Hazards do
   def calculate_expiration(_, _), do: 0
 
   @doc """
-  Applies the hazard effect to the affected team.
+  Takes a hazard and a race and applies
+  the hazard to the affected team in race.
   """
-  @spec apply_hazard(Hazard.t(), Race.t()) :: Race.t()
-  def apply_hazard(
+  @spec apply(Hazard.t(), Race.t()) :: Race.t()
+  def apply(
         %Hazard{name: "WaypointBomb", affected_team: affected_team},
         %Race{team_tracker: team_tracker} = race
       ) do
@@ -115,7 +116,7 @@ defmodule GeoRacer.Hazards do
     end
   end
 
-  def apply_hazard(_, %Race{} = race), do: race
+  def apply(_, %Race{} = race), do: race
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking hazard changes.

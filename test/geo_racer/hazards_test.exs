@@ -90,60 +90,29 @@ defmodule GeoRacer.HazardsTest do
       assert {:error, :invalid_hazard} = Hazards.from_string("This is not even a real hazard.")
     end
 
-    test "apply_hazard/2 returns a new race with affected teams waypoints shuffled if hazard is a waypoint bomb", %{
-      race: race
-    } do
+    test "apply/2 returns a new race with affected teams waypoints shuffled if hazard is a waypoint bomb",
+         %{
+           race: race
+         } do
       old_waypoint_list = race.team_tracker[affected_team(race)]
-      new_race = Hazards.apply_hazard(waypoint_bomb_fixture(race), race)
+      new_race = Hazards.apply(hazard_fixture(race, "WaypointBomb"), race)
       refute old_waypoint_list == new_race.team_tracker[affected_team(race)]
     end
 
-    test "apply_hazard/2 returns the same race if hazard is not a waypoint bomb", %{
+    test "apply/2 returns the same race if hazard is not a waypoint bomb", %{
       race: race
     } do
       old_waypoint_list = race.team_tracker[affected_team(race)]
-      new_race = Hazards.apply_hazard(meter_bomb_fixture(race), race)
+      new_race = Hazards.apply(hazard_fixture(race, "MeterBomb"), race)
       assert old_waypoint_list == new_race.team_tracker[affected_team(race)]
     end
   end
 
-  defp hazard_fixture(race) do
+  defp hazard_fixture(race, hazard_type \\ nil) do
+    name = if hazard_type, do: hazard_type, else: random_hazard()
+
     attrs = %{
-      name: random_hazard(),
-      attacking_team: attacking_team(race),
-      affected_team: affected_team(race),
-      expiration: 60,
-      race_id: race.id
-    }
-
-    {:ok, hazard} =
-      %Hazard{}
-      |> Hazard.changeset(attrs)
-      |> Repo.insert()
-
-    hazard
-  end
-
-  defp waypoint_bomb_fixture(race) do
-    attrs = %{
-      name: "WaypointBomb",
-      attacking_team: attacking_team(race),
-      affected_team: affected_team(race),
-      expiration: 0,
-      race_id: race.id
-    }
-
-    {:ok, hazard} =
-      %Hazard{}
-      |> Hazard.changeset(attrs)
-      |> Repo.insert()
-
-    hazard
-  end
-
-  defp meter_bomb_fixture(race) do
-    attrs = %{
-      name: "MeterBomb",
+      name: name,
       attacking_team: attacking_team(race),
       affected_team: affected_team(race),
       expiration: 60,

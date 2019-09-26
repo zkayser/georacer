@@ -22,7 +22,7 @@ defmodule GeoRacer.Races.Race do
   end
 
   @doc """
-  Stops the `StagingArea` GenServer process with the
+  Stops the `Race` GenServer process with the
   given identifier.
   """
   @spec stop(String.t()) :: :ok
@@ -80,6 +80,10 @@ defmodule GeoRacer.Races.Race do
           "hazard_deployed" => %{"name" => _name, "on" => _affected, "by" => _}
         } = payload
       ) do
+    GeoRacerWeb.Endpoint.broadcast("#{@races_topic_prefix}#{race.id}", "race_update", payload)
+  end
+
+  def broadcast_update(%{"update" => race} = payload) do
     GeoRacerWeb.Endpoint.broadcast("#{@races_topic_prefix}#{race.id}", "race_update", payload)
   end
 end

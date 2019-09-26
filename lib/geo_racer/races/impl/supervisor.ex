@@ -63,7 +63,7 @@ defmodule GeoRacer.Races.Race.Supervisor do
   def start_supervisor(race) do
     spec = %{
       id: Race,
-      start: {Race, :new, [race]},
+      start: {Race, :new, [GeoRacer.Races.get_race!(race.id)]},
       restart: :transient
     }
 

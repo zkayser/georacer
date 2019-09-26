@@ -1,6 +1,36 @@
 defmodule GeoRacerWeb.RaceView do
   use GeoRacerWeb, :view
 
+  @doc """
+  Returns the standings based on race results,
+  ordered from earliest finishing teams to
+  latest finishing teams. Teams that are still
+  playing will be at the bottom of the list.
+  """
+  @spec standings(GeoRacer.Races.Race.Impl.t()) :: %{
+          finished: list({pos_integer, GeoRacer.Races.Race.Result.t()}),
+          in_progress: list({pos_integer, String.t()})
+        }
+  def standings(race) do
+    ordered_results =
+      race.results
+      |> Enum.sort_by(fn result -> result.time end)
+      |> Enum.with_index()
+      |> Enum.map(fn {result, index} -> {index + 1, result} end)
+
+    %{
+      finished: ordered_results,
+      in_progress:
+        race.team_tracker
+        |> Enum.reject(fn {_, remaining_waypoints} -> Enum.empty?(remaining_waypoints) end)
+        |> Enum.sort_by(fn {_, remaining_waypoints} -> length(remaining_waypoints) end, &<=/2)
+        |> Enum.with_index()
+        |> Enum.map(fn {{team, _waypoints}, index} ->
+          {index + 1 + length(ordered_results), team}
+        end)
+    }
+  end
+
   def classes(level) do
     %{
       light_1: "light--1 light--#{light_temp(1, level)}",

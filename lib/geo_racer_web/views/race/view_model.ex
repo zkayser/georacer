@@ -9,6 +9,9 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   information.
   """
   alias GeoRacer.Courses.{Course, Waypoint}
+  alias GeoRacer.Hazards
+  alias GeoRacer.Hazards.MeterBomb
+  alias GeoRacer.Races.Race.HotColdMeter
   alias GeoRacer.Races.Race
 
   defstruct position: nil,
@@ -17,7 +20,10 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
             race: nil,
             next_waypoint: nil,
             number_waypoints: 0,
+            waypoints_reached: 0,
+            hazards: MapSet.new(),
             hot_cold_level: 0,
+            hot_cold_meter: HotColdMeter,
             has_reached_waypoint?: false,
             bounding_box: nil,
             timer: "00:00"
@@ -31,7 +37,10 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
           race: GeoRacer.Races.Race.Impl.t(),
           next_waypoint: Waypoint.t() | :at_waypoint | :finished | nil,
           number_waypoints: non_neg_integer(),
+          waypoints_reached: non_neg_integer(),
+          hazards: MapSet.t(Hazards.hazard()),
           hot_cold_level: non_neg_integer(),
+          hot_cold_meter: HotColdMeter | MeterBomb,
           bounding_box: %{southwest: coordinates, northeast: coordinates},
           timer: String.t()
         }
@@ -49,6 +58,7 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
       team_name: team_name,
       race: race,
       number_waypoints: length(race.course.waypoints),
+      waypoints_reached: length(race.course.waypoints) - length(race.team_tracker[team_name]),
       bounding_box: Course.bounding_box(race.course)
     }
   end
@@ -95,7 +105,14 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   def waypoint_reached(%__MODULE__{} = view_model) do
     Race.drop_waypoint(view_model.race, view_model.team_name)
     send(self(), :refresh_race)
-    %__MODULE__{view_model | next_waypoint: :at_waypoint}
+
+    %__MODULE__{
+      view_model
+      | next_waypoint: :at_waypoint,
+        waypoints_reached:
+          view_model.number_waypoints -
+            (length(view_model.race.team_tracker[view_model.team_name]) - 1)
+    }
   end
 
   @doc """
@@ -105,6 +122,15 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
   @spec set_hot_cold_level(t(), non_neg_integer) :: t()
   def set_hot_cold_level(%__MODULE__{} = view_model, hot_cold_level) do
     %__MODULE__{view_model | hot_cold_level: hot_cold_level}
+  end
+
+  @doc """
+  Sets the hot cold meter implementation.
+  """
+  @spec set_hot_cold_meter(t(), HotColdMeter | MeterBomb) :: t()
+  def set_hot_cold_meter(%__MODULE__{} = view_model, meter)
+      when meter in [HotColdMeter, MeterBomb] do
+    %__MODULE__{view_model | hot_cold_meter: meter}
   end
 
   @doc """
@@ -165,17 +191,20 @@ defmodule GeoRacerWeb.RaceView.ViewModel do
          position
        ) do
     view_pid = self()
+    hot_cold_meter = Race.hot_cold_meter(race, for: current_team)
 
     Task.start(fn ->
       send(
         view_pid,
         {:set_hot_cold_level,
-         Race.hot_cold_meter(race, for: current_team).level(
+         hot_cold_meter.level(
            waypoint,
            position,
-           Course.boundary_for(race.course)
+           Course.boundary_for(race.course, 0)
          )}
       )
+
+      send(view_pid, {:set_hot_cold_meter, hot_cold_meter})
     end)
   end
 end

@@ -1,4 +1,9 @@
 defmodule GeoRacer.Hazards.WaypointBomb do
+  @moduledoc """
+  Implements the Hazard behaviour for
+  WaypointBombs.
+  """
+
   @behaviour Hazard
 
   @doc """

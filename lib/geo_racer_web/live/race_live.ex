@@ -13,7 +13,8 @@ defmodule GeoRacerWeb.RaceLive do
     :set_next_waypoint,
     :waypoint_reached,
     :refresh_race,
-    :set_hot_cold_level
+    :set_hot_cold_level,
+    :set_hot_cold_meter
   ]
 
   @spec render([{any, any}] | map) :: any
@@ -85,6 +86,11 @@ defmodule GeoRacerWeb.RaceLive do
       false ->
         {:noreply, assign(socket, view_model: ViewModel.update_race(view_model, new_race))}
     end
+  end
+
+  def handle_info(%{event: "race_update", payload: %{"update" => new_race}}, socket) do
+    {:noreply,
+     assign(socket, view_model: ViewModel.update_race(socket.assigns.view_model, new_race))}
   end
 
   def handle_info({operation, extra_arg}, %{assigns: %{view_model: view_model}} = socket)

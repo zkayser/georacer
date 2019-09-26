@@ -9,30 +9,134 @@
       max-width: 12em;
       margin: 0 auto;
     }
+
+    @media (min-width: $screen-tablet) {
+      grid-template-columns: 3fr 2fr;
+      grid-template-rows: 1fr 1fr;
+      height: 100vh;
+    }
+
+    @media (orientation: landscape) and (max-width: $screen-tablet) {
+      grid-template-rows: 1fr;
+    }
   }
 
   &__logo {
     max-width: 11em;
     margin: 0 auto;
+
+    @media (min-width: $screen-tablet) {
+      max-width: 5em;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    height: 100%;
+    background: url('/images/drop-background.png');
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    align-items: center;
+
+    @media (min-width: $screen-tablet) {
+      grid-row: 1 / 3;
+      grid-column: 1 / 2;
+      background-size: 200%;
+      background-position: top;
+    }
+
+    .racer-logo {
+      max-width: 25em;
+      margin: 0 auto;
+
+      @media (min-width: $screen-tablet) {
+        max-width: 35em;
+      }
+    }
+  }
+
+  &__cta {
+    @media (min-width: $screen-tablet) {
+      grid-row: 2 / 4;
+      grid-column: 2 / 3;
+      align-self: start;
+
+      .btn {
+        margin-bottom: $pad;
+      }
+    }
+  }
+
+  &__content {
+    @media (min-width: $screen-tablet) {
+      grid-row: 1 / 2;
+      grid-column: 2 / 3;
+      margin: $pad-xlg;
+    }
+
+    .icon-grid {
+      @media (min-width: $screen-tablet) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 }
 
 .page {
   &__container {
     display: grid;
-    grid-template-rows: 25vh minmax(75vh, min-content);
+    grid-template-rows: minmax(200px, 25vh) minmax(75vh, min-content);
     align-items: center;
+    width: 100%;
+    background: url('/images/drop-background.png');
+    background-position: top center;
+    background-size: 400px;
+    background-repeat: no-repeat;
+
+    @media (orientation: landscape) and (max-width: $screen-tablet) {
+      background-size: cover;
+    }
+
+    @media (min-width: $screen-tablet) {
+      grid-template-columns: 2fr 2fr;
+      grid-template-rows: 1fr;
+      background: none;
+    }
+
   }
 
   &__header {
+
+    h1 {
+      @media (min-width: $screen-tablet) {
+        font-size: 5rem;
+      }
+    }
+
     img {
       max-width: 8em;
       margin: 0 auto $pad-xs;
+
+      @media (min-width: $screen-tablet) {
+        max-width: 15em;
+      }
+    }
+
+    @media (min-width: $screen-tablet) {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      background: url('/images/drop-background.png');
+      background-position: bottom center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: grid;
+      align-items: center;
+      background-position: center;
+
     }
   }
 
-  .section--drop {
-    background-position: center -10vh;
-    background-size: 500px;
-  }
 }

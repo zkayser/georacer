@@ -14,4 +14,11 @@
   .section--drop {
     background-position: center -37vh;
   }
+
+  .card {
+    @media (min-width: $screen-tablet) {
+      width: 550px;
+      margin: 0 auto;
+    }
+  }
 }

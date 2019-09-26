@@ -5,6 +5,10 @@
   box-shadow: $shadow;
   overflow: hidden;
 
+  @media (min-width: $screen-desktop) {
+    margin: $pad $pad-xlg;
+  }
+
   &--red, &--blue {
     @extend .card;
     h1, h2, h3, h4, p {

@@ -1,9 +1,4 @@
-<% found = @number_waypoints - length(@race.team_tracker[@team_name]) %>
-<% by_rank = Enum.reduce(@race.team_tracker, %{}, fn {team, remaining}, acc ->
-  Map.put(acc, team, length(remaining))
- end) %>
-<% sorted = Enum.sort_by(by_rank, fn {_, length} -> length end) %>
-<% ranks = Enum.map(sorted, fn {team, _} -> team end) %>
+<% %{finished: results, in_progress: in_progress} = standings(@race) %>
 <div class="overlay">
   <div class="card u-push-bottom--sm">
     <div class="card__close"></div>
@@ -52,12 +47,16 @@
         </svg>
       </div>
       <div class="u-padded--side">
-        <p class="u-center u-push-top--xs">You have found <b><%= found %></b> out of <b><%= @number_waypoints %></b> waypoints.</p>
+        <p class="u-center u-push-top--xs">You have found <b><%= @waypoints_reached %></b> out of <b><%= @number_waypoints %></b> waypoints.</p>
         <h2 class="u-push-bottom--xs u-push-top--xs u-center">Leader Board</h2>
         <div class="u-padded-no-top">
           <ul class="list u-push-bottom--sm">
-          <%= for {team, rank} <- Enum.with_index(ranks) do %>
-            <li><%= rank + 1 %>: <%= team %></li>
+          <%= for {rank, result} <- results do %>
+            <li><%= rank %>: <%= result.team %> finished in <%= result.time %></li>
+          <% end %>
+          <%= for {rank, team} <- in_progress do %>
+            <% remaining = if team == @team_name, do: @number_waypoints - @waypoints_reached, else: (@number_waypoints - length(@race.team_tracker[team])) + @number_waypoints %>
+            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= remaining %></li>
           <% end %>
           </ul>
         </div>

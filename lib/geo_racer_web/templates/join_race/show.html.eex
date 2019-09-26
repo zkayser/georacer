@@ -1,6 +1,6 @@
 
-<section class="page u-contain">
-  <div class="page__container section--drop">
+<section class="page">
+  <div class="page__container">
     <header class="page__header">
       <div class="u-center">
         <div class="header__logo">
@@ -16,6 +16,7 @@
         <div class="number--background u-center">
           <p class="caption">Race Code</p>
           <p class="u-push-bottom--none"><%= @race_code %></p>
+          <p class="caption">Share this link with fellow racers:<br /><a href="<%= share_link(@course_id, @race_code) %>"><%= share_link(@course_id, @race_code) %></a></p>
         </div>
         <%= live_render(@conn, GeoRacerWeb.JoinRaceLive, session: %{course_id: @course_id, race_code: @race_code,
         csrf_token: Phoenix.Controller.get_csrf_token()} ) %>

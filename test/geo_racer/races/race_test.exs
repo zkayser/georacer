@@ -55,5 +55,62 @@ defmodule GeoRacer.Races.RaceTest do
       assert [hazard] = new_race.hazards
       assert hazard.name == "MeterBomb"
     end
+
+    test "shuffles affected team's waypoints when hit with WaypointBomb", %{race: race} do
+      [affected, attacking] = Map.keys(race.team_tracker)
+
+      Race.put_hazard(race,
+        type: "WaypointBomb",
+        on: affected,
+        by: attacking
+      )
+
+      Process.sleep(50)
+
+      assert race.team_tracker[affected] ==
+               Enum.reverse(GeoRacer.Races.get_race!(race.id).team_tracker[affected])
+    end
+  end
+
+  describe "stop_race/1" do
+    test "saves the race state when the server process is terminated", %{race: race} do
+      affected_team = List.first(Map.keys(race.team_tracker))
+      attacking_team = Enum.at(Map.keys(race.team_tracker), 1)
+
+      Race.put_hazard(race,
+        type: "MeterBomb",
+        on: affected_team,
+        by: attacking_team
+      )
+
+      Race.stop("race:#{race.id}")
+
+      Process.sleep(50)
+
+      new_race = GeoRacer.Races.get_race!(race.id)
+
+      refute race == new_race
+    end
+  end
+
+  describe "drop_waypoint/2" do
+    test "shuts down the server process when the final waypoint is reached", %{race: race} do
+      [team_1, team_2] = Map.keys(race.team_tracker)
+      number_waypoints = length(race.course.waypoints)
+      pid = Race.Supervisor.get_pid(race.id)
+      assert Process.alive?(pid)
+
+      for _ <- 1..number_waypoints do
+        Race.drop_waypoint(race, team_1)
+      end
+
+      for _ <- 1..number_waypoints do
+        Race.drop_waypoint(race, team_2)
+      end
+
+      Process.sleep(50)
+
+      assert {:error, :not_started} = Race.Supervisor.get_pid(race.id)
+    end
   end
 end

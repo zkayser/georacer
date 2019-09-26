@@ -2,7 +2,8 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
   use GeoRacer.DataCase
   alias GeoRacer.StringGenerator
   alias GeoRacer.Courses.Waypoint
-  alias GeoRacer.Races.Race.Supervisor
+  alias GeoRacer.Hazards.MeterBomb
+  alias GeoRacer.Races.Race.{Supervisor, HotColdMeter}
   alias GeoRacerWeb.RaceView.ViewModel
 
   setup do
@@ -21,6 +22,11 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
   describe "from_session/1" do
     test "takes a session map and creates a new view model", %{race: race, session: session} do
       assert %ViewModel{race: ^race} = ViewModel.from_session(session)
+    end
+
+    test "calculates the number of waypoints reached by team", %{session: session} do
+      view_model = ViewModel.from_session(session)
+      assert view_model.waypoints_reached == 0
     end
   end
 
@@ -60,6 +66,17 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
 
       refute view_model.next_waypoint ==
                GeoRacer.Races.Race.next_waypoint(view_model.race, team_name(view_model.race))
+    end
+
+    test "updates the waypoints_reached attribute", %{session: session} do
+      view_model =
+        session
+        |> ViewModel.from_session()
+        |> ViewModel.set_next_waypoint()
+
+      updated_view_model = ViewModel.waypoint_reached(view_model)
+
+      assert updated_view_model.waypoints_reached == view_model.waypoints_reached + 1
     end
 
     test "sends a :refresh_race_state message", %{session: session} do
@@ -170,6 +187,17 @@ defmodule GeoRacerWeb.RaceView.ViewModelTest do
       view_model = ViewModel.from_session(session)
 
       assert 3 = ViewModel.set_hot_cold_level(view_model, 3).hot_cold_level
+    end
+  end
+
+  describe "set_hot_cold_meter/2" do
+    test "updates the hot_cold_meter with the given HotColdMeter implementation", %{
+      session: session
+    } do
+      view_model = ViewModel.from_session(session)
+
+      assert MeterBomb == ViewModel.set_hot_cold_meter(view_model, MeterBomb).hot_cold_meter
+      assert HotColdMeter == ViewModel.set_hot_cold_meter(view_model, HotColdMeter).hot_cold_meter
     end
   end
 

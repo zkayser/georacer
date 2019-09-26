@@ -23,8 +23,18 @@ defmodule GeoRacerWeb.HazardsLive do
        team_name: team_name,
        teams: teams,
        hazard: Enum.random(Hazards.all()),
-       selected_team: nil
+       selected_team: nil,
+       errors: MapSet.new()
      )}
+  end
+
+  def handle_event("use_hazard", _, %{assigns: %{selected_team: selected_team}} = socket)
+      when is_nil(selected_team) or selected_team == "" do
+    socket =
+      socket
+      |> assign(errors: MapSet.put(socket.assigns.errors, :team_not_selected))
+
+    {:noreply, socket}
   end
 
   def handle_event(
@@ -50,6 +60,10 @@ defmodule GeoRacerWeb.HazardsLive do
   end
 
   def handle_event("select_team", %{"selected" => team}, socket) do
-    {:noreply, assign(socket, :selected_team, team)}
+    {:noreply,
+     assign(socket,
+       selected_team: team,
+       errors: MapSet.delete(socket.assigns.errors, :team_not_selected)
+     )}
   end
 end
