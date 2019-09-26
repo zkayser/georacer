@@ -84,6 +84,7 @@ defmodule GeoRacer.Races.Race.Server do
         "by" => hazard.attacking_team
       }
     })
+
     {:noreply, state, {:continue, :save_time}}
   end
 

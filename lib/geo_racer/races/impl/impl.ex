@@ -209,11 +209,11 @@ defmodule GeoRacer.Races.Race.Impl do
         %__MODULE__{team_tracker: team_tracker} = race,
         affected_team
       ) do
-    [current|remaining] = team_tracker[affected_team]
+    [current | remaining] = team_tracker[affected_team]
+
     new_team_tracker = %{
       team_tracker
-      | affected_team =>
-          Enum.shuffle(remaining) ++ [current]
+      | affected_team => Enum.shuffle(remaining) ++ [current]
     }
 
     GeoRacer.Races.update_race(race, %{team_tracker: new_team_tracker})
