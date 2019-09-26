@@ -1,11 +1,8 @@
 <section class="landing">
   <div class="landing__container">
-    <div class="landing__header section--drop">
-      <div class="u-padded u-center">
+    <div class="landing__header">
+      <div class="landing__logo u-padded u-center">
         <div>
-          <div class="alert--desktop">
-            <p>Open application on your mobile device browser for best game experience.</p>
-          </div>
           <br />
           <svg viewBox="0 0 695 535" class="racer-logo">
             <style>
@@ -54,13 +51,25 @@
         </div>
       </div>
     </div>
-    <div class="landing__cta u-center u-padded">
-      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Start A Race</a>
-      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn--secondary">Create Course</a>
+    <div class="landing__title u-center">
+      <div class="title">
+        <p>race your friends</p>
+        <p class="strong">anywhere</p>
+        <p>anytime</p>
+      </div>
     </div>
-    <div class="landing__content icon-grid">
-      <img src="<%= Routes.static_path(@conn, "/images/location-marker.svg") %>" alt="location marker"/>
-      <p><b>Find Way Points<br />Obstruct Your Opponents<br />Race To The Finish</b></p>
+    <div class="landing__content u-center">
+      <img src="<%= Routes.static_path(@conn, "/images/georacer-screens.png") %>" class="geo racer screens" alt="play geo racer"/>
+    </div>
+    <div class="landing__mobile u-center u-padded">
+      <div class="title">
+        <p class="strong">Visit GeoRacer.io</p>
+        <p>on your mobile device to play</p>
+      </div>
+    </div>
+
+    <div class="landing__footer u-padded--xs">
+        <p>© Gaslight 2019</p>
     </div>
   </div>
 </section>

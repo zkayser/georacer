@@ -40,7 +40,7 @@
   }
 
   &__text {
-    fill: $color-7;
+    fill: $color-1;
     font-family: $font-primary;
     font-size: 43px;
     animation: textFade 3s infinite ease;
@@ -144,6 +144,6 @@
   margin: 0 auto;
   padding: $pad-sm;
   border-radius: 50%;
-  background-color: $color-7;
+  background-color: $color-1;
   box-shadow: $shadow;
 }
