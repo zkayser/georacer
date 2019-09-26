@@ -55,7 +55,7 @@
             <li><%= rank %>: <%= result.team %> finished in <%= result.time %></li>
           <% end %>
           <%= for {rank, team} <- in_progress do %>
-            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= (@view_model.number_waypoints - length(@view_model.race.team_tracker[team])) + @view_model.number_waypoints %></li>
+            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= length(@view_model.race.team_tracker[team]) %></li>
           <% end %>
           </ul>
         </div>

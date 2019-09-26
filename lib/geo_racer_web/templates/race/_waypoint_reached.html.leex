@@ -55,13 +55,13 @@
             <li><%= rank %>: <%= result.team %> finished in <%= result.time %></li>
           <% end %>
           <%= for {rank, team} <- in_progress do %>
-            <% remaining = if team == @team_name, do: @number_waypoints - @waypoints_reached, else: (@number_waypoints - length(@race.team_tracker[team])) + @number_waypoints %>
+            <% remaining = if team == @team_name, do: @number_waypoints - @waypoints_reached, else: length(@race.team_tracker[team]) %>
             <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= remaining %></li>
           <% end %>
           </ul>
         </div>
         <a href="#" phx-click="use_hazard" class="btn" >Use Hazard</a>
-        <a phx-click="shield_yourself" href="#" class="btn" >Shield Yourself</a>
+        <%# <a phx-click="shield_yourself" href="#" class="btn" >Shield Yourself</a> %>
       </div>
     </div>
   </div>
