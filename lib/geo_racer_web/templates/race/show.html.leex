@@ -6,8 +6,7 @@
   <%= if @view_model.next_waypoint == :finished do %>
     <%= render "_finished.html", view_model: @view_model %>
   <% end %>
-  <% map_spin = if GeoRacer.Hazards.MapBomb in @view_model.hazards, do: "map--spin", else: "" %>
-  <div class="race__map <%= map_spin %>">
+  <div class="race__map <%= map_spin(@view_model.race, @view_model.team_name) %>">
     <race-map
       swLat="<%= @view_model.bounding_box.southwest.lat %>"
       swLng="<%= @view_model.bounding_box.southwest.lng %>"

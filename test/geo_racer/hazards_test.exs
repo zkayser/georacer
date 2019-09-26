@@ -70,16 +70,23 @@ defmodule GeoRacer.HazardsTest do
       assert Hazards.calculate_expiration([for: "MeterBomb"], 0) == 60
     end
 
+    test "calculate_expiration/2 adds 60 (one minute) to the given time val for MapBomb hazards" do
+      assert Hazards.calculate_expiration([for: "MapBomb"], 0) == 60
+    end
+
     test "all/0 returns a list of all the hazards available" do
-      assert Hazards.all() == [Hazards.MeterBomb, Hazards.WaypointBomb]
+      assert Hazards.all() == [Hazards.MeterBomb, Hazards.WaypointBomb, Hazards.MapBomb]
     end
 
     test "name_for/1 returns the string name representing the hazard" do
       assert "MeterBomb" == Hazards.name_for(Hazards.MeterBomb)
       assert "WaypointBomb" == Hazards.name_for(Hazards.WaypointBomb)
+      assert "MapBomb" == Hazards.name_for(Hazards.MapBomb)
     end
 
     test "from_string/1 returns an ok tuple with a hazard derived from the given string" do
+      assert {:ok, Hazards.MapBomb} = Hazards.from_string("MapBomb")
+      assert {:ok, Hazards.MapBomb} = Hazards.from_string("Map Bomb")
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("MeterBomb")
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("Meter Bomb")
       assert {:ok, Hazards.WaypointBomb} = Hazards.from_string("WaypointBomb")

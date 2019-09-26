@@ -55,6 +55,10 @@ defmodule GeoRacer.Races.Race.Server do
     {:reply, Impl.hot_cold_meter(state, team_name), state}
   end
 
+  def handle_call({:current_hazards, team_name}, _from, state) do
+    {:reply, Impl.current_hazards(state, team_name), state}
+  end
+
   def handle_cast({:drop_waypoint, team_name}, state) do
     {:ok, race} = Impl.drop_waypoint(state, team_name)
     send(self(), {:check_for_race_completed, race})
@@ -100,9 +104,8 @@ defmodule GeoRacer.Races.Race.Server do
     end
   end
 
-  def terminate(reason, %Impl{} = race) do
+  def terminate(_reason, %Impl{} = race) do
     save_time(race)
-    Logger.warn "Terminating race for reason: #{reason}"
     :ok
   end
 

@@ -5,18 +5,18 @@ defmodule GeoRacer.Hazards do
   import Ecto.Query, warn: false
   alias GeoRacer.Repo
   alias GeoRacer.Races.Race.Impl, as: Race
-  alias GeoRacer.Hazards.{Hazard, MeterBomb, WaypointBomb}
+  alias GeoRacer.Hazards.{Hazard, MeterBomb, WaypointBomb, MapBomb}
 
   @typedoc """
   Any of the available Hazards in the game.
   """
-  @type hazard :: MeterBomb | WaypointBomb
+  @type hazard :: MeterBomb | WaypointBomb | MapBomb
 
   @doc """
   Returns a list of the available hazards in the game.
   """
   @spec all() :: list(hazard)
-  def all, do: [MeterBomb, WaypointBomb]
+  def all, do: [MeterBomb, WaypointBomb, MapBomb]
 
   @doc """
   Creates a Hazard.
@@ -76,6 +76,7 @@ defmodule GeoRacer.Hazards do
   Returns a string representing `hazard`.
   """
   @spec name_for(hazard) :: String.t()
+  def name_for(MapBomb), do: "MapBomb"
   def name_for(MeterBomb), do: "MeterBomb"
   def name_for(WaypointBomb), do: "WaypointBomb"
 
@@ -85,6 +86,8 @@ defmodule GeoRacer.Hazards do
   an available hazard, returns `{:error, :invalid_hazard}`
   """
   @spec from_string(String.t()) :: {:ok, hazard} | {:error, :invalid_hazard}
+  def from_string("MapBomb"), do: {:ok, MapBomb}
+  def from_string("Map Bomb"), do: {:ok, MapBomb}
   def from_string("MeterBomb"), do: {:ok, MeterBomb}
   def from_string("Meter Bomb"), do: {:ok, MeterBomb}
   def from_string("WaypointBomb"), do: {:ok, WaypointBomb}
@@ -97,6 +100,7 @@ defmodule GeoRacer.Hazards do
   """
   @spec calculate_expiration(Keyword.t(), non_neg_integer) :: non_neg_integer
   def calculate_expiration([for: "MeterBomb"], time), do: time + 60
+  def calculate_expiration([for: "MapBomb"], time), do: time + 60
   def calculate_expiration(_, _), do: 0
 
   @doc """

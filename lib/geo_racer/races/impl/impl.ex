@@ -202,6 +202,22 @@ defmodule GeoRacer.Races.Race.Impl do
   end
 
   @doc """
+  Returns a MapSet of hazards currently in effect
+  for team.
+  """
+  @spec current_hazards(t(), String.t()) :: MapSet.t()
+  def current_hazards(%__MODULE__{hazards: hazards, time: seconds}, team) do
+    hazards
+    |> Enum.filter(fn %{affected_team: affected} -> affected == team end)
+    |> Enum.filter(fn %{expiration: expiration} -> expiration >= seconds end)
+    |> Enum.map(fn hazard ->
+      {:ok, hazard_type} = Hazards.from_string(hazard.name)
+      hazard_type
+    end)
+    |> MapSet.new()
+  end
+
+  @doc """
   Shuffles the list of waypoints of the affected team
   """
   @spec shuffle_waypoints(t(), String.t()) :: t()

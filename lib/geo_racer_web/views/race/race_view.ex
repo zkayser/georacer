@@ -31,6 +31,13 @@ defmodule GeoRacerWeb.RaceView do
     }
   end
 
+  def map_spin(race, team) do
+    case GeoRacer.Hazards.MapBomb in GeoRacer.Races.Race.current_hazards(race, team) do
+      true -> "map--spin"
+      _ -> ""
+    end
+  end
+
   def classes(level) do
     %{
       light_1: "light--1 light--#{light_temp(1, level)}",
