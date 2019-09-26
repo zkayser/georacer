@@ -1,7 +1,7 @@
 <section class="home">
   <div class="home__container">
     <div class="home__header section--drop">
-      <div class="u-padded u-center">
+      <div class="logo u-center">
         <div>
           <div class="alert--desktop">
             <p>Open application on your mobile device browser for best game experience.</p>
