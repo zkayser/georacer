@@ -14,8 +14,8 @@ defmodule GeoRacer.Hazards.MeterBomb do
   Randomly returns a number from 0 to 9.
   """
   @impl HotColdMeter
-  @spec level(Waypoint.t(), HotColdMeter.coordinates(), Float.t()) :: non_neg_integer
-  def level(_waypoint, _coords, _float), do: Enum.random(@hot_cold_range)
+  @spec level(Waypoint.t(), HotColdMeter.coordinates()) :: non_neg_integer
+  def level(_waypoint, _coords), do: Enum.random(@hot_cold_range)
 
   @doc """
   Returns a plain text explanation of the

@@ -10,7 +10,12 @@ defmodule GeoRacerWeb.LocationChannel do
   end
 
   def handle_in("update", params, socket) do
-    state = %{latitude: params["latitude"], longitude: params["longitude"]}
+    state = %{
+      latitude: params["latitude"],
+      longitude: params["longitude"],
+      accuracy: params["accuracy"]
+    }
+
     :ok = Endpoint.broadcast!(@topic <> socket.assigns.identifier, "update", state)
 
     {:noreply, socket}
