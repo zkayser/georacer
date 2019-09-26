@@ -4,18 +4,19 @@ defmodule GeoRacer.Hazards do
   """
   import Ecto.Query, warn: false
   alias GeoRacer.Repo
-  alias GeoRacer.Hazards.{Hazard, MeterBomb}
+  alias GeoRacer.Races.Race.Impl, as: Race
+  alias GeoRacer.Hazards.{Hazard, MeterBomb, WaypointBomb}
 
   @typedoc """
   Any of the available Hazards in the game.
   """
-  @type hazard :: MeterBomb
+  @type hazard :: MeterBomb | WaypointBomb
 
   @doc """
   Returns a list of the available hazards in the game.
   """
   @spec all() :: list(hazard)
-  def all, do: [MeterBomb]
+  def all, do: [MeterBomb, WaypointBomb]
 
   @doc """
   Creates a Hazard.
@@ -76,6 +77,7 @@ defmodule GeoRacer.Hazards do
   """
   @spec name_for(hazard) :: String.t()
   def name_for(MeterBomb), do: "MeterBomb"
+  def name_for(WaypointBomb), do: "WaypointBomb"
 
   @doc """
   Returns the hazard matching `string`.
@@ -85,6 +87,8 @@ defmodule GeoRacer.Hazards do
   @spec from_string(String.t()) :: {:ok, hazard} | {:error, :invalid_hazard}
   def from_string("MeterBomb"), do: {:ok, MeterBomb}
   def from_string("Meter Bomb"), do: {:ok, MeterBomb}
+  def from_string("WaypointBomb"), do: {:ok, WaypointBomb}
+  def from_string("Waypoint Bomb"), do: {:ok, WaypointBomb}
   def from_string(_), do: {:error, :invalid_hazard}
 
   @doc """
@@ -94,6 +98,25 @@ defmodule GeoRacer.Hazards do
   @spec calculate_expiration(Keyword.t(), non_neg_integer) :: non_neg_integer
   def calculate_expiration([for: "MeterBomb"], time), do: time + 60
   def calculate_expiration(_, _), do: 0
+
+  @doc """
+  Takes a hazard and a race and applies
+  the hazard to the affected team in race.
+  """
+  @spec apply(Hazard.t(), Race.t()) :: Race.t()
+  def apply(
+        %Hazard{name: "WaypointBomb", affected_team: affected_team},
+        %Race{team_tracker: team_tracker} = race
+      ) do
+    with true <- length(team_tracker[affected_team]) > 1,
+         {:ok, new_race} <- Race.shuffle_waypoints(race, affected_team) do
+      new_race
+    else
+      _ -> race
+    end
+  end
+
+  def apply(_, %Race{} = race), do: race
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking hazard changes.

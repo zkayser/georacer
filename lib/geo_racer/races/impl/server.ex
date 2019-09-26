@@ -22,11 +22,7 @@ defmodule GeoRacer.Races.Race.Server do
       seconds
       |> Time.update(state.id)
 
-    if new_time > state.becomes_idle_at do
-      send(self(), :close)
-    end
-
-    {:noreply, %Impl{state | time: new_time}}
+    {:noreply, %Impl{state | time: new_time}, {:continue, :stop_if_idle}}
   end
 
   def handle_info(:close, state) do
@@ -71,20 +67,33 @@ defmodule GeoRacer.Races.Race.Server do
       |> Map.merge(%{expiration: Hazards.calculate_expiration([for: attrs.name], state.time)})
       |> Hazards.create_hazard()
 
-    new_state = GeoRacer.Races.get_race!(state.id)
-    new_state = %Impl{new_state | time: state.time, becomes_idle_at: state.time + Time.one_day()}
+    new_state =
+      hazard
+      |> Hazards.apply(GeoRacer.Races.get_race!(state.id))
+      |> put_time_and_extend_timeout(state.time)
 
+    {:noreply, new_state, {:continue, {:broadcast_update, hazard}}}
+  end
+
+  def handle_continue({:broadcast_update, hazard}, state) do
     GeoRacer.Races.Race.broadcast_update(%{
-      "update" => new_state,
+      "update" => state,
       "hazard_deployed" => %{
         "name" => hazard.name,
         "on" => hazard.affected_team,
         "by" => hazard.attacking_team
       }
     })
+    {:noreply, state, {:continue, :save_time}}
+  end
 
-    save_time(new_state)
-    {:noreply, new_state}
+  def handle_continue(:save_time, state) do
+    save_time(state)
+    {:noreply, state}
+  end
+
+  def handle_continue(:stop_if_idle, state) do
+    {:stop, :normal, state}
   end
 
   def terminate(_reason, %Impl{} = race) do
@@ -96,5 +105,9 @@ defmodule GeoRacer.Races.Race.Server do
     Task.start(fn ->
       GeoRacer.Races.update_race(GeoRacer.Races.get_race!(race.id), %{time: race.time})
     end)
+  end
+
+  defp put_time_and_extend_timeout(%Impl{} = race, elapsed_time) do
+    %Impl{race | time: elapsed_time, becomes_idle_at: elapsed_time + Time.one_day()}
   end
 end

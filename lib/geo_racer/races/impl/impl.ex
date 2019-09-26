@@ -200,4 +200,22 @@ defmodule GeoRacer.Races.Race.Impl do
       _ -> MeterBomb
     end
   end
+
+  @doc """
+  Shuffles the list of waypoints of the affected team
+  """
+  @spec shuffle_waypoints(t(), String.t()) :: t()
+  def shuffle_waypoints(
+        %__MODULE__{team_tracker: team_tracker} = race,
+        affected_team
+      ) do
+    [current|remaining] = team_tracker[affected_team]
+    new_team_tracker = %{
+      team_tracker
+      | affected_team =>
+          Enum.shuffle(remaining) ++ [current]
+    }
+
+    GeoRacer.Races.update_race(race, %{team_tracker: new_team_tracker})
+  end
 end

@@ -71,26 +71,48 @@ defmodule GeoRacer.HazardsTest do
     end
 
     test "all/0 returns a list of all the hazards available" do
-      assert Hazards.all() == [Hazards.MeterBomb]
+      assert Hazards.all() == [Hazards.MeterBomb, Hazards.WaypointBomb]
     end
 
     test "name_for/1 returns the string name representing the hazard" do
       assert "MeterBomb" == Hazards.name_for(Hazards.MeterBomb)
+      assert "WaypointBomb" == Hazards.name_for(Hazards.WaypointBomb)
     end
 
     test "from_string/1 returns an ok tuple with a hazard derived from the given string" do
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("MeterBomb")
       assert {:ok, Hazards.MeterBomb} = Hazards.from_string("Meter Bomb")
+      assert {:ok, Hazards.WaypointBomb} = Hazards.from_string("WaypointBomb")
+      assert {:ok, Hazards.WaypointBomb} = Hazards.from_string("Waypoint Bomb")
     end
 
     test "from_string/1 returns an error tuple when given an invalid hazard string" do
       assert {:error, :invalid_hazard} = Hazards.from_string("This is not even a real hazard.")
     end
+
+    test "apply/2 returns a new race with affected teams waypoints shuffled if hazard is a waypoint bomb",
+         %{
+           race: race
+         } do
+      old_waypoint_list = race.team_tracker[affected_team(race)]
+      new_race = Hazards.apply(hazard_fixture(race, "WaypointBomb"), race)
+      refute old_waypoint_list == new_race.team_tracker[affected_team(race)]
+    end
+
+    test "apply/2 returns the same race if hazard is not a waypoint bomb", %{
+      race: race
+    } do
+      old_waypoint_list = race.team_tracker[affected_team(race)]
+      new_race = Hazards.apply(hazard_fixture(race, "MeterBomb"), race)
+      assert old_waypoint_list == new_race.team_tracker[affected_team(race)]
+    end
   end
 
-  defp hazard_fixture(race) do
+  defp hazard_fixture(race, hazard_type \\ nil) do
+    name = if hazard_type, do: hazard_type, else: random_hazard()
+
     attrs = %{
-      name: random_hazard(),
+      name: name,
       attacking_team: attacking_team(race),
       affected_team: affected_team(race),
       expiration: 60,

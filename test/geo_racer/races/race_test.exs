@@ -55,6 +55,21 @@ defmodule GeoRacer.Races.RaceTest do
       assert [hazard] = new_race.hazards
       assert hazard.name == "MeterBomb"
     end
+
+    test "shuffles affected team's waypoints when hit with WaypointBomb", %{race: race} do
+      [affected, attacking] = Map.keys(race.team_tracker)
+
+      Race.put_hazard(race,
+        type: "WaypointBomb",
+        on: affected,
+        by: attacking
+      )
+
+      Process.sleep(50)
+
+      assert race.team_tracker[affected] ==
+               Enum.reverse(GeoRacer.Races.get_race!(race.id).team_tracker[affected])
+    end
   end
 
   describe "stop_race/1" do
