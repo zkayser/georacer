@@ -1,0 +1,12 @@
+.tabs {
+  border-bottom: solid 1px $color-4;
+
+  &__btn {
+    border-radius: 5px 5px 0 0;
+    transition: all 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
