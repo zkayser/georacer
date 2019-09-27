@@ -22,6 +22,7 @@ RUN mix do deps.get, deps.compile, compile
 
 # Compile Javascript
 RUN cd assets \
+  && npm rebuild node-sass \
   && npm install \
   && ./node_modules/webpack/bin/webpack.js --mode production \
   && cd .. \
