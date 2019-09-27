@@ -1,7 +1,6 @@
 defmodule GeoRacerWeb.Live.Courses.Index do
   @moduledoc false
   use Phoenix.LiveView
-  alias GeoRacer.Courses
   require Logger
 
   @topic "position_updates:"
