@@ -1,7 +1,7 @@
 import Mapbox from 'mapbox-gl';
 import { GeoLocation } from './geolocation';
 
-const INITIAL_ZOOM = 15;
+const INITIAL_ZOOM = 14.5;
 const DEFAULT_CENTER = [-84.51, 39.10];
 
 Mapbox.accessToken = 'pk.eyJ1IjoicmhldWJhY2giLCJhIjoiY2p6Y3AzY2I3MDJxZTNubWp5eG1kaGdkMCJ9.46xDflykdiyFyFHWa7j1IA';
@@ -126,9 +126,9 @@ class RaceMap extends HTMLElement {
         },
         'layout': {},
         'paint': {
-          'line-color': '#088',
+          'line-color': '#FF2B52',
           'line-opacity': 0.8,
-          'line-width': 5
+          'line-width': 8
         }
       })
     }
