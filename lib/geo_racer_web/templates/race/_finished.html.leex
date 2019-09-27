@@ -1,9 +1,8 @@
 <% %{finished: results, in_progress: in_progress} = standings(@view_model.race) %>
 <div class="overlay">
   <div class="card u-push-bottom--sm">
-    <div class="card__close"></div>
-    <div class="section--drop">
-      <h1 class="u-push-bottom--none u-push-top--sm u-center">You Finished the<br /><b>Race!</b></h1>
+    <div>
+      <h1 class="u-push-bottom--none u-push-top--sm u-center color--2">You Finished the<br /><b>Race!</b></h1>
       <div class="meter meter__icon">
         <svg viewBox="0 0 517 516">
           <style>
@@ -46,21 +45,21 @@
           <path d="M258.5 124.7c-46 0-83.3 37.3-83.3 83.3s56.8 181.7 83.3 181.7S341.8 254 341.8 208s-37.3-83.3-83.3-83.3zm0 128.7c-25.1 0-45.4-20.3-45.4-45.4s20.3-45.4 45.4-45.4 45.4 20.3 45.4 45.4-20.3 45.4-45.4 45.4z" class="st5"/>
         </svg>
       </div>
-      <div class="u-padded--side">
-        <p class="u-center u-push-top--xs"><%= @view_model.timer %></p>
-        <h2 class="u-push-bottom--xs u-push-top--xs u-center">Leader Board</h2>
-        <div class="u-padded-no-top">
-          <ul class="list u-push-bottom--sm">
-          <%= for {rank, result} <- results do %>
-            <li><%= rank %>: <%= result.team %> finished in <%= result.time %></li>
-          <% end %>
-          <%= for {rank, team} <- in_progress do %>
-            <li><%= rank %>: <%= team %> | Remaining Waypoints: <%= length(@view_model.race.team_tracker[team]) %></li>
-          <% end %>
-          </ul>
-        </div>
-        <a href="<%= Routes.page_path(GeoRacerWeb.Endpoint, :index) %>" class="btn" >Race Again</a>
+    </div>
+    <div class="u-padded--side">
+      <p class="u-center u-push-top--xs"><%= @view_model.timer %></p>
+      <h2 class="u-push-bottom--xs u-push-top--xs u-center">Leader Board</h2>
+      <div class="u-padded-no-top">
+        <ul class="list u-push-bottom--sm">
+        <%= for {rank, result} <- results do %>
+          <li><b class="color--3"><%= rank %></b> <%= result.team %> <b class="u-float--right color--3"><%= result.time %></b></li>
+        <% end %>
+        <%= for {rank, team} <- in_progress do %>
+          <li><b class="color--2"><%= rank %></b> <%= team %> | Remaining Waypoints: <b class="color--2"><%= length(@view_model.race.team_tracker[team]) %></b></li>
+        <% end %>
+        </ul>
       </div>
+      <a href="<%= Routes.page_path(GeoRacerWeb.Endpoint, :index) %>" class="btn" >Race Again</a>
     </div>
   </div>
 </div>
