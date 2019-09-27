@@ -8,12 +8,25 @@ Geo Racer was created by a small mighty [Gaslight](https://teamgaslight.com/) te
 
 ## Start your Phoenix server
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+### PostGIS Extensions
+GeoRacer has a dependency on the PostGIS extensions for Postgres, so you will need to make sure you install those for your operating system. Take a look [at the official installation page] (https://postgis.net/install/) for instructions specific to your machine. Once you have the extensions installed, you should be able to run `mix ecto.setup` (make sure you've fetched your dependencies first with `mix deps.get`!) from the root directory and the Ecto migrations will take care of _enabling_ the extensions for you.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+### Environment Variables
+GeoRacer also requires you to have a `SECRET_KEY_BASE` environment variable set to run locally. If you don't have one already, you can generate one with:
+```bash
+export SECRET_KEY_BASE="$(mix phx.gen.secret)"
+```
+
+### Client-side Dependencies
+Don't forget to install your client-side assets before running the app: `cd ./assets && npm install`
+
+### Local Development
+Run `mix phx.server` now and you can visit [`localhost:4000`](http://localhost:4000) the app in your browser.
+Since the app was designed specifically for mobile devices, it is best to expose a portal or a way to access
+the local server running on your machine from your mobile phone. One quick and easy option is to use [ngrok](https://ngrok.com/download).
+Install `ngrok` on your machine and then `/path/to/ngrok http 4000`. This should print out two links, one that uses https.
+You will want to use the secure https link to get the geolocation services to work on your device (browsers will not send
+geolocation information over non-secure http connections).
 
 ## License
     All rights to Geo Racer Brand and design assets are reserved.
