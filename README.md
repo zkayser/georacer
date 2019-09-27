@@ -1,5 +1,3 @@
-<img src="/assets/static/images/geo-racer-full-logo.svg"  alt="Geo Racer" width="250px" />
-
 # Geo Racer
 
 Race your friends anywhere, any time with [GeoRacer.io](https://georacer.io/). The racing game helps you track down waypoints with an interactive hot/cold meter. But beware, your friends will gain hazards along the way that will make your race more difficult. Be the first to collect a courses's waypoint and win the day!
