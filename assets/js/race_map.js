@@ -82,6 +82,7 @@ class RaceMap extends HTMLElement {
         zoomControl: false,
       });
       this.map.scrollZoom.disable();
+      this.map.dragPan.disable();
       const canvas = shadowDom.querySelector('.mapboxgl-canvas');
       canvas.style.left = '0px';
       canvas.style.top = '0px';
