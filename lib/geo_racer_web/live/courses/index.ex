@@ -12,13 +12,12 @@ defmodule GeoRacerWeb.Live.Courses.Index do
 
   def mount(%{identifier: identifier, courses: courses} = session, socket) do
     :ok = GeoRacerWeb.Endpoint.subscribe(@topic <> identifier)
-    public_courses = Courses.list_public_courses()
     selected_tab = if Enum.empty?(courses), do: :public, else: :private
 
     {:ok,
      assign(socket,
        position: nil,
-       courses: %{private: courses, public: public_courses},
+       courses: %{private: courses, public: session.public_courses},
        identifier: identifier,
        selected_tab: selected_tab
      )}

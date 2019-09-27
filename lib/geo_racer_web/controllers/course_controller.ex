@@ -16,7 +16,8 @@ defmodule GeoRacerWeb.CourseController do
     LiveView.Controller.live_render(conn, Index,
       session: %{
         identifier: @id_generator.(),
-        courses: Courses.list_courses(conn.assigns[:user_uuid])
+        courses: Courses.list_courses(conn.assigns[:user_uuid]),
+        public_courses: GeoRacer.Courses.list_public_courses()
       }
     )
   end
