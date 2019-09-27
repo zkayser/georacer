@@ -1,0 +1,29 @@
+<section class="page">
+  <div class="page__container">
+    <header class="page__header">
+      <div class="u-center">
+        <div class="header__logo">
+          <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/geo-racer-full-logo.svg") %>"  alt="Geo Racer Logo"/>
+        </div>
+        <div class="header__title">
+          <h1>Courses</h1>
+        </div>
+      </div>
+    </header>
+    <div class="u-padded--side">
+      <div class="card u-padded u-push-bottom">
+        <img src="<%= Routes.static_path(GeoRacerWeb.Endpoint, "/images/course.jpg") %>" alt="Geo Racer Course"/>
+        <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :new) %>" class="btn">Create New Course</a>
+      </div>
+      <div class="grid grid--2 u-push-bottom">
+        <div class="u-center <%= tab_classes(@selected_tab, :private)[:container_class] %> u-padded--sm">
+          <div onclick="" phx-click="select_private" class="<%= tab_classes(@selected_tab, :private)[:text_class]%>">My Courses</div>
+        </div>
+        <div class="u-center <%= tab_classes(@selected_tab, :public)[:container_class] %> u-padded--sm">
+          <div href="#" onclick="" phx-click="select_public" class="<%= tab_classes(@selected_tab, :public)[:text_class]%>">Public Courses</div>
+        </div>
+      </div>
+      <%= render "_courses_tab.html", courses: @courses[@selected_tab] %>
+    </div>
+  </div>
+</section>

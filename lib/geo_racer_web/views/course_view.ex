@@ -15,4 +15,11 @@ defmodule GeoRacerWeb.CourseView do
         %{distance: Float.round(distance, 2), units: @meters}
     end
   end
+
+  def tab_classes(selected_tab, tab) do
+    case selected_tab == tab do
+      true -> %{container_class: "section--color-3", text_class: "color--1"}
+      false -> %{container_class: "", text_class: ""}
+    end
+  end
 end
