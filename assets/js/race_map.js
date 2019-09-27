@@ -78,8 +78,10 @@ class RaceMap extends HTMLElement {
         container: container,
         style: 'mapbox://styles/rheubach/cjzcqemj42em61cp9p9cbqllw',
         zoom: INITIAL_ZOOM,
-        antialias: true
+        antialias: true,
+        zoomControl: false,
       });
+      this.map.scrollZoom.disable();
       const canvas = shadowDom.querySelector('.mapboxgl-canvas');
       canvas.style.left = '0px';
       canvas.style.top = '0px';
