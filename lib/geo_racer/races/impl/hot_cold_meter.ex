@@ -9,17 +9,17 @@ defmodule GeoRacer.Races.Race.HotColdMeter do
 
   @type coordinates :: %{lat: Float.t(), lng: Float.t()}
   @geo_calc Application.get_env(:geo_racer, :geo_calc_module) || Geocalc
-  @waypoint_radius Application.get_env(:geo_racer, :waypoint_radius) || 25
+  @waypoint_radius Application.get_env(:geo_racer, :waypoint_radius) || 10
   @level_increment_in_meters 5
 
   @level_9 @waypoint_radius + @level_increment_in_meters
   @level_8 @waypoint_radius + @level_increment_in_meters * 2
-  @level_7 @waypoint_radius + @level_increment_in_meters * 3
-  @level_6 @waypoint_radius + @level_increment_in_meters * 4
-  @level_5 @waypoint_radius + @level_increment_in_meters * 5
-  @level_4 @waypoint_radius + @level_increment_in_meters * 6
-  @level_3 @waypoint_radius + @level_increment_in_meters * 7
-  @level_2 @waypoint_radius + @level_increment_in_meters * 8
+  @level_7 @waypoint_radius + @level_increment_in_meters * 4
+  @level_6 @waypoint_radius + @level_increment_in_meters * 6
+  @level_5 @waypoint_radius + @level_increment_in_meters * 8
+  @level_4 @waypoint_radius + @level_increment_in_meters * 10
+  @level_3 @waypoint_radius + @level_increment_in_meters * 12
+  @level_2 @waypoint_radius + @level_increment_in_meters * 14
 
   @doc """
   Interface for HotColdMeter implementations

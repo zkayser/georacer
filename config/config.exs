@@ -37,7 +37,7 @@ config :geo_racer, GeoRacer.Repo,
   extensions: [{Geo.PostGIS.Extension, library: Geo}]
 
 # Default radius in meters of a waypoint.
-config :geo_racer, :waypoint_radius, 25
+config :geo_racer, :waypoint_radius, 10
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
