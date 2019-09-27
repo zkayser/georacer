@@ -1,8 +1,8 @@
 # Geo Racer
 
-Race your friends anywhere, any time with [GeoRacer.io](https://georacer.io/). The racing game helps you track down waypoints with an interactive hot/cold meter. But beware, your friends will gain hazards along the way that will make your race more difficult. Be the first to collect a courses's waypoint and win the day!
+Ready, set, race! With [GeoRacer.io](https://georacer.io/), you’ll set up a course of custom waypoints to race your friends! The game’s hot/cold meter will guide you as you rush to your next waypoint. Competition getting a little too close? Wanna keep your lead? Hit racers with one of the in game hazards. Find all the waypoints first to be the champ. There will be many GeoChasers, but only one GeoRacer. 
 
-Geo Racer was created by a small mighty [Gaslight](https://teamgaslight.com/) team using [Phoenix](https://phoenixframework.org/) and [LiveView](https://github.com/phoenixframework/phoenix_live_view) for [Phoenix Phrenzy](https://phoenixphrenzy.com)
+Geo Racer was created by a small, mighty team at [Gaslight](https://teamgaslight.com/), using [Phoenix](https://phoenixframework.org/) and [LiveView](https://github.com/phoenixframework/phoenix_live_view) for [Phoenix Phrenzy](https://phoenixphrenzy.com)
 
 <img src="/assets/static/images/georacer-screens.png"  alt="Geo Racer App" width="550px" />
 
