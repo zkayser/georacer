@@ -1,4 +1,6 @@
 .countdown {
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
   z-index: 200;
   position: absolute;
   top: 50%;
@@ -16,40 +18,42 @@
     background-color: rgba($color-2, 0.8)
   }
   &__number {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 4.5em;
     color: $color-1;
+    font-size: 4.5em;
     line-height: 1;
 
     p{
-      font-family: $font-primary;
-      line-height: 1;
-      font-weight: 800;
       margin: 0;
       padding: 0;
+      font-family: $font-primary;
+      font-weight: 800;
+      line-height: 1;
     }
 
     &--go {
-      opacity: 0;
       animation: textFade 1.5s 4.5s ease;
+      opacity: 0;
     }
 
     &--1 {
-      opacity: 0;
       animation: textFade 1.5s 3s ease;
+      opacity: 0;
     }
 
     &--2 {
-      opacity: 0;
       animation: textFade 1.5s 1.5s ease;
+      opacity: 0;
     }
 
     &--3 {
-      opacity: 0;
       animation: textFade 1.5s ease;
+      opacity: 0;
     }
   }
 }

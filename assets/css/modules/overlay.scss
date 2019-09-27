@@ -21,4 +21,10 @@
       margin: 0 auto;
     }
   }
+
+  .meter.meter__icon {
+    width: 10em;
+    background-color: transparent;
+    box-shadow: none;
+  }
 }

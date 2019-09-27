@@ -173,6 +173,12 @@
   }
 }
 
+.u-float {
+  &--right {
+    float: right;
+  }
+}
+
 .u-border-radius {
   border-radius: $border-radius;
 }

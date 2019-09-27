@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 943 861" style="enable-background:new 0 0 943 861;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{opacity:0.1;}
+	.st2{clip-path:url(#SVGID_3_);}
+	.st3{opacity:0.8;}
+</style>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-135.0187" y1="-696.0624" x2="664.9813" y2="-696.0624" gradientTransform="matrix(0.6771 -0.7359 0.7359 0.6771 154.433 462.9666)">
+			<stop  offset="0" style="stop-color:#FC7474"/>
+			<stop  offset="0.2161" style="stop-color:#FD5C69"/>
+			<stop  offset="0.5222" style="stop-color:#FE415C"/>
+			<stop  offset="0.7935" style="stop-color:#FF3155"/>
+			<stop  offset="1" style="stop-color:#FF2B52"/>
+		</linearGradient>
+		<path class="st0" d="M826.5,721.3c-71.8,78.1-171.7,124.4-277.7,128.8c-106,4.4-209.4-33.5-287.5-105.3l-1421-1307.5
+			c-78.1-71.8-124.4-171.7-128.8-277.7c-4.4-106,33.5-209.4,105.3-287.5c71.8-78.1,171.7-124.4,277.7-128.8
+			c106-4.4,209.4,33.5,287.5,105.3L803,156.1c78.1,71.8,124.4,171.7,128.8,277.7C936.2,539.8,898.3,643.2,826.5,721.3z"/>
+	</g>
+	<g class="st1">
+		<defs>
+			<path id="SVGID_2_" class="st1" d="M826.8,721C754.9,799,655,845.4,549,849.8c-106,4.4-209.4-33.5-287.5-105.3l-1421-1307.5
+				c-78.1-71.8-124.4-171.7-128.8-277.7c-4.4-106,33.5-209.4,105.3-287.5s171.7-124.4,277.7-128.8c106-4.4,209.4,33.5,287.5,105.3
+				l1421,1307.5c78.1,71.8,124.4,171.7,128.8,277.7C936.5,539.5,898.6,642.9,826.8,721z"/>
+		</defs>
+		<clipPath id="SVGID_3_">
+			<use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st2">
+			
+				<rect x="207.1" y="-2088.7" transform="matrix(-0.6771 0.7359 -0.7359 -0.6771 672.1163 174.6001)" class="st3" width="181.3" height="4647"/>
+			
+				<rect x="147.7" y="-1965.7" transform="matrix(-0.6771 0.7359 -0.7359 -0.6771 572.795 464.2239)" class="st3" width="73.7" height="4647"/>
+			
+				<rect x="374.1" y="-2211.8" transform="matrix(-0.6771 0.7359 -0.7359 -0.6771 771.4374 -115.0237)" class="st3" width="73.7" height="4647"/>
+		</g>
+	</g>
+</g>
+</svg>
