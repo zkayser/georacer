@@ -1,4 +1,6 @@
 .alert {
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
   display: grid;
   z-index: 100;
   position: absolute;
@@ -30,12 +32,12 @@
   }
 
   &--desktop {
-    background: $color-1;
     display: inline-block;
+    max-width: 25em;
+    margin-bottom: $pad-sm;
     padding: $pad-sm;
     border-radius: 25px;
-    margin-bottom: $pad-sm;
-    max-width: 25em;
+    background: $color-1;
 
     p {
       margin-bottom: 0;
