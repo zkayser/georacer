@@ -1,6 +1,6 @@
 //CARD STYLES
 .card {
-  background-color: $color-7;
+  background-color: $color-1;
   border-radius: $border-radius;
   box-shadow: $shadow;
   overflow: hidden;
@@ -12,7 +12,7 @@
   &--red, &--blue {
     @extend .card;
     h1, h2, h3, h4, p {
-      color: $color-7;
+      color: ;
     }
   }
 
@@ -56,5 +56,4 @@
   form {
     padding: 0 $pad-sm;
   }
-
 }
