@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: geo-racer
-        image: zkayser/geo-racer:v0.1.10
+        image: zkayser/geo-racer:v0.1.11
         env:
           - name: APP_HOST
             value: georacer.io
@@ -56,7 +56,7 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       imagePullSecrets:
-        - name: geo-racer-docker-key
+        - name: dockersecret
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
