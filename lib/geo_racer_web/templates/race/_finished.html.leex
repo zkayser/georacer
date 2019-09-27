@@ -47,8 +47,8 @@
       </div>
     </div>
     <div class="u-padded--side">
-      <p class="u-center u-push-top--xs"><%= @view_model.timer %></p>
-      <h2 class="u-push-bottom--xs u-push-top--xs u-center">Leader Board</h2>
+      <p class="u-center u-push-top--xs"><b class="color--5"><%= @view_model.timer %></b></p>
+      <h2 class="u-push-bottom--xs u-center">Leader Board</h2>
       <div class="u-padded-no-top">
         <ul class="list u-push-bottom--sm">
         <%= for {rank, result} <- results do %>
