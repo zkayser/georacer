@@ -18,6 +18,8 @@ defmodule GeoRacer.Courses.Course do
   schema "courses" do
     field :name, :string
     field :center, Geo.PostGIS.Geometry
+    field :is_public, :boolean, default: false
+    field :user_uuid, :string
 
     has_many :waypoints, Waypoint, on_delete: :delete_all, on_replace: :delete
     timestamps()
@@ -26,7 +28,7 @@ defmodule GeoRacer.Courses.Course do
   @doc false
   def changeset(race, attrs) do
     race
-    |> cast(attrs, [:name, :center])
+    |> cast(attrs, [:name, :center, :is_public, :user_uuid])
     |> cast_assoc(:waypoints, with: &Waypoint.changeset/2)
     |> validate_required([:name, :center, :waypoints])
     |> validate_non_empty(:waypoints)

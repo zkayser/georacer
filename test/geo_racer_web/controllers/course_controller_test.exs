@@ -1,5 +1,6 @@
 defmodule GeoRacerWeb.CourseControllerTest do
   use GeoRacerWeb.ConnCase
+  import Phoenix.LiveViewTest
   alias GeoRacer.Factories.CourseFactory
 
   setup %{conn: conn} do
@@ -9,8 +10,7 @@ defmodule GeoRacerWeb.CourseControllerTest do
   end
 
   test "GET /courses", %{conn: conn} do
-    conn = get(conn, "/courses")
-    assert html_response(conn, 200)
+    assert {:ok, _view, html} = live(conn, "/courses")
   end
 
   test "GET /courses/:id redirects with to /join-race with course_id and race_code params if no race_code query param exists",

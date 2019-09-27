@@ -47,6 +47,8 @@
         <form phx-change="update_race_name">
               <input value="<%= @race_name %>" name="race_name" phx-change="update_race_name" type="text" placeholder="Amazing Awesome Race">
         </form>
+        <input phx-click="toggle_public" type="checkbox" id="make_public" name="make_public" value="" checked="<%= @is_public? %>" style="width: 20%;">
+        <label class="u-padded--sm u-padded--bottom" for="make_public">Make Public</label>
         <a phx-click="create_course" href="#" class="btn btn--primary">Create Race</a>
       </div>
     </div>

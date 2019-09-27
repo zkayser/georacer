@@ -7,9 +7,10 @@ defmodule GeoRacer.Courses do
   alias GeoRacer.Repo
 
   alias GeoRacer.Courses.Course
+  alias GeoRacer.Courses.Course.Queries
 
   @doc """
-  Returns the list of courses.
+  Returns the list of public courses.
 
   ## Examples
 
@@ -17,8 +18,19 @@ defmodule GeoRacer.Courses do
       [%Race{}, ...]
 
   """
-  def list_courses do
-    Course
+  def list_public_courses do
+    Queries.public()
+    |> Repo.all()
+    |> Repo.preload([:waypoints])
+  end
+
+  @doc """
+  Returns a list of courses owned by `user`.
+  """
+  @spec list_courses(String.t()) :: list(Course.t())
+  def list_courses(user) do
+    user
+    |> Queries.by_user()
     |> Repo.all()
     |> Repo.preload([:waypoints])
   end

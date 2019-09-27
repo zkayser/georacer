@@ -22,10 +22,14 @@ defmodule GeoRacer.Factories.CourseFactory do
     center: %Geo.Point{
       coordinates: {Float.round(-84 - :rand.uniform(), 6), Float.round(39 + :rand.uniform(), 6)},
       srid: 4326
-    }
+    },
+    user_uuid: UUID.uuid4(),
+    is_public: false
   }
 
-  def insert do
-    Courses.create_course(@valid_attrs)
+  def insert(extra_attrs \\ %{}) do
+    @valid_attrs
+    |> Map.merge(extra_attrs)
+    |> Courses.create_course()
   end
 end

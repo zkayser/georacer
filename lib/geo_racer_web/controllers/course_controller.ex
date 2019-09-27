@@ -2,17 +2,23 @@ defmodule GeoRacerWeb.CourseController do
   use GeoRacerWeb, :controller
   alias GeoRacer.Courses
   alias GeoRacer.Races
-  alias GeoRacerWeb.Live.Courses.{New, Show}
-  alias GeoRacerWeb.Plugs.FetchTeamName
+  alias GeoRacerWeb.Live.Courses.{Index, New, Show}
+  alias GeoRacerWeb.Plugs.{FetchTeamName, UserUUID}
   alias Phoenix.LiveView
 
   @id_generator Application.get_env(:geo_racer, :id_generator) || (&UUID.uuid4/0)
   @terms_and_conditions_session_key "geo_racer_accepted_terms_and_conditions"
 
   plug FetchTeamName when action in [:show]
+  plug UserUUID
 
   def index(conn, _params) do
-    render(conn, "index.html", courses: Courses.list_courses())
+    LiveView.Controller.live_render(conn, Index,
+      session: %{
+        identifier: @id_generator.(),
+        courses: Courses.list_courses(conn.assigns[:user_uuid])
+      }
+    )
   end
 
   def new(conn, params) do
@@ -20,7 +26,8 @@ defmodule GeoRacerWeb.CourseController do
       LiveView.Controller.live_render(conn, New,
         session: %{
           identifier: @id_generator.(),
-          has_accepted_terms_and_conditions?: has_accepted_terms_and_conditions?
+          has_accepted_terms_and_conditions?: has_accepted_terms_and_conditions?,
+          user_uuid: conn.assigns[:user_uuid]
         }
       )
     end

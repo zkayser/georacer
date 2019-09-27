@@ -11,15 +11,17 @@ defmodule GeoRacerWeb.Live.Courses.New do
     Phoenix.View.render(GeoRacerWeb.CourseView, "new.html", assigns)
   end
 
-  def mount(%{identifier: identifier} = session, socket) do
+  def mount(%{identifier: identifier, user_uuid: user_uuid} = session, socket) do
     :ok = GeoRacerWeb.Endpoint.subscribe(@topic <> identifier)
 
     {:ok,
      assign(socket,
        position: nil,
        waypoints: [],
+       user_uuid: user_uuid,
        race_name: "",
        has_accepted_terms_and_conditions?: session.has_accepted_terms_and_conditions?,
+       is_public?: false,
        identifier: identifier
      )}
   end
@@ -32,10 +34,20 @@ defmodule GeoRacerWeb.Live.Courses.New do
     {:noreply, assign(socket, :race_name, race_name)}
   end
 
-  def handle_event("create_course", _value, %{assigns: %{waypoints: waypoints}} = socket) do
+  def handle_event("toggle_public", _, socket) do
+    {:noreply, assign(socket, is_public?: not socket.assigns.is_public?)}
+  end
+
+  def handle_event(
+        "create_course",
+        _value,
+        %{assigns: %{waypoints: waypoints, is_public?: is_public?}} = socket
+      ) do
     with {:ok, course} <-
            Courses.create_course(%{
              waypoints: waypoints,
+             is_public: is_public?,
+             user_uuid: socket.assigns.user_uuid,
              center: Course.calculate_center(waypoints),
              name: socket.assigns.race_name
            }) do

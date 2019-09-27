@@ -1,0 +1,21 @@
+<%= if is_list(@courses) do %>
+  <%= for course <- @courses do %>
+    <div class="card u-padded u-push-bottom u-center">
+      <h2 class="u-push-top--sm"><%= course.name %></h2>
+      <div class="grid grid--2 u-push-bottom--sm">
+        <div class="number--background u-center">
+          <p class="caption">Waypoints</p>
+          <p class="u-push-bottom--none"><%= length(course.waypoints) %></p>
+        </div>
+        <div class="number--background u-center">
+          <p class="caption">Boundary</p>
+          <% boundary = boundary(course) %>
+          <p class="u-push-bottom--none"><%= boundary.distance %><span class="caption"><%= boundary.units %></span></p>
+        </div>
+      </div>
+      <a href="<%= Routes.course_path(GeoRacerWeb.Endpoint, :show, course.id) %>" class="btn btn--primary">Start A Race</a>
+    </div>
+  <% end %>
+<% else %>
+  <div class="u-center"><h2>Loading courses...</h2></div>
+<% end %>

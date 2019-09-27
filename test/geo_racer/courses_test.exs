@@ -6,6 +6,7 @@ defmodule GeoRacer.CoursesTest do
   describe "courses" do
     alias GeoRacer.Courses.Course
 
+    @user_uuid UUID.uuid4()
     @valid_attrs %{
       name: "some name",
       waypoints: [
@@ -22,7 +23,8 @@ defmodule GeoRacer.CoursesTest do
         coordinates:
           {Float.round(-84 - :rand.uniform(), 6), Float.round(39 + :rand.uniform(), 6)},
         srid: 4326
-      }
+      },
+      user_uuid: @user_uuid
     }
     @update_attrs %{
       name: "some updated name",
@@ -40,7 +42,8 @@ defmodule GeoRacer.CoursesTest do
         coordinates:
           {Float.round(-84 - :rand.uniform(), 6), Float.round(39 + :rand.uniform(), 6)},
         srid: 4326
-      }
+      },
+      user_uuid: @user_uuid
     }
     @invalid_attrs %{name: nil, center: nil}
 
@@ -53,9 +56,20 @@ defmodule GeoRacer.CoursesTest do
       course
     end
 
-    test "list_courses/0 returns all Courses" do
-      course = course_fixture()
-      assert Courses.list_courses() == [course]
+    test "list_public_courses/0 returns all public Courses" do
+      _private_course = course_fixture()
+      public_course = course_fixture(%{is_public: true})
+      assert Courses.list_public_courses() == [public_course]
+    end
+
+    test "list_courses/1 returns all of a user's courses" do
+      private_course = course_fixture()
+      public_course = course_fixture(%{is_public: true})
+      courses_for_user = Courses.list_courses(@user_uuid)
+
+      assert Enum.all?([private_course, public_course], fn course ->
+               course in courses_for_user
+             end)
     end
 
     test "get_course!/1 returns the course with given id" do
