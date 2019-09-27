@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: geo-racer
-        image: zkayser/geo-racer:v0.1.13
+        image: zkayser/geo-racer:v0.2.0
         imagePullPolicy: Always
         env:
           - name: APP_HOST
