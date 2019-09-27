@@ -83,3 +83,18 @@ b {
     }
   }
 }
+
+.title {
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.2;
+  }
+  p.strong {
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: $font-primary;
+    margin-bottom: -0.25em;
+  }
+}

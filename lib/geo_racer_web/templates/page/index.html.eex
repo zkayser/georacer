@@ -1,7 +1,7 @@
 <section class="home">
   <div class="home__container">
     <div class="home__header section--drop">
-      <div class="u-padded u-center">
+      <div class="logo u-center">
         <div>
           <div class="alert--desktop">
             <p>Open application on your mobile device browser for best game experience.</p>
@@ -54,13 +54,16 @@
         </div>
       </div>
     </div>
-    <div class="home__cta u-center u-padded">
-      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn">Start A Race</a>
-      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn--secondary">Create Course</a>
+    <div class="home__content">
+      <div class="title u-center">
+        <p>race your friends</p>
+        <p class="strong">anywhere</p>
+        <p>anytime</p>
+      </div>
     </div>
-    <div class="home__content icon-grid">
-      <img src="<%= Routes.static_path(@conn, "/images/location-marker.svg") %>" alt="location marker"/>
-      <p><b>Find Way Points<br />Obstruct Your Opponents<br />Race To The Finish</b></p>
+    <div class="home__cta u-center u-padded">
+      <a href="<%= Routes.course_path(@conn, :index) %>" class="btn u-push-bottom">Start A Race</a>
+      <a href="<%= Routes.course_path(@conn, :new) %>" class="btn--secondary">Create Course</a>
     </div>
   </div>
 </section>
