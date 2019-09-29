@@ -1,7 +1,7 @@
 .home {
   &__container {
     display: grid;
-    grid-template-rows: 50vh 12vh 30vh;
+    grid-template-rows: minmax(430px, 50vh) 12vh 30vh;
     align-items: center;
 
     .gaslight-logo {
